@@ -15,13 +15,24 @@ Gemeinsame Nährstoffbilanz (Planbilanz 2026) der Betriebe
 
 | Farbe | Bedeutung |
 |---|---|
-| grün | Wert steht drin und ist belegt (47 Felder) |
-| rot | muss eingetragen werden, Wert fehlt (87 Felder) |
+| grün | Wert steht drin und ist belegt (98 Felder) |
+| rot | muss eingetragen oder bestätigt werden (18 Felder) |
 | blau | Summen- und Rechenfeld, nicht ausfüllen |
-| hellgelb | Eingabefeld, das dieser Betrieb nicht braucht |
+| hellgelb | Eingabefeld, das leer bleiben soll — mit Begründung |
 
-Die Blätter **Anleitung** und **Offene Punkte** zuerst lesen; letzteres listet alle
-134 Positionen mit Zelle, Zeile und Quelle bzw. offener Frage.
+Die Blätter **Anleitung** und **Offene Punkte** zuerst lesen; letzteres listet jede
+Position mit Zelle, Zeile und Quelle bzw. offener Frage.
+
+## Quellen der eingetragenen Werte
+
+* **Planbilanz 2026** Nr. 0197-001 (Imhof & Zähner Betriebsgemeinschaft, Strickhof,
+  gerechnet 10.06.2026, Version 1.19) — Erträge, Laufhof-/Weidedaten, Vollmist-Typen,
+  Grundfutter-Zu-/Wegfuhr, Milchleistungen, Fehlerbereich
+* **Kennziffernblatt** dazu — Silobetrieb, Bauzone, Höhe über Meer
+* **Betriebsdatenblätter 2026** beider Betriebe — sämtliche Flächen
+* **TVD-Auswertung Schafe** vom 10.06.2026 — Tierplätze
+* **Suisse-Bilanz Zähner 2023** — Vergleichswerte
+* Angaben aus dem Auftrag — Düngermengen, Gemüsekulturen
 
 ## Wie die Eingabefelder bestimmt wurden
 
