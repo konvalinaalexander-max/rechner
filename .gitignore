@@ -1,2 +1,5 @@
 node_modules/
+package-lock.json
 *.log
+screenshot-*.png
+bilanz-druckprobe.pdf

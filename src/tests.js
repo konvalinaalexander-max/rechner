@@ -328,6 +328,27 @@
     t(GI, "Saldo-Ertrag intensive Wiese", rSaldo.saldoErtrag, 35, 0.01);
     t(GI, "Saldo deckt die Grundfutterbilanz exakt", rSaldo.gfKulturenTS, rSaldo.gfProd, 0.01);
 
+    /* Ungedüngte Flächen ohne Nährstoffbedarf liefern trotzdem Grundfutter
+       und speisen den innerbetrieblichen P₂O₅-Transfer (Kap. 3.4). */
+    var sUng = V.leer(); sUng.betrieb.ln = 30;
+    sUng.tiere = [{ tier: "mutterkuh_m", anzahl: 40, vollmist: 0 }];   // 1'800 dt TS Verzehr → Deckel 450 greift nicht
+    sUng.gfVerlust = 0; sUng.gfFehler = 0;
+    sUng.kulturen = [{ kultur: "wiese_duengeverbot", flaeche: 10, ertrag: 25 }];
+    var rUng = E.berechne(sUng);
+    t(GI, "Wiese mit Düngeverbot liefert Grundfutter", rUng.gfKulturenTS, 250, 0.01);
+    t(GI, "Wiese mit Düngeverbot hat keinen Nährstoffbedarf", rUng.C.n + rUng.C.p, 0, 0.001);
+    t(GI, "Wiese mit Düngeverbot speist den P₂O₅-Transfer", rUng.T, 0.4 * 250, 0.01);
+    t(GI, "Wiese mit Düngeverbot zählt als nährstoffarmes Grundfutter", rUng.gfArm, 250, 0.01);
+    /* Bei kleinerem Grundfutterbedarf greift der Deckel von einem Viertel */
+    var sUngK = JSON.parse(JSON.stringify(sUng));
+    sUngK.tiere[0].anzahl = 20;                                        // 900 dt TS → Deckel 225 < 250
+    t(GI, "Deckel von ¼ des GFprod greift bei kleinem Grundfutterbedarf", E.berechne(sUngK).T, 0.4 * 225, 0.01);
+    var sStr = V.leer(); sStr.betrieb.ln = 30;
+    sStr.tiere = [{ tier: "mutterkuh_m", anzahl: 20, vollmist: 0 }];
+    sStr.gfVerlust = 0; sStr.gfFehler = 0;
+    sStr.kulturen = [{ kultur: "streue", flaeche: 10, ertrag: 15 }];
+    t(GI, "Streuefläche liefert Grundfutter", E.berechne(sStr).gfKulturenTS, 150, 0.01);
+
     /* Nährstoffarmes GF senkt den Anfall in A2 */
     var sArm = V.leer(); sArm.betrieb.ln = 20;
     sArm.tiere = [{ tier: "mutterkuh_m", anzahl: 10, vollmist: 0 }];

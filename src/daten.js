@@ -243,8 +243,12 @@
     { id: "saum", label: "Saum / Buntbrache / Rotationsbrache / Nützlingsstreifen", gruppe: "BFF & übrige Flächen", bereich: "bff", modus: "null" },
     { id: "hecke_krautsaum", label: "Hecke / Feldgehölz mit Krautsaum", gruppe: "BFF & übrige Flächen", bereich: "bff", modus: "null" },
     { id: "hecke_puffer", label: "Hecke / Feldgehölz mit Pufferstreifen", gruppe: "BFF & übrige Flächen", bereich: "bff", modus: "null" },
-    { id: "streue", label: "Streuefläche / Torfland", gruppe: "BFF & übrige Flächen", bereich: "bff", modus: "null", istGF: true, gfArm: true, gfUnged: true, ertragStd: 0 },
-    { id: "wiese_duengeverbot", label: "Wiese mit Düngeverbot", gruppe: "BFF & übrige Flächen", bereich: "bff", modus: "null", istGF: true, gfArm: true, gfUnged: true, ertragStd: 25 },
+    /* Ungedüngte Flächen: kein Nährstoffbedarf (alle Werte 0), liefern aber
+       Grundfutter und bilden damit die Basis des innerbetrieblichen
+       P2O5-Transfers (Kap. 3.4). Deshalb Modus "wiese" mit Nullwerten und
+       nicht "null" – sonst würde ihr TS-Ertrag nicht mitgerechnet. */
+    { id: "streue", label: "Streuefläche / Torfland", gruppe: "BFF & übrige Flächen", bereich: "bff", modus: "wiese", n: 0, p: 0, k: 0, mg: 0, istGF: true, gfArm: true, gfUnged: true, ertragStd: 0 },
+    { id: "wiese_duengeverbot", label: "Wiese mit Düngeverbot", gruppe: "BFF & übrige Flächen", bereich: "bff", modus: "wiese", n: 0, p: 0, k: 0, mg: 0, istGF: true, gfArm: true, gfUnged: true, ertragStd: 25 },
     { id: "uebrige_flaeche", label: "Übrige Fläche ohne Nährstoffbedarf", gruppe: "BFF & übrige Flächen", bereich: "bff", modus: "null" },
 
     /* ---- Freilandgemüse (Tab. 5) – Bedarf in kg/ha, Ertrag in kg/a (Referenz) ---- */

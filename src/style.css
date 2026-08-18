@@ -1,0 +1,209 @@
+/* =============================================================================
+   Nährstoffbilanz – Gestaltung
+   ============================================================================= */
+:root{
+  --gruen:#2f6b3a; --gruen-dunkel:#1e4527; --gruen-hell:#eef4ec; --gruen-rand:#c5d9c2;
+  --papier:#f6f5f1; --karte:#fff; --tinte:#23231d; --grau:#6b6b62; --grau-hell:#9a9a90;
+  --linie:#e0dcd2; --linie-stark:#c9c5b8;
+  --gelb:#f5efd6; --gelb-rand:#e0d19a; --gelb-tinte:#7a5f13;
+  --rot:#a5382a; --rot-hell:#fbeae7; --rot-rand:#e8c4bd;
+  --blau:#33566f; --blau-hell:#eaf0f4; --blau-rand:#c3d5e0;
+  --eingabe:#fffdf4;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:"Inter","Helvetica Neue",Helvetica,Arial,sans-serif;
+  background:var(--papier); color:var(--tinte); font-size:14px; line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{font-weight:600;margin:0}
+
+/* ---------- Kopfzeile ---------- */
+header{background:var(--gruen-dunkel);color:#fff;padding:12px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+header .marke h1{font-size:17px;letter-spacing:.01em;line-height:1.2}
+header .marke .sub{font-size:11.5px;opacity:.72;margin-top:1px}
+header .spacer{flex:1}
+header .werkzeuge{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+header label.vlabel{font-size:11.5px;opacity:.8;margin-right:-2px}
+.knopf{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.22);border-radius:6px;
+  padding:6px 11px;font-size:12.5px;font-family:inherit;cursor:pointer;white-space:nowrap}
+.knopf:hover{background:rgba(255,255,255,.24)}
+.knopf.stark{background:#fff;color:var(--gruen-dunkel);border-color:#fff;font-weight:600}
+.knopf input[type=file]{display:none}
+header select{background:#fff;color:var(--tinte);border:0;border-radius:6px;padding:6px 9px;font-size:12.5px;font-family:inherit}
+
+/* ---------- Kopfleiste: Bilanzwerte und Navigation bleiben gemeinsam sichtbar ---------- */
+.kopfleiste{position:sticky;top:0;z-index:40;box-shadow:0 1px 5px rgba(0,0,0,.08)}
+.bilanzleiste{background:var(--karte);border-bottom:1px solid var(--linie);
+  display:flex;gap:0;align-items:stretch;overflow-x:auto}
+.bilanzleiste .zelle{padding:9px 18px;border-right:1px solid var(--linie);min-width:150px;flex-shrink:0}
+.bilanzleiste .zelle:last-child{border-right:0}
+.bilanzleiste .lab{font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--grau);white-space:nowrap}
+.bilanzleiste .wert{font-size:19px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.25}
+.bilanzleiste .wert small{font-size:11px;font-weight:500;color:var(--grau)}
+.bilanzleiste .zelle.klick{cursor:pointer}
+.bilanzleiste .zelle.klick:hover{background:var(--gruen-hell)}
+.gut{color:var(--gruen)} .schlecht{color:var(--rot)} .neutral{color:var(--blau)}
+
+/* ---------- Navigation ---------- */
+nav{display:flex;background:var(--gruen);padding:0 14px;flex-wrap:wrap}
+nav button{background:transparent;border:0;color:#d9e6d6;padding:10px 13px;font-size:13px;font-family:inherit;
+  cursor:pointer;border-bottom:3px solid transparent;display:flex;align-items:center;gap:6px}
+nav button:hover{color:#fff}
+nav button.aktiv{color:#fff;border-bottom-color:var(--gelb-rand);font-weight:600}
+nav button .nr{background:rgba(255,255,255,.2);border-radius:9px;padding:0 6px;font-size:10.5px;font-weight:700}
+nav button.aktiv .nr{background:var(--gelb-rand);color:var(--gruen-dunkel)}
+nav button .punkt{width:7px;height:7px;border-radius:50%;background:var(--rot);display:inline-block}
+
+main{max-width:1240px;margin:0 auto;padding:18px 20px 70px}
+
+/* ---------- Karten ---------- */
+.karte{background:var(--karte);border:1px solid var(--linie);border-radius:9px;padding:16px 18px;margin-bottom:16px}
+.karte > h2{font-size:15.5px;color:var(--gruen-dunkel);display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.karte > h2 .form{font-size:10.5px;color:var(--grau);font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  background:var(--papier);border:1px solid var(--linie);border-radius:4px;padding:1px 6px}
+.hinweis{font-size:12.5px;color:var(--grau);margin:5px 0 13px;max-width:80ch}
+.karte h3{font-size:13px;color:var(--gruen-dunkel);margin:16px 0 6px;text-transform:uppercase;letter-spacing:.05em}
+
+/* ---------- Tabellen ---------- */
+.tabellenrahmen{overflow-x:auto;margin:0 -18px;padding:0 18px}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+th{font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--grau);text-align:left;
+  padding:6px 7px;border-bottom:2px solid var(--linie-stark);font-weight:700;white-space:nowrap;vertical-align:bottom}
+td{padding:5px 7px;border-bottom:1px solid var(--linie);vertical-align:middle}
+td.num,th.num{text-align:right}
+tbody tr:hover{background:#fbfaf7}
+tr.gruppe td{font-size:10.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--grau);font-weight:700;
+  background:var(--papier);padding-top:9px;padding-bottom:4px;border-bottom:1px solid var(--linie)}
+tr.summe td{font-weight:700;border-top:2px solid var(--tinte);border-bottom:0;background:var(--gruen-hell)}
+tr.zwischensumme td{font-weight:600;background:#f4f7f3;border-bottom:1px solid var(--linie-stark)}
+.abgeleitet{color:var(--grau);font-variant-numeric:tabular-nums}
+.zeileninfo{font-size:11px;color:var(--grau-hell);display:block;margin-top:1px}
+.zeileninfo.warn{color:var(--gelb-tinte)}
+
+/* ---------- Eingabefelder ---------- */
+input[type=number],input[type=text],select,textarea{
+  border:1px solid var(--linie-stark);border-radius:5px;padding:5px 7px;font-size:13px;
+  font-family:inherit;background:var(--eingabe);color:var(--tinte)}
+input[type=number],input.zahl{width:86px;text-align:right;font-variant-numeric:tabular-nums}
+input.klein{width:62px} input.mini{width:50px} input.breit{width:100%;text-align:left}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--gruen);outline-offset:-1px;background:#fff}
+input:disabled{background:#f2f0ea;color:var(--grau-hell)}
+input[type=checkbox]{width:15px;height:15px;accent-color:var(--gruen);cursor:pointer}
+.feldgruppe{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:12px}
+.feld label{display:block;font-size:11px;color:var(--grau);text-transform:uppercase;letter-spacing:.04em;
+  margin-bottom:3px;font-weight:600}
+.feld .einheit{font-size:11px;color:var(--grau-hell);margin-left:4px}
+
+/* ---------- Buttons in Tabellen ---------- */
+.plus{background:var(--gruen-hell);border:1px dashed var(--gruen-rand);color:var(--gruen-dunkel);border-radius:6px;
+  padding:7px 13px;font-size:12.5px;font-family:inherit;cursor:pointer;margin-top:11px}
+.plus:hover{background:#e3ede0}
+.iknopf{background:none;border:0;color:var(--grau-hell);font-size:14px;cursor:pointer;padding:2px 5px;border-radius:4px;line-height:1}
+.iknopf:hover{color:var(--rot);background:var(--rot-hell)}
+.iknopf.stift:hover{color:var(--blau);background:var(--blau-hell)}
+
+/* ---------- Kennzahlen ---------- */
+.kennzahlen{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:11px;margin-top:13px}
+.kennzahl{background:var(--gruen-hell);border:1px solid var(--gruen-rand);border-radius:7px;padding:10px 13px}
+.kennzahl .w{font-size:20px;font-weight:700;color:var(--gruen-dunkel);font-variant-numeric:tabular-nums;line-height:1.2}
+.kennzahl .l{font-size:11.5px;color:var(--grau);margin-top:2px;line-height:1.35}
+.kennzahl.warn{background:var(--gelb);border-color:var(--gelb-rand)}
+.kennzahl.warn .w{color:var(--gelb-tinte)}
+.kennzahl.fehler{background:var(--rot-hell);border-color:var(--rot-rand)}
+.kennzahl.fehler .w{color:var(--rot)}
+.kennzahl.info{background:var(--blau-hell);border-color:var(--blau-rand)}
+.kennzahl.info .w{color:var(--blau)}
+
+/* ---------- Meldungen ---------- */
+.meldung{border-radius:7px;padding:9px 13px;font-size:12.5px;margin:8px 0;border:1px solid;display:flex;gap:9px;align-items:flex-start}
+.meldung .sym{font-weight:700;flex-shrink:0}
+.meldung.fehler{background:var(--rot-hell);border-color:var(--rot-rand);color:#7d2a1f}
+.meldung.warnung{background:var(--gelb);border-color:var(--gelb-rand);color:var(--gelb-tinte)}
+.meldung.info{background:var(--blau-hell);border-color:var(--blau-rand);color:var(--blau)}
+.meldung.erfolg{background:var(--gruen-hell);border-color:var(--gruen-rand);color:var(--gruen-dunkel)}
+.notiz{background:var(--gelb);border:1px solid var(--gelb-rand);border-radius:6px;padding:9px 12px;
+  font-size:12.5px;margin:10px 0;color:var(--gelb-tinte)}
+
+/* ---------- Etiketten ---------- */
+.etikett{display:inline-block;font-size:10.5px;padding:1px 7px;border-radius:9px;font-weight:600;white-space:nowrap}
+.etikett.gruen{background:var(--gruen-hell);color:var(--gruen-dunkel);border:1px solid var(--gruen-rand)}
+.etikett.gelb{background:var(--gelb);color:var(--gelb-tinte);border:1px solid var(--gelb-rand)}
+.etikett.rot{background:var(--rot-hell);color:var(--rot);border:1px solid var(--rot-rand)}
+.etikett.blau{background:var(--blau-hell);color:var(--blau);border:1px solid var(--blau-rand)}
+.etikett.grau{background:var(--papier);color:var(--grau);border:1px solid var(--linie)}
+
+/* ---------- Bilanzaufstellung ---------- */
+.bilanztabelle{width:100%;border-collapse:collapse;font-size:14px}
+.bilanztabelle td{padding:8px 10px;border-bottom:1px solid var(--linie)}
+.bilanztabelle td.num{text-align:right;font-variant-numeric:tabular-nums;width:130px;font-weight:600}
+.bilanztabelle tr.hervor td{background:#f4f7f3;font-weight:600}
+.bilanztabelle tr.endsumme td{border-top:2.5px solid var(--tinte);border-bottom:0;font-size:16px;font-weight:700;
+  background:var(--gruen-hell);padding:11px 10px}
+.bilanztabelle .erklaerung{font-size:11.5px;color:var(--grau);font-weight:400;display:block}
+.rechenweg{background:var(--papier);border:1px solid var(--linie);border-radius:6px;padding:10px 13px;
+  font-size:12.5px;color:var(--grau);margin:10px 0;line-height:1.7}
+.rechenweg b{color:var(--tinte)}
+
+/* ---------- Auswahl-Dialog ---------- */
+.overlay{position:fixed;inset:0;background:rgba(30,30,25,.45);z-index:100;display:flex;
+  align-items:flex-start;justify-content:center;padding:6vh 16px 16px}
+.dialog{background:var(--karte);border-radius:11px;width:100%;max-width:680px;max-height:82vh;
+  display:flex;flex-direction:column;box-shadow:0 12px 40px rgba(0,0,0,.25);overflow:hidden}
+.dialog .kopf{padding:14px 18px 10px;border-bottom:1px solid var(--linie)}
+.dialog .kopf h3{font-size:15px;color:var(--gruen-dunkel);text-transform:none;letter-spacing:0;margin:0 0 9px}
+.dialog .kopf input{width:100%;font-size:14px;padding:8px 11px}
+.dialog .liste{overflow-y:auto;padding:5px 0;flex:1}
+.dialog .liste .gr{font-size:10.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--grau);
+  font-weight:700;padding:9px 18px 3px;background:var(--papier);position:sticky;top:0}
+.dialog .liste button{display:block;width:100%;text-align:left;background:none;border:0;padding:7px 18px;
+  font-size:13.5px;font-family:inherit;cursor:pointer;color:var(--tinte);border-bottom:1px solid #f2f0ea}
+.dialog .liste button:hover,.dialog .liste button.markiert{background:var(--gruen-hell)}
+.dialog .liste button .det{display:block;font-size:11.5px;color:var(--grau-hell);margin-top:1px}
+.dialog .fuss{padding:11px 18px;border-top:1px solid var(--linie);display:flex;gap:9px;justify-content:space-between;align-items:center}
+.dialog .fuss .hint{font-size:11.5px;color:var(--grau-hell)}
+.knopf.dunkel{background:var(--gruen);border-color:var(--gruen);color:#fff}
+.knopf.hell{background:var(--papier);border-color:var(--linie-stark);color:var(--tinte)}
+
+/* ---------- Prüfung ---------- */
+.testgruppe{margin-bottom:14px}
+.testgruppe > .kopf{display:flex;justify-content:space-between;align-items:center;padding:7px 11px;
+  background:var(--papier);border:1px solid var(--linie);border-radius:6px;font-size:13px;font-weight:600;cursor:pointer}
+.testliste{border:1px solid var(--linie);border-top:0;border-radius:0 0 6px 6px}
+.testzeile{display:flex;gap:9px;padding:4px 11px;font-size:12.5px;border-bottom:1px solid #f2f0ea;align-items:baseline}
+.testzeile:last-child{border-bottom:0}
+.testzeile .st{width:15px;flex-shrink:0;font-weight:700}
+.testzeile .nm{flex:1}
+.testzeile .vl{font-variant-numeric:tabular-nums;color:var(--grau);font-size:11.5px}
+.testzeile.rot{background:var(--rot-hell)}
+
+.tab{display:none} .tab.aktiv{display:block}
+.zweispalten{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:900px){.zweispalten{grid-template-columns:1fr}}
+.fussnote{font-size:11.5px;color:var(--grau-hell);margin-top:20px;text-align:center;line-height:1.6}
+
+/* =============================================================================
+   Druckansicht – Formulare A bis F
+   ============================================================================= */
+#druck{display:none}
+@media print{
+  @page{size:A4 portrait;margin:12mm 10mm}
+  header,nav,.kopfleiste,.bilanzleiste,main,.overlay{display:none!important}
+  body{background:#fff;font-size:9.5pt;color:#000}
+  #druck{display:block}
+  #druck h1{font-size:15pt;border-bottom:2.5pt solid #000;padding-bottom:4pt;margin-bottom:6pt}
+  #druck h2{font-size:11pt;margin:11pt 0 3pt;border-bottom:1pt solid #000;padding-bottom:1.5pt;page-break-after:avoid}
+  #druck table{font-size:8.5pt;page-break-inside:avoid;width:100%;border-collapse:collapse;margin-bottom:3pt}
+  #druck th{font-size:7.5pt;color:#000;border-bottom:1pt solid #000;padding:2pt 4pt;text-transform:uppercase}
+  #druck td{padding:1.8pt 4pt;border-bottom:.4pt solid #bbb}
+  #druck tr.summe td{background:#eee;border-top:1pt solid #000;font-weight:700;border-bottom:0}
+  #druck tr.gruppe td{background:#f6f6f6;font-weight:700;font-size:7.5pt;text-transform:uppercase}
+  #druck .kopfzeile{display:flex;justify-content:space-between;font-size:8.5pt;margin:3pt 0;gap:12pt}
+  #druck .erlaeuterung{font-size:8pt;margin:2pt 0 5pt;line-height:1.45}
+  #druck .schluss{border:1.2pt solid #000;padding:5pt 7pt;margin-top:5pt;font-size:10pt}
+  #druck .unterschrift{margin-top:26pt;display:flex;gap:40pt;font-size:8.5pt;page-break-inside:avoid}
+  #druck .unterschrift div{border-top:.8pt solid #000;padding-top:3pt;flex:1}
+  #druck .fuss{margin-top:12pt;font-size:7.5pt;color:#444;border-top:.4pt solid #999;padding-top:4pt;line-height:1.5}
+  .seitenumbruch{page-break-before:always}
+}
