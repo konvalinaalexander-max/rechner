@@ -1,0 +1,486 @@
+<title>Nachweis richtigstellen</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap">
+
+<style>
+:root{
+  --grund:#F7F8F5;
+  --flaeche:#FFFFFF;
+  --flaeche-2:#EFF2EC;
+  --tinte:#1B241F;
+  --tinte-leise:#5E675F;
+  --linie:#DCE0D8;
+  --linie-stark:#BFC7BB;
+  --akzent:#2E5D4B;
+  --akzent-weich:#E4EDE7;
+  --schlecht:#A33A2A;
+  --schlecht-weich:#F7E6E2;
+  --gut:#2E7D5B;
+  --gut-weich:#E2F0E8;
+  --merk:#8A6A16;
+  --merk-weich:#F7EFD9;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --grund:#141815;
+    --flaeche:#1B211C;
+    --flaeche-2:#232B24;
+    --tinte:#E7EBE4;
+    --tinte-leise:#9AA49B;
+    --linie:#2E372F;
+    --linie-stark:#414C42;
+    --akzent:#7FBFA0;
+    --akzent-weich:#1F2E27;
+    --schlecht:#E08573;
+    --schlecht-weich:#31211E;
+    --gut:#6FC49A;
+    --gut-weich:#1B2C24;
+    --merk:#D8B85C;
+    --merk-weich:#2C2718;
+  }
+}
+:root[data-theme="dark"]{
+  --grund:#141815;
+  --flaeche:#1B211C;
+  --flaeche-2:#232B24;
+  --tinte:#E7EBE4;
+  --tinte-leise:#9AA49B;
+  --linie:#2E372F;
+  --linie-stark:#414C42;
+  --akzent:#7FBFA0;
+  --akzent-weich:#1F2E27;
+  --schlecht:#E08573;
+  --schlecht-weich:#31211E;
+  --gut:#6FC49A;
+  --gut-weich:#1B2C24;
+  --merk:#D8B85C;
+  --merk-weich:#2C2718;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--grund);
+  color:var(--tinte);
+  font-family:"Source Sans 3","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:17px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.blatt{max-width:53rem;margin:0 auto;padding:3.5rem 1.5rem 6rem}
+
+h1,h2,h3,.eyebrow{font-family:"Archivo","Helvetica Neue",Arial,sans-serif}
+h1{
+  font-size:clamp(2rem,1.4rem + 2.4vw,3rem);
+  font-weight:700;line-height:1.08;letter-spacing:-.022em;
+  text-wrap:balance;margin:0 0 .6rem;
+}
+.eyebrow{
+  font-size:.75rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--akzent);margin:0 0 .9rem;
+}
+.lede{font-size:1.16rem;color:var(--tinte-leise);max-width:62ch;margin:0}
+code,.zelle,.zahl{font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace}
+
+/* ---------- Befund ---------- */
+.befund{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:1px;
+  background:var(--linie);border:1px solid var(--linie);border-radius:10px;
+  overflow:hidden;margin:2.5rem 0 1rem;
+}
+.befund > div{background:var(--flaeche);padding:1rem 1.15rem}
+.befund .k{font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--tinte-leise);font-family:"Archivo",sans-serif}
+.befund .w{font-family:"IBM Plex Mono",monospace;font-size:1.6rem;font-weight:600;
+  font-variant-numeric:tabular-nums;line-height:1.2;margin-top:.2rem}
+.befund .ist .w{color:var(--schlecht)}
+.befund .soll .w{color:var(--gut)}
+.befund .n{font-size:.86rem;color:var(--tinte-leise);margin-top:.15rem}
+
+.ursachen{
+  border-left:3px solid var(--schlecht);background:var(--schlecht-weich);
+  border-radius:0 8px 8px 0;padding:1.1rem 1.3rem;margin:1.6rem 0 0;
+}
+.ursachen p{margin:0 0 .5rem;font-weight:600}
+.ursachen ol{margin:0;padding-left:1.2rem}
+.ursachen li{margin:.35rem 0}
+
+hr.trenner{border:0;border-top:1px solid var(--linie);margin:3rem 0 2.5rem}
+
+/* ---------- Schritte ---------- */
+.schritt{
+  display:grid;grid-template-columns:3.1rem 1fr;gap:0 1.1rem;
+  margin:0 0 2.6rem;align-items:start;
+}
+.nr{
+  font-family:"Archivo",sans-serif;font-weight:700;font-size:1.05rem;
+  width:2.5rem;height:2.5rem;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--akzent);color:var(--grund);
+  font-variant-numeric:tabular-nums;margin-top:.15rem;
+}
+.schritt.vorbereitung .nr{background:var(--flaeche-2);color:var(--tinte-leise);
+  border:1px solid var(--linie-stark);font-size:1.2rem}
+.schritt h2{font-size:1.3rem;font-weight:600;letter-spacing:-.012em;margin:.25rem 0 .1rem;text-wrap:balance}
+.wo{font-size:.93rem;color:var(--tinte-leise);margin:0 0 .8rem}
+.wo .zelle{color:var(--tinte);font-weight:600}
+.schritt > div > p{margin:.7rem 0}
+
+.zelle{
+  background:var(--flaeche-2);border:1px solid var(--linie);
+  border-radius:4px;padding:.06em .38em;font-size:.9em;font-weight:600;
+  white-space:nowrap;
+}
+.knopf{
+  display:inline-block;background:var(--akzent-weich);border:1px solid var(--akzent);
+  color:var(--akzent);border-radius:5px;padding:.1em .5em;
+  font-family:"Archivo",sans-serif;font-size:.86em;font-weight:600;white-space:nowrap;
+}
+
+/* ---------- Tabellen ---------- */
+.tab-rahmen{overflow-x:auto;margin:.9rem 0 0;
+  border:1px solid var(--linie);border-radius:8px;background:var(--flaeche)}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+th{
+  font-family:"Archivo",sans-serif;font-size:.7rem;font-weight:600;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--tinte-leise);text-align:left;
+  padding:.6rem .85rem;border-bottom:1px solid var(--linie-stark);white-space:nowrap;
+}
+td{padding:.5rem .85rem;border-bottom:1px solid var(--linie);vertical-align:top}
+tbody tr:last-child td{border-bottom:0}
+td.z,th.z{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;
+  white-space:nowrap;font-size:.9rem}
+td.r,th.r{text-align:right}
+td.wert{font-family:"IBM Plex Mono",monospace;font-weight:600;font-variant-numeric:tabular-nums}
+
+/* ---------- Kontrolle ---------- */
+.kontrolle{
+  display:flex;gap:.7rem;align-items:flex-start;
+  background:var(--gut-weich);border-left:3px solid var(--gut);
+  border-radius:0 7px 7px 0;padding:.7rem 1rem;margin:.95rem 0 0;font-size:.95rem;
+}
+.kontrolle b{font-family:"Archivo",sans-serif;font-weight:600;color:var(--gut)}
+.haken{color:var(--gut);flex-shrink:0;font-weight:700}
+
+.warnung{
+  background:var(--merk-weich);border-left:3px solid var(--merk);
+  border-radius:0 7px 7px 0;padding:.75rem 1rem;margin:.95rem 0 0;font-size:.95rem;
+}
+.warnung b{font-family:"Archivo",sans-serif;color:var(--merk)}
+
+/* ---------- Schluss ---------- */
+.schluss{
+  background:var(--flaeche);border:1px solid var(--linie-stark);
+  border-radius:11px;padding:1.5rem 1.6rem;margin-top:1rem;
+}
+.schluss h2{font-size:1.35rem;margin:0 0 .2rem;font-weight:700}
+.schluss > p{color:var(--tinte-leise);margin:0 0 1rem}
+
+.fuss{margin-top:3.5rem;padding-top:1.4rem;border-top:1px solid var(--linie);
+  font-size:.88rem;color:var(--tinte-leise)}
+
+@media (max-width:34rem){
+  body{font-size:16px}
+  .blatt{padding:2.2rem 1.1rem 4rem}
+  .schritt{grid-template-columns:1fr;gap:.4rem}
+  .nr{width:2.1rem;height:2.1rem;font-size:.95rem}
+}
+@media print{
+  body{background:#fff}
+  .schritt{page-break-inside:avoid}
+  .blatt{padding:0}
+}
+</style>
+
+<div class="blatt">
+
+  <p class="eyebrow">Suisse-Bilanz · Planbilanz 2026 · Imhof &amp; Zähner</p>
+  <h1>Nachweis richtigstellen</h1>
+  <p class="lede">Deine Eingaben in <span class="zelle">Fläche</span>, <span class="zelle">Tierb</span>,
+  <span class="zelle">Gem1</span>, <span class="zelle">Gem2</span> und Formular D stimmen. Es fehlen die
+  Handeinträge auf <span class="zelle">SB1</span>, die Kulturzuordnung im Gemüse und die
+  Übertragung per Knopfdruck. Neun Schritte, in dieser Reihenfolge.</p>
+
+  <div class="befund">
+    <div class="ist">
+      <div class="k">Deine Bilanz jetzt</div>
+      <div class="w">+6'233</div>
+      <div class="n">kg N<sub>verf</sub> — Überschuss</div>
+    </div>
+    <div class="soll">
+      <div class="k">So muss sie herauskommen</div>
+      <div class="w">−5'318</div>
+      <div class="n">kg N<sub>verf</sub> — ausgeglichen</div>
+    </div>
+    <div>
+      <div class="k">Differenz</div>
+      <div class="w">11'551</div>
+      <div class="n">kg — fast alles fehlender Bedarf</div>
+    </div>
+  </div>
+
+  <div class="ursachen">
+    <p>Woher die Differenz kommt</p>
+    <ol>
+      <li><b>A2 Tierhaltung = 0</b> — die Tierliste auf <span class="zelle">SB1</span> ist leer, die Übertragung lief nie.</li>
+      <li><b>A3 Hofdünger = 0</b> — Hühnermist und Schweinegülle sind auf <span class="zelle">SB1</span> nicht erfasst.</li>
+      <li><b>C Kulturbedarf 1'244 statt 12'981</b> — im Gemüse fehlt die Kulturzuordnung, die Ackerkulturen wurden nicht übertragen.</li>
+    </ol>
+  </div>
+
+  <hr class="trenner">
+
+  <!-- ============ VORBEREITUNG ============ -->
+  <div class="schritt vorbereitung">
+    <div class="nr">·</div>
+    <div>
+      <h2>Vorbereitung</h2>
+      <p class="wo">Bevor du etwas änderst</p>
+      <p>Leg eine Kopie der Datei an, damit du zurück kannst. Und stell sicher, dass
+      <b>Makros aktiviert</b> sind — ohne sie tun die Knöpfe nichts, und genau daran liegt es
+      vermutlich. In Excel: <i>Datei → Optionen → Trust Center → Einstellungen für das
+      Trust Center → Makroeinstellungen</i>.</p>
+      <div class="warnung">
+        <b>Wichtig:</b> Wenn beim Öffnen ein gelber Balken erscheint, auf
+        «Inhalt aktivieren» klicken. Sonst laufen die Übertragungen in Schritt 5, 7 und 9 stillschweigend ins Leere.
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 1 ============ -->
+  <div class="schritt">
+    <div class="nr">1</div>
+    <div>
+      <h2>Gemüsekulturen zuordnen</h2>
+      <p class="wo">Blatt <span class="zelle">Gem1</span> · Knopf bei <span class="zelle">B7</span>
+        <span class="knopf">Gemüsekulturen auswählen</span></p>
+      <p>Die Flächen stehen schon drin, aber in Spalte B ist keine Kultur gewählt — deshalb
+      rechnet das Blatt einen Nährstoffbedarf von null. Klick den Knopf und wähle je Zeile:</p>
+      <div class="tab-rahmen">
+        <table>
+          <thead><tr><th class="z">Zeile</th><th>Kultur wählen</th><th class="r">Fläche (Aren)</th></tr></thead>
+          <tbody>
+            <tr><td class="z">12</td><td>Fenchel, Knollen</td><td class="r wert">1400</td></tr>
+            <tr><td class="z">13</td><td>Salate, diverse, mittlerer Ertrag</td><td class="r wert">1100</td></tr>
+            <tr><td class="z">14</td><td>Karotten Verarbeitung-, Lager-</td><td class="r wert">800</td></tr>
+            <tr><td class="z">15</td><td>Zwiebeln</td><td class="r wert">700</td></tr>
+            <tr><td class="z">16</td><td>Patisson, Kürbis</td><td class="r wert">1200</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="kontrolle"><span class="haken">✓</span>
+        <span><b>Kontrolle:</b> Zeile 57 «Total Nährstoffbedarf der Gemüse» steht jetzt auf
+        rund <span class="zelle">6'200</span> kg N statt auf 0.</span></div>
+    </div>
+  </div>
+
+  <!-- ============ 2 ============ -->
+  <div class="schritt">
+    <div class="nr">2</div>
+    <div>
+      <h2>Geschützten Anbau zuordnen</h2>
+      <p class="wo">Blatt <span class="zelle">Gem2</span> · Knopf bei <span class="zelle">B7</span>
+        <span class="knopf">Gemüsekulturen auswählen</span></p>
+      <p>Gleiches Bild wie bei Gem1: Flächen ja, Kultur nein.</p>
+      <div class="tab-rahmen">
+        <table>
+          <thead><tr><th class="z">Zeile</th><th>Kultur wählen</th><th class="r">Fläche (Aren)</th></tr></thead>
+          <tbody>
+            <tr><td class="z">12</td><td>Tomaten, Bodenkultur, mittlerer Ertrag</td><td class="r wert">121.9</td></tr>
+            <tr><td class="z">13</td><td>Mittelwert Gewächshausgemüse</td><td class="r wert">58.79</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 3 ============ -->
+  <div class="schritt">
+    <div class="nr">3</div>
+    <div>
+      <h2>Hofdünger von Hand erfassen</h2>
+      <p class="wo">Blatt <span class="zelle">SB1</span> · Zeilen 55 und 57</p>
+      <p>Diese Zeilen füllt <b>kein Knopf</b> — sie sind reine Handeingabe und bei dir komplett leer.
+      Deshalb ist A3 null.</p>
+      <div class="tab-rahmen">
+        <table>
+          <thead><tr><th class="z">Zelle</th><th>Feld</th><th class="r">Wert</th></tr></thead>
+          <tbody>
+            <tr><td class="z">G55</td><td>Bezeichnung Mist</td><td class="r wert">Hühnermist</td></tr>
+            <tr><td class="z">K55</td><td>Menge in Tonnen</td><td class="r wert">90</td></tr>
+            <tr><td class="z">M55</td><td>N<sub>ges</sub> kg je t</td><td class="r wert">21</td></tr>
+            <tr><td class="z">N55</td><td>P₂O₅ kg je t</td><td class="r wert">17</td></tr>
+            <tr><td class="z">X55</td><td>Vollmist</td><td class="r wert">ankreuzen</td></tr>
+            <tr><td class="z">G57</td><td>Bezeichnung Gülle</td><td class="r wert">Schweinegülle</td></tr>
+            <tr><td class="z">K57</td><td>Menge in m³</td><td class="r wert">60</td></tr>
+            <tr><td class="z">M57</td><td>N<sub>ges</sub> kg je m³</td><td class="r wert">5.0</td></tr>
+            <tr><td class="z">N57</td><td>P₂O₅ kg je m³</td><td class="r wert">2.5</td></tr>
+            <tr><td class="z">O57</td><td>K₂O kg je m³</td><td class="r wert">4.3</td></tr>
+            <tr><td class="z">P57</td><td>Mg kg je m³</td><td class="r wert">1.2</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="warnung"><b>Zu bestätigen:</b> Die Gehalte des Hühnermists sind aus der
+      Planbilanz 2026 hergeleitet (1'890 kg N<sub>ges</sub> ÷ 90 t). Bei der Schweinegülle sind es
+      Richtwerte für unverdünnte Vollgülle. Massgebend sind die Werte im HODUFLU-Lieferschein.</div>
+    </div>
+  </div>
+
+  <!-- ============ 4 ============ -->
+  <div class="schritt">
+    <div class="nr">4</div>
+    <div>
+      <h2>Grundfutter von Hand erfassen</h2>
+      <p class="wo">Blatt <span class="zelle">SB1</span> · Zeilen 77, 78, 86 und 96</p>
+      <p>Auch das ist Handeingabe und bei dir leer. Ohne diese Zeilen stimmt die
+      Grundfutterbilanz nicht.</p>
+      <div class="tab-rahmen">
+        <table>
+          <thead><tr><th class="z">Zeile</th><th>Position</th><th class="z">Menge</th><th class="z">% TS</th><th class="z">dt TS</th></tr></thead>
+          <tbody>
+            <tr><td class="z">77</td><td>Gras, Grassilage — <b>Wegfuhr</b></td>
+              <td class="z">E77 = 975</td><td class="z">G77 = 35</td><td class="z">I77 = 341.25</td></tr>
+            <tr><td class="z">78</td><td>Dürrfutter (Graswürfel) — Zufuhr</td>
+              <td class="z">E78 = 150</td><td class="z">G78 = 88</td><td class="z">K78 = 132</td></tr>
+            <tr><td class="z">86</td><td>Zuckerrübenschnitzel — Zufuhr</td>
+              <td class="z">E86 = 200</td><td class="z">G86 = 30</td><td class="z">K86 = 60</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Dazu der Fehlerbereich: <span class="zelle">M96</span> = <b>5</b> Prozent.</p>
+      <div class="warnung"><b>Achtung Spalte:</b> Die Wegfuhr gehört in Spalte <b>I</b>, die Zufuhr in
+      Spalte <b>K</b>. Falls das Programm die dt TS selbst aus Menge und TS-Gehalt berechnet,
+      lass I und K leer und trag nur E und G ein.</div>
+    </div>
+  </div>
+
+  <!-- ============ 5 ============ -->
+  <div class="schritt">
+    <div class="nr">5</div>
+    <div>
+      <h2>Tierbestand übertragen</h2>
+      <p class="wo">Blatt <span class="zelle">SB1</span> · Knopf bei <span class="zelle">L9</span>
+        <span class="knopf">Tabelle "Tierart" ausfüllen, aktualisieren</span></p>
+      <p>Das ist der wichtigste Schritt. Deine 11 Tierkategorien stehen korrekt auf
+      <span class="zelle">Tierb</span>, sind aber nie nach SB1 gelangt — alle 22 Tierzeilen dort
+      sind leer. Der Knopf holt sie.</p>
+      <div class="kontrolle"><span class="haken">✓</span>
+        <span><b>Kontrolle:</b> Die Zeilen 17 bis 38 sind gefüllt, und der Zwischenwert A1 in
+        <span class="zelle">Q41</span> steht bei rund <span class="zelle">4'714</span> kg N<sub>ges</sub>.
+        Der Grundfutterverzehr in <span class="zelle">K41</span> bei rund 3'162 dt TS.</span></div>
+    </div>
+  </div>
+
+  <!-- ============ 6 ============ -->
+  <div class="schritt">
+    <div class="nr">6</div>
+    <div>
+      <h2>Vollmist-Typ setzen</h2>
+      <p class="wo">Blatt <span class="zelle">SB1</span> · Spalte X, Zeilen 17 bis 38</p>
+      <p>Erst jetzt möglich, weil die Tierzeilen vorher leer waren. Doppelklick in Spalte X:</p>
+      <div class="tab-rahmen">
+        <table>
+          <thead><tr><th>Tierkategorie</th><th class="r">Typ</th></tr></thead>
+          <tbody>
+            <tr><td>Equiden über 148 cm (Pferde)</td><td class="r wert">100</td></tr>
+            <tr><td>Equiden bis 148 cm (Ponys)</td><td class="r wert">100</td></tr>
+            <tr><td>Milchschafe</td><td class="r wert">100</td></tr>
+            <tr><td>Alle übrigen — Schafe, Lämmer, Ziegen, Schweine</td><td class="r wert">0</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="kontrolle"><span class="haken">✓</span>
+        <span><b>Kontrolle:</b> V1 in <span class="zelle">Y41</span> steht bei rund
+        <span class="zelle">2'954</span> kg, der Vollmistanteil bei rund <b>70 %</b>.</span></div>
+    </div>
+  </div>
+
+  <!-- ============ 7 ============ -->
+  <div class="schritt">
+    <div class="nr">7</div>
+    <div>
+      <h2>Nährstoffbedarf übertragen</h2>
+      <p class="wo">Blatt <span class="zelle">SB2</span> · Knopf bei <span class="zelle">O5</span>
+        <span class="knopf">Tabelle "Nährstoffbedarf" ausfüllen, aktualisieren</span></p>
+      <p>Bei dir fehlen im Ackerbau-Block die Zeilen 37 und 38 komplett — Winterweizen, Dinkel,
+      Kartoffeln und Körnermais sind gar nie angekommen. Deshalb ist C2 null.</p>
+      <div class="kontrolle"><span class="haken">✓</span>
+        <span><b>Kontrolle:</b> C2 in Zeile 46 steht bei rund <span class="zelle">2'595</span> kg N
+        statt 0, und C3 in Zeile 60 bei rund <span class="zelle">7'374</span> kg N.</span></div>
+    </div>
+  </div>
+
+  <!-- ============ 8 ============ -->
+  <div class="schritt">
+    <div class="nr">8</div>
+    <div>
+      <h2>Partnerflächen nachtragen</h2>
+      <p class="wo">Blatt <span class="zelle">Allg</span> · Zeilen 39 und 40</p>
+      <p>Das behebt die Meldung «LN kontrollieren!» auf dem Flächenblatt. Die Totale sind belegt,
+      die Aufteilung auf Eigen- und Pachtland musst du aus den Pachtverträgen nehmen —
+      Spalte C ist Eigenland, Spalte E Pachtland.</p>
+      <div class="tab-rahmen">
+        <table>
+          <thead><tr><th class="z">Zeile</th><th>Partner</th><th class="r">Total LN in ha</th></tr></thead>
+          <tbody>
+            <tr><td class="z">39</td><td>Partner A — Imhof</td><td class="r wert">89.1968</td></tr>
+            <tr><td class="z">40</td><td>Partner B — Zähner</td><td class="r wert">43.9260</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 9 ============ -->
+  <div class="schritt">
+    <div class="nr">9</div>
+    <div>
+      <h2>Alles durchrechnen</h2>
+      <p class="wo">Blatt <span class="zelle">Allg</span> · Knopf bei <span class="zelle">K2</span>
+        <span class="knopf">Alle Blätter aktualisieren</span></p>
+      <p>Zum Abschluss einmal alles neu rechnen lassen. Wenn eine Zelle «Wert» oder «#WERT!»
+      anzeigt, hilft der Knopf daneben bei <span class="zelle">K1</span>
+      <span class="knopf">Auto-Korrektur von Eingabefehlern</span>.</p>
+    </div>
+  </div>
+
+  <hr class="trenner">
+
+  <!-- ============ SCHLUSSKONTROLLE ============ -->
+  <div class="schluss">
+    <h2>Schlusskontrolle</h2>
+    <p>Diese Werte musst du am Ende sehen. Weicht einer stark ab, steht daneben, woran es liegt.</p>
+    <div class="tab-rahmen">
+      <table>
+        <thead><tr><th>Kennwert</th><th class="r">Soll</th><th>Wenn es nicht stimmt</th></tr></thead>
+        <tbody>
+          <tr><td>Grundfutterverzehr A1</td><td class="r wert">3'162 dt TS</td><td>Schritt 5 nicht gelaufen</td></tr>
+          <tr><td>N<sub>ges</sub> Tierhaltung A1</td><td class="r wert">4'714 kg</td><td>Schritt 5 nicht gelaufen</td></tr>
+          <tr><td>A2 nach Abzügen</td><td class="r wert">3'882 kg</td><td>Schritt 5 oder 6</td></tr>
+          <tr><td>Zu produzierendes Grundfutter</td><td class="r wert">3'642 dt TS</td><td>Schritt 4</td></tr>
+          <tr><td>Ertrag intensive Wiesen</td><td class="r wert">rund 77 dt TS/ha</td><td><b>negativ ⇒ Schritt 5 fehlt</b></td></tr>
+          <tr><td>N<sub>ges</sub> Hofdünger A3</td><td class="r wert">2'190 kg</td><td>Schritt 3</td></tr>
+          <tr><td>Anteil Vollmist</td><td class="r wert">70.2 %</td><td>Schritt 6 oder X55</td></tr>
+          <tr><td>N-Ausnutzungsgrad</td><td class="r wert">44.0 %</td><td>Folgt aus Vollmist und OA</td></tr>
+          <tr><td>Bedarf Kulturen C</td><td class="r wert">12'981 kg N</td><td>Schritt 1, 2 oder 7</td></tr>
+          <tr><td>Bedarf Kulturen C</td><td class="r wert">5'707 kg P₂O₅</td><td>Schritt 1, 2 oder 7</td></tr>
+          <tr><td>Übrige Dünger D</td><td class="r wert">4'989 kg N<sub>verf</sub></td><td>stimmt bei dir bereits</td></tr>
+          <tr><td><b>Gesamtbilanz N<sub>verf</sub></b></td><td class="r wert">−5'318 kg</td><td>ausgeglichen</td></tr>
+          <tr><td><b>Gesamtbilanz P₂O₅</b></td><td class="r wert">−1'816 kg</td><td>ausgeglichen</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="kontrolle" style="margin-top:1.1rem"><span class="haken">✓</span>
+      <span><b>Schnellster Prüfpunkt:</b> Steht beim Ertrag der intensiven Wiesen und Weiden
+      eine negative Zahl, hat die Übertragung aus Schritt 5 wieder nicht geklappt — dann sind
+      die Makros nicht aktiv.</span></div>
+  </div>
+
+  <p class="fuss">
+    Grundlagen: Planbilanz 2026 Nr. 0197-001 vom 10.06.2026 · Betriebsdatenblätter 2026 beider
+    Betriebe · TVD-Auswertung Schafe vom 10.06.2026 · Wegleitung Suisse-Bilanz.
+    Die Sollwerte sind mit der Wegleitung 1.20 gerechnet, die bisherige Planbilanz lief auf 1.19 —
+    beim Kürbis unterscheiden sich die Referenzwerte.
+    Betriebseigenes Hilfsmittel, keine amtliche Berechnung.
+  </p>
+
+</div>

@@ -59,3 +59,11 @@ Gemeinsam: LN 133.1228 ha · düngbare Fläche 113.6728 ha · offene Ackerfläch
 
 Betriebseigenes Hilfsmittel, keine amtliche Berechnung. Massgebend sind die
 Wegleitung Suisse-Bilanz und die geltende Gesetzgebung.
+
+---
+
+## Korrekturanleitung.html
+
+Schritt-für-Schritt-Anleitung zum bereits ausgefüllten Nachweis: welche Knöpfe
+gedrückt und welche Zellen nachgetragen werden müssen, damit die Bilanz stimmt.
+Die Datei im Browser öffnen.
