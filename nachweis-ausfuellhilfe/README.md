@@ -15,10 +15,11 @@ Gemeinsame Nährstoffbilanz (Planbilanz 2026) der Betriebe
 
 | Farbe | Bedeutung |
 |---|---|
-| grün | Wert steht drin und ist belegt (98 Felder) |
-| rot | muss eingetragen oder bestätigt werden (18 Felder) |
+| grün | Wert belegt, direkt aus einem Dokument (98 Felder) |
+| **orange** | Wert eingetragen, muss bestätigt werden — Herleitung, Richtwert oder Vorjahreswert (20 Felder) |
+| rot | Wert fehlt vollständig (**0 Felder**) |
 | blau | Summen- und Rechenfeld, nicht ausfüllen |
-| hellgelb | Eingabefeld, das leer bleiben soll — mit Begründung |
+| hellgelb | Eingabefeld, das leer bleiben soll — mit Begründung (29 Felder) |
 
 Die Blätter **Anleitung** und **Offene Punkte** zuerst lesen; letzteres listet jede
 Position mit Zelle, Zeile und Quelle bzw. offener Frage.

@@ -12,7 +12,8 @@ GRUEN = PatternFill("solid", fgColor="C6E7C6")
 ROT   = PatternFill("solid", fgColor="F5C6C6")
 BLAU  = PatternFill("solid", fgColor="CFE0F0")
 GRAU  = PatternFill("solid", fgColor="F2F2F2")
-GELB  = PatternFill("solid", fgColor="FDF6DC")   # leeres Eingabefeld, fuer diesen Betrieb nicht noetig
+GELB   = PatternFill("solid", fgColor="FDF6DC")
+ORANGE = PatternFill("solid", fgColor="FFC773")   # Wert eingetragen, muss bestaetigt werden   # leeres Eingabefeld, fuer diesen Betrieb nicht noetig
 duenn = Side(style="thin", color="B0B0B0")
 RAHMEN = Border(left=duenn, right=duenn, top=duenn, bottom=duenn)
 
@@ -58,8 +59,8 @@ D["Fläche"] = {
  "F24": (106, "gruen", "Fixer Ertrag 106 dt TS/ha fuer Getreide-Ganzpflanzensilage gemaess Wegleitung"),
  "E30": (6.1825, "gruen", f"Kartoffeln, Pflanz-, Sortengruppe b. {Q_BDI} Code 0524, 618.25 a. Die Planbilanz 2026 fuehrt 6.18 ha Pflanzkartoffeln (b) - Flaeche stimmt ueberein. Die 8.00 ha Speisekartoffeln der Planbilanz sind 2026 nicht mehr deklariert"),
  "F30": (250, "gruen", f"Ertrag Pflanzkartoffeln 250 dt/ha = Standardertrag, N-Norm 100 kg/ha. Quelle: {Q_SB}"),
- "E32": (0.7336, "rot", f"Saatmais Vertragsanbau, {Q_BDI} Code 0519, 73.36 a. ZEILE BESTAETIGEN: als Koernermais erfassen? In der Planbilanz 2026 war diese Kultur nicht enthalten"),
- "F32": (None, "rot", "Ertrag Saatmais dt/ha. Standardertrag Koernermais 100 dt/ha, Saatmais liegt in der Regel deutlich darunter"),
+ "E32": (0.7336, "orange", f"Saatmais Vertragsanbau, {Q_BDI} Code 0519, 73.36 a. Als KOERNERMAIS eingesetzt, weil Saatmais als Korn geerntet wird und die Wegleitung keine eigene Zeile dafuer kennt. Hinweis: die Planbilanz 2026 fasste Saatmais und Zaehners Silomais zu 2.02 ha Silomais zusammen (1.2921 + 0.7336 = 2.0257). Wird der Saatmais als Koernermais gefuehrt, zaehlt er nicht mehr zur Futterflaeche"),
+ "F32": (100, "orange", "Ertrag 100 dt/ha = Standardertrag Koernermais der Wegleitung Tab. 4, N-Norm 110 kg/ha. Bewusst der Standardertrag, weil ein tieferer Ertrag mit einem Dreijahresdurchschnitt belegt werden muesste und die N-Norm sonst ertragsabhaengig gekuerzt wird (Kap. 3.7)"),
  "B37": ("Nicht aufgefuehrte Ackerkultur", "gruen", "Freie Zeile fuer die kleinen Restflaechen"),
  "E37": (0.7660, "gruen", f"Restflaechen zusammengefasst: {Q_BDI} Code 0598 uebrige offene Ackerflaeche 8.72 a + Code 0898 uebrige Flaechen in der LN 12.20 a + Code 99999 noch nicht gewaehlte Kultur 37.02 a, dazu {Q_BDZ} Code 0898 18.66 a. Die Planbilanz 2026 fuehrte dafuer 0.75 ha als nicht aufgefuehrte Ackerkultur"),
  "E39": (41.6553, "gruen", f"Freilandgemuese, physische Flaeche. {Q_BDI} Code 0545, 4165.53 a. Die einzelnen Kulturen im Blatt Gem1"),
@@ -73,7 +74,7 @@ D["Fläche"] = {
  "O11": (50, "gruen", f"Ertrag 50 dt TS/ha. Quelle: {Q_SB}"),
  "N15": (2.2204, "gruen", f"Extensiv genutzte Weiden. {Q_BDZ} Code 0617, 222.04 a. Planbilanz 2026: Weide extensiv 2.22 ha"),
  "O15": (20, "gruen", f"Ertrag 20 dt TS/ha. Quelle: {Q_SB}"),
- "N20": (5.3361, "rot", f"Weiden (Heimweiden). {Q_BDZ} Code 0616, 533.61 a. INTENSITAETSSTUFE BESTAETIGEN: hier auf intensiv gesetzt, weil Zaehner 2023 seine Weiden als Weide (Maeh-) intensiv fuehrte. Die Planbilanz 2026 kannte nur 0.12 ha Weide wenig intensiv. Bei anderer Stufe die Flaeche auf N16, N18 oder N20 verschieben"),
+ "N20": (5.3361, "orange", f"Weiden (Heimweiden), {Q_BDZ} Code 0616, 533.61 a. Als INTENSIV eingesetzt: Zaehner fuehrte 2023 seine Weiden als Weide (Maeh-) intensiv mit 3.70 ha, und die extensiven Weiden stimmen zwischen 2023 (2.21 ha) und 2026 (2.2204 ha) exakt ueberein - die Zuordnung ist damit schluessig. Der Ertrag ist gesperrt und wird als Restgroesse gerechnet. Bei abweichender Bewirtschaftung die Flaeche auf N16 oder N18 verschieben"),
  "N22": (18.8762, "gruen", f"Kunstwiesen. {Q_BDI} 1142.20 a + {Q_BDZ} 745.42 a. Planbilanz 2026: 18.87 ha als intensive Wiese - Flaeche stimmt ueberein. Ertrag ist gesperrt, das Programm rechnet ihn als Restgroesse"),
  "N27": (1.2921, "gruen", f"Silo- und Gruenmais. {Q_BDZ} Code 0521, 129.21 a. Planbilanz 2026: Silomais 2.02 ha"),
  "O27": (185, "gruen", f"Ertrag Silomais 185 dt TS/ha = Standardertrag. Quelle: {Q_SB}"),
@@ -83,7 +84,8 @@ D["Fläche"] = {
  "O34": (None, "leer", "Ertrag Streueflaeche: in der Planbilanz 2026 kein Ertrag erfasst, Bedarf ist ohnehin null"),
  "N35": (2.4764, "gruen", f"Hecken mit Krautsaum. {Q_BDI} 18.29 a + {Q_BDZ} 229.35 a. Planbilanz 2026: 2.47 ha"),
  "N36": (0.0310, "gruen", f"Hecken mit Pufferstreifen. {Q_BDI} Code 0857 0.61 a + {Q_BDZ} Code 0858 2.49 a. ABWEICHUNG: die Planbilanz 2026 fuehrte hier 3.01 ha. Massgebend ist die Strukturdatenerhebung 2026"),
- "N37": (0.1232, "rot", f"Uebrige Gruenflaeche. {Q_BDZ} Code 0697, 12.32 a. ZEILE BESTAETIGEN: hier auf Uferwiese gesetzt, in der Planbilanz 2026 nicht enthalten"),
+ "N37": (0.1232, "orange", f"Uebrige Gruenflaeche (Dauergruenflaeche), {Q_BDZ} Code 0697, 12.32 a. Als Uferwiese eingesetzt - das ist die einzige Sammelzeile fuer Gruenflaechen ohne eigene Intensitaetsstufe. Bei 12 Aren ist die Auswirkung auf die Bilanz vernachlaessigbar"),
+ "O37": (25, "orange", "Ertrag 25 dt TS/ha, entsprechend einer extensiv genutzten Gruenflaeche. Bei 12 Aren ohne Belang fuer die Bilanz"),
  "N54": (255, "gruen", f"Hochstamm-Feldobst- und Nussbaeume in STUECK: {Q_BDI} 38 + 1, {Q_BDZ} 168 + 48. Die Planbilanz 2026 enthielt keine Hochstammbaeume, Zaehner 2023 dagegen 192 Baeume mit 45/15/56/8 kg je ha"),
  "N55": (8, "gruen", f"Einheimische Einzelbaeume in Stueck: {Q_BDI} 1 markanter Einzelbaum, {Q_BDZ} 7 standortgerechte. Diese Baeume haben keine Naehrstoffnorm (das Ertragsfeld daneben ist gesperrt), der Eintrag dient der Vollstaendigkeit"),
 }
@@ -108,10 +110,10 @@ D["Tierb"] = {
  "G43": (129, "gruen", "Laemmer bis 180 Tage. Planbilanz 2026: 129 Plaetze. TVD 10.06.2026: 128.8312"),
  "G44": (3, "gruen", f"Milchziegen. {Q_BDZ} Code 1461: 3 Stueck. Planbilanz 2026: 3 Plaetze"),
  "D44": (550, "gruen", f"Jahresmilchmenge je Ziege 550 kg. Quelle: {Q_SB}, Kopfzeile Formular A"),
- "G45": (2, "rot", f"Andere Ziegen ueber 365 Tage: {Q_BDZ} Code 1462 1 Stueck weiblich + Code 1464 1 Stueck maennlich. In der Planbilanz 2026 NICHT erfasst - bewusst weglassen oder ergaenzen?"),
- "G46": (6, "rot", f"Jungziegen 180 bis 365 Tage: {Q_BDZ} Code 1466, 6 Stueck. In der Planbilanz 2026 nicht erfasst"),
- "G47": (2, "rot", f"Zicklein bis 180 Tage aus Milchziegenherde: {Q_BDZ} Code 1468, 0.0598 GVE. In der Planbilanz 2026 nicht erfasst"),
- "G64": (None, "rot", f"Wollschweine: {Q_BDZ} Selbstdeklaration 2 Stueck, 0.0000 GVE. In der Planbilanz 2026 nicht erfasst. Passende Schweinekategorie waehlen oder weglassen"),
+ "G45": (1.55, "orange", f"Andere Ziegen ueber 365 Tage: {Q_BDZ} Code 1462 0.1435 GVE + Code 1464 0.1206 GVE = 0.2641 GVE. Geteilt durch den GVE-Faktor 0.17 ergibt das 1.55 Plaetze. In der Planbilanz 2026 nicht erfasst - die Wegleitung verlangt aber die Deklaration aller gehaltenen Tiere (Ziff. 2.7). Auswirkung rund 11 kg Nges"),
+ "G46": (2.79, "orange", f"Jungziegen 180 bis 365 Tage: {Q_BDZ} Code 1466, 0.1673 GVE geteilt durch den GVE-Faktor 0.06 ergibt 2.79 Plaetze (Stichtag 1. Januar: 6 Stueck). In der Planbilanz 2026 nicht erfasst. Auswirkung rund 18 kg Nges"),
+ "G47": (1.99, "orange", f"Zicklein bis 180 Tage aus Milchziegenherde: {Q_BDZ} Code 1468, 0.0598 GVE geteilt durch den GVE-Faktor 0.03 ergibt 1.99 Plaetze. In der Planbilanz 2026 nicht erfasst. Auswirkung rund 5 kg Nges"),
+ "G64": (2, "orange", f"Wollschweine: {Q_BDZ} Selbstdeklaration 2 Stueck. Als Zuchtschweineplatz eingesetzt (35.20 kg Nges je Platz) - das ist die vorsichtigere Annahme; als Mastschweineplatz waeren es nur 10.40 kg. In der Planbilanz 2026 nicht erfasst. Auswirkung rund 70 kg Nges"),
  "N40": (None, "leer", "Laufhof Milchschafe: in der Planbilanz 2026 kein Laufhofabzug erfasst"),
  "P40": (None, "leer", "Weide Milchschafe: in der Planbilanz 2026 kein Weideabzug erfasst"),
  "N41": (None, "leer", "Laufhof andere Schafe: in der Planbilanz 2026 nicht erfasst"),
@@ -133,13 +135,13 @@ D["SB1"] = {
  "N55": (17.0, "gruen", "P2O5 17 kg je t. Hergeleitet aus der Planbilanz 2026: 1530 kg P2O5 bei 90 t. Bitte gegen den HODUFLU-Lieferschein pruefen"),
  "O55": (None, "leer", "K2O je t Huehnermist: optional. Kalium und Magnesium gehen nicht in die ausgeglichene N/P-Bilanz ein. Falls der HODUFLU-Lieferschein Werte ausweist, koennen sie zur Information eingetragen werden"),
  "P55": (None, "leer", "Mg je t Huehnermist: optional, siehe Hinweis bei O55"),
- "X55": (None, "rot", "Vollmist ja/nein beim zugefuehrten Huehnermist. In der Planbilanz 2026 wurde V2 nicht gesetzt, der Vollmistanteil stammt allein aus dem eigenen Bestand"),
+ "X55": ("ja", "orange", "Vollmist ANKREUZEN: die Wegleitung ordnet in Kap. 3.5 alle Geflügelsysteme dem Typ 100 zu, Huehnermist ist damit Vollmist. Die Planbilanz 2026 liess V2 leer. Wirkung: der Vollmistanteil steigt von 42.7 auf rund 70 Prozent, der N-Ausnutzungsgrad sinkt von 46.7 auf rund 43.4 Prozent - die Bilanz wird dadurch guenstiger. Mit dem Lieferbetrieb bestaetigen, dass es sich um Vollmist handelt"),
  "G57": ("Schweineguelle", "gruen", "Hofduengerzufuhr in die Gemeinschaft, ca. 60 m3 gemaess Auftrag"),
  "K57": (60, "gruen", "60 m3 Schweineguelle gemaess Auftrag"),
- "M57": (None, "rot", "Nges kg je m3 Schweineguelle. NEUER DUENGER - die Planbilanz 2026 enthielt Rinderguelle (420 kg Nges), nicht Schweineguelle. Gehalt aus dem HODUFLU-Lieferschein uebernehmen"),
- "N57": (None, "rot", "P2O5 kg je m3 Schweineguelle"),
- "O57": (None, "leer", "K2O je m3 Schweineguelle: optional, geht nicht in die N/P-Bilanz ein"),
- "P57": (None, "leer", "Mg je m3 Schweineguelle: optional, geht nicht in die N/P-Bilanz ein"),
+ "M57": (5.0, "orange", "Nges 5.0 kg je m3 als Richtwert fuer Schweinevolllguelle unverduennt (rund 7 Prozent TS). MASSGEBEND IST HODUFLU: die Wegleitung schreibt in Ziff. 2.13 die in HODUFLU bestaetigten Werte vor, dort sind die Gehalte hinterlegt. Der Richtwert dient nur der Planung. Auswirkung bei 60 m3: rund 300 kg Nges, nach Ausnutzungsgrad rund 140 kg Nverf"),
+ "N57": (2.5, "orange", "P2O5 2.5 kg je m3 als Richtwert fuer Schweinevollguelle unverduennt. Massgebend ist der HODUFLU-Wert. Auswirkung bei 60 m3: rund 150 kg P2O5"),
+ "O57": (4.3, "orange", "K2O 4.3 kg je m3 als Richtwert. Kalium geht nicht in die ausgeglichene N/P-Bilanz ein, wird aber im Formular F informativ ausgewiesen"),
+ "P57": (1.2, "orange", "Mg 1.2 kg je m3 als Richtwert. Geht nicht in die ausgeglichene N/P-Bilanz ein"),
  "E77": (975, "gruen", f"Grassilage WEGFUHR, 975 dt Frischsubstanz. Quelle: {Q_SB}. Pruefen ob die Menge 2026 noch stimmt"),
  "G77": (35, "gruen", f"TS-Gehalt Grassilage 35 Prozent. Quelle: {Q_SB}"),
  "I77": (341.25, "gruen", "Wegfuhr 341.25 dt TS = 975 x 35 Prozent. Falls das Programm den Wert selbst aus Menge und TS berechnet, hier nichts eintragen"),
@@ -162,18 +164,18 @@ D["SB2"] = {
  "Q58": (15, "gruen", f"Mg 15 kg je ha. Quelle: {Q_SB}"),
  "D73": ("Biorga (Recyclingduenger)", "gruen", f"Zugefuehrter Handelsduenger. Quelle: {Q_SB} und Auftrag"),
  "J73": (40, "gruen", "40 t Biorga gemaess Auftrag"),
- "N73": (None, "rot", "Nverf kg je t Biorga. Die Planbilanz 2026 erfasste nur die Gesamtmenge 5040 kg Nverf ohne Mengenangabe, daraus laesst sich kein Gehalt je Tonne ableiten. Produkt genau bezeichnen und Deklaration verwenden"),
- "O73": (None, "rot", "P2O5 kg je t Biorga. Planbilanz 2026: 0 kg P2O5 insgesamt"),
+ "N73": (120, "orange", "Nverf 120 kg je t = 12 Prozent Stickstoff. Die Biorga-Stickstoffduenger von Hauert (N, Quick und CUMA) enthalten alle 12 Prozent organischen Stickstoff und sind in der FiBL-Betriebsmittelliste gefuehrt. Gegenprobe: die Planbilanz 2026 rechnete mit 5040 kg Nverf, das entspricht bei 120 kg je t genau 42 t - die Groessenordnung passt. Produktbezeichnung auf dem Lieferschein pruefen"),
+ "O73": (0, "orange", "P2O5 0 kg je t: die Planbilanz 2026 wies fuer Biorga 0 kg P2O5 aus, es handelt sich um einen reinen Stickstoffduenger. Gegen die Deklaration auf dem Sack pruefen"),
  "P73": (None, "leer", "K2O je t Biorga: optional, geht nicht in die N/P-Bilanz ein"),
  "Q73": (None, "leer", "Mg je t Biorga: optional, geht nicht in die N/P-Bilanz ein"),
  "D74": ("Brinogia", "gruen", f"Zugefuehrter Handelsduenger. Quelle: {Q_SB} und Auftrag"),
  "J74": (10, "gruen", "10 t Brinogia gemaess Auftrag. EINHEIT PRUEFEN: Zeile 74 rechnet in dt, die Angabe lautet auf Tonnen"),
- "N74": (None, "rot", "Nverf kg je Einheit Brinogia. Die Planbilanz 2026 erfasste nur die Gesamtmenge 283.5 kg Nverf ohne Mengenangabe"),
- "O74": (None, "rot", "P2O5 kg je Einheit Brinogia. Planbilanz 2026: 120 kg P2O5 insgesamt"),
+ "N74": (18.9, "orange", "Nverf 18.9 kg je Einheit. Hergeleitet aus der betriebsinternen Duengerplanung, die 18.9 kg Nverf und 8.0 kg P2O5 je Einheit fuehrt. Gegenprobe: das Verhaeltnis 18.9 zu 8.0 entspricht exakt dem Verhaeltnis der Planbilanz 2026 (283.5 zu 120 kg), die dort erfasste Menge waren somit 15 Einheiten. ACHTUNG: Brinogia ist eine individuell gemischte Rezeptur von Peter Briner AG - der Gehalt der aktuellen Lieferung steht auf dem Lieferschein"),
+ "O74": (8.0, "orange", "P2O5 8.0 kg je Einheit, gleiche Herleitung wie beim Stickstoff. Lieferschein der aktuellen Mischung beiziehen"),
  "P74": (None, "leer", "K2O je Einheit Brinogia: optional, geht nicht in die N/P-Bilanz ein"),
  "Q74": (None, "leer", "Mg je Einheit Brinogia: optional, geht nicht in die N/P-Bilanz ein"),
  "J72": (None, "leer", "Emissionsmindernd beguellte Flaeche: in der Planbilanz 2026 nicht erfasst"),
- "J83": (None, "rot", "Zukauf Weizenstroh zum Einstreuen in dt FS. In der Planbilanz 2026 NICHT enthalten, Zaehner 2023 dagegen mit 485.3 dt (92 kg P2O5, 383 kg K2O). Bei Schafhaltung mit Einstreu bitte pruefen"),
+ "J83": (485.3, "orange", "Zukauf Weizenstroh zum Einstreuen, 485.3 dt Frischsubstanz aus der Suisse-Bilanz Zaehner 2023. Der Schafbestand ist unveraendert im Betrieb, der Strohbedarf duerfte aehnlich sein. Die Planbilanz 2026 enthielt diese Position NICHT - das duerfte eine Luecke sein, denn zugekauftes Einstreustroh ist gemaess Wegleitung Kap. 3.8 im Formular D zu erfassen. Die Naehrstoffgehalte 0.19 P2O5, 0.79 K2O und 0.11 Mg je dt sind im Nachweis bereits hinterlegt. Auswirkung rund 92 kg P2O5. Effektive Menge 2026 einsetzen"),
  "I98": (60, "gruen", f"Basis-N-Ausnutzungsgrad 60.0 Prozent. Quelle: {Q_SB}"),
 }
 
@@ -183,13 +185,13 @@ D["Gem1"] = {
  "D14": (800, "gruen", "Karotten 8 ha = 800 Aren gemaess Auftrag. NEU - in der Planbilanz 2026 nicht enthalten. Sorte ueber die Klickzelle waehlen, die Naehrstoffnormen unterscheiden sich deutlich (Pariser 50, Bund-/Frueh- 100, Verarbeitung/Lager 110 bis 130 kg N je ha)"),
  "D15": (700, "gruen", f"Zwiebeln 7 ha = 700 Aren. Quelle: Auftrag und {Q_SB}"),
  "D16": (1200, "gruen", f"Kuerbis 12 ha = 1200 Aren. Quelle: Auftrag und {Q_SB}"),
- "D17": (None, "rot", "Diverses Kleingemuese: im Auftrag steht Fenchel plus diverses Kleingemuese. Falls dieses zusaetzlich zu den 14 ha Fenchel angebaut wird, Kulturen und Flaechen hier einzeln erfassen"),
+ "D17": (None, "leer", "Diverses Kleingemuese: die Angabe im Auftrag lautet Fenchel plus diverses Kleingemuese auf 14 ha, das Kleingemuese ist in den 14 ha also enthalten. Die Planbilanz 2026 fuehrte die 14 ha ebenfalls vollstaendig als Fenchel. Nur ausfuellen, wenn das Kleingemuese zusaetzliche Flaeche belegt - dann eignet sich die Kultur Mittelwert Freilandgemuese mit 120/30/120/15 kg je ha"),
 }
 
 D["Gem2"] = {
  "D12": (121.86, "gruen", f"Tomaten Bodenkultur, mittlerer Ertrag: 121.86 Aren. {Q_BDI} Code 0801. Planbilanz 2026: 1.21 ha mit 250 kg N je ha - Flaeche stimmt ueberein"),
  "F12": (None, "leer", "Nmin-Korrektur: in der Planbilanz 2026 nicht verwendet, es galt der Normbedarf von 250 kg N je ha"),
- "D13": (58.79, "rot", f"Geschuetzter Anbau ohne festes Fundament, 58.79 Aren. {Q_BDI} Code 0811. KULTUR FEHLT - in der Planbilanz 2026 nicht enthalten"),
+ "D13": (58.79, "orange", f"Geschuetzter Anbau ohne festes Fundament, 58.79 Aren, {Q_BDI} Code 0811. Kultur waehlen: Mittelwert Gewaechshausgemuese (130 N, 60 P2O5, 220 K2O, 35 Mg je ha) - diese Kategorie ist laut Wegleitung Tab. 5 genau fuer kleine Gewaechshaeuser und Hochtunnel mit verschiedenen Gemuesen gedacht. In der Planbilanz 2026 fehlte diese Flaeche"),
 }
 
 # ------------------------------------------------------------- Nachbau-Logik
@@ -223,7 +225,7 @@ for name, maxc in BLAETTER:
             if ref in daten:
                 v, status, bem = daten[ref]
                 ziel.value = v
-                ziel.fill = GRUEN if status == "gruen" else ROT if status == "rot" else GELB
+                ziel.fill = {"gruen":GRUEN, "rot":ROT, "orange":ORANGE}.get(status, GELB)
                 ziel.border = RAHMEN
                 ziel.font = Font(bold=(status != "leer"), size=10)
                 ziel.alignment = Alignment(horizontal="right" if isinstance(v,(int,float)) else "left")
@@ -302,15 +304,23 @@ an.cell(row=r, column=2, value="Farben").font = Font(bold=True, size=11); r += 1
 an.cell(row=r, column=2).fill = GRUEN
 r = z(r, "gruen", "Wert steht drin und ist belegt. Die Quelle steht in der Spalte Bemerkung und im Blatt Offene Punkte.")
 an.cell(row=r, column=2).fill = ROT
-r = z(r, "rot", "Muss von dir eingetragen oder bestaetigt werden. Wo trotzdem eine Zahl drinsteht, ist die Zahl belegt, aber die Zeile, die Einheit oder die Zuordnung ist offen.")
+r = z(r, "rot", "Wert fehlt vollstaendig. In dieser Fassung kommt kein rotes Feld mehr vor - fuer jede Position liegt entweder ein Beleg oder ein begruendeter Vorschlag vor.")
+an.cell(row=r, column=2).fill = ORANGE
+r = z(r, "orange", "Wert ist eingetragen, muss aber noch bestaetigt werden. Entweder stammt er aus einer Herleitung, aus einem Richtwert oder aus der Vorjahresbilanz. Die Begruendung steht jeweils in der Bemerkung.")
 an.cell(row=r, column=2).fill = BLAU
 r = z(r, "blau", "Summen- und Rechenfeld. Nicht ausfuellen, das Nachweis rechnet es selber.")
 an.cell(row=r, column=2).fill = GELB
 r = z(r, "hellgelb", "Eingabefeld, das leer bleiben soll. Entweder braucht der Betrieb es nicht, oder es war in der Planbilanz 2026 bewusst leer. Begruendung jeweils im Blatt Offene Punkte.")
 r += 1
 
-an.cell(row=r, column=2, value="Vollmist-Typ je Tierkategorie (Blatt SB1, Spalte X)").font = Font(bold=True, size=11); r += 1
-r = z(r, "So war es 2026", "Diese Spalte ist eine Klickzelle und laesst sich nicht bevorschriften. Aus der Planbilanz 2026: Pferde Typ 100 · Ponys Typ 100 · Milchschafe Typ 100 · andere Schafe, Jungschafe, Laemmer und Ziegen Typ 0. Daraus ergab sich ein Vollmistanteil von 42.7 Prozent.", fett=True)
+an.cell(row=r, column=2, value="Klickzellen: was auszuwaehlen ist").font = Font(bold=True, size=11); r += 1
+r = z(r, "", "Diese Felder lassen sich nicht bevorschriften, weil sie im Nachweis nur per Doppelklick gefuellt werden. Hier steht, was zu waehlen ist.")
+r = z(r, "SB1 Spalte X, Vollmist", "Pferde Typ 100 · Ponys Typ 100 · Milchschafe Typ 100 · andere Schafe, Jungschafe, Laemmer und Ziegen Typ 0. So stand es in der Planbilanz 2026, daraus ergab sich der Vollmistanteil von 42.7 Prozent.", fett=True)
+r = z(r, "Flaeche Zeile 30, Kartoffeln", "Sortengruppe b waehlen (N-Norm 100 kg/ha bei Pflanzkartoffeln). So in der Planbilanz 2026 gefuehrt. Gruppe a waere 60, Gruppe c 140 kg/ha - massgebend ist die angebaute Sorte gemaess Wegleitung Tab. 4.")
+r = z(r, "Tierb Zeile 64, Wollschweine", "Zuchtschweine inkl. Ferkel bis 26 kg LG. Alternativ Mastschweineplatz, falls es reine Masttiere sind.")
+r = z(r, "Gem1, Gemuesekulturen", "Fenchel Knollen · Salate diverse mittlerer Ertrag · Zwiebeln · Patisson/Kuerbis - alle vier wie in der Planbilanz 2026. Fuer die neuen 8 ha Karotten: Karotten Verarbeitung-, Lager- (110 N, 40 P2O5, 250 K2O, 20 Mg je ha) fuer Lagerware. Bei Bund- oder Fruehkarotten waere es Karotten Bund-, Frueh- mit 100/40/140/20.", fett=True)
+r = z(r, "Gem2, geschuetzter Anbau", "Zeile 12: Tomaten Bodenkultur mittlerer Ertrag (250 kg N/ha) wie in der Planbilanz 2026. Zeile 13: Mittelwert Gewaechshausgemuese (130/60/220/35) fuer die 58.79 Aren ohne festes Fundament.")
+r = z(r, "Allg, Auswahlfelder", "Produktionsform Bio · Zoneneinteilung Talzone · Gemeinschaften Betriebsgemeinschaft · Silofuetterung Nein.")
 r += 1
 
 an.cell(row=r, column=2, value="Vor dem Ausfuellen beachten").font = Font(bold=True, size=11); r += 1
@@ -322,6 +332,9 @@ r = z(r, "5  Gemuese: 52 gegen 41.66 ha", "Die geplanten Kulturen ergeben 52 ha 
 r = z(r, "6  Kartoffeln", "Die Planbilanz 2026 fuehrte 6.18 ha Pflanzkartoffeln (b) und 8.00 ha Speisekartoffeln (c). Die Strukturdatenerhebung 2026 weist nur noch 6.1825 ha Kartoffeln aus - das entspricht genau den Pflanzkartoffeln. Die 8 ha Speisekartoffeln sind eingetragen als nicht mehr vorhanden.")
 r = z(r, "7  Hochstammbaeume", "Die Planbilanz 2026 enthielt keine Hochstammbaeume, obwohl beide Betriebe welche haben (255 Stueck). Zaehner 2023 rechnete 192 Baeume mit 45/15/56/8 kg je ha. Neu aufgenommen - bitte bestaetigen.")
 r = z(r, "8  Code 99999", "Das Betriebsdatenblatt Imhof fuehrt 37.02 Aren unter Bitte Kultur waehlen. Diese Flaeche ist in der Sammelzeile Nicht aufgefuehrte Ackerkultur enthalten. In der Strukturdatenerhebung noch richtig deklarieren.")
+r = z(r, "9  Saatmais", "Die Planbilanz 2026 fasste Zaehners Silomais und Imhofs Saatmais zu 2.02 ha Silomais zusammen. Getrennt gefuehrt sind es 1.2921 ha Silomais und 0.7336 ha Saatmais. Der Saatmais steht neu als Koernermais und zaehlt damit nicht mehr zur Futterflaeche.")
+r = z(r, "10  Strohzukauf", "Die Planbilanz 2026 enthielt keinen Einstreustroh-Zukauf, obwohl Zaehner 2023 485.3 dt auswies und der Schafbestand unveraendert ist. Das duerfte eine Luecke der bisherigen Bilanz sein - zugekauftes Einstreustroh gehoert gemaess Kap. 3.8 ins Formular D.")
+r = z(r, "11  Gegenrechnung Grundfutter", "Mit den eingetragenen Flaechen und Ertraegen bleiben fuer die intensiven Wiesen und Weiden rund 76 dt TS je ha zu produzieren. Das liegt klar unter dem Maximalertrag von 135 dt TS je ha der Hoehenlage bis 600 m - die Bilanz ist damit schluessig.", fett=True)
 r += 1
 
 an.cell(row=r, column=2, value="Zur Frage: Warum 1500 statt 450?").font = Font(bold=True, size=11); r += 1
@@ -340,14 +353,14 @@ for i, (b, w) in enumerate([("Blatt",12),("Zelle",8),("Status",9),("Zeile im Nac
     zc.font = Font(bold=True, color="FFFFFF"); zc.fill = PatternFill("solid", fgColor="4A6E4A")
     op.column_dimensions[get_column_letter(i)].width = w
 zeile = 2
-for status in ("rot","gruen","leer"):
+for status in ("rot","orange","gruen","leer"):
     for (blatt, ref, st, bez, bem) in bemerkungen:
         if st != status: continue
         op.cell(row=zeile, column=1, value=blatt)
         op.cell(row=zeile, column=2, value=ref)
-        zc = op.cell(row=zeile, column=3,
-                     value="offen" if st=="rot" else "belegt" if st=="gruen" else "leer lassen")
-        zc.fill = ROT if st=="rot" else GRUEN if st=="gruen" else GELB
+        zc = op.cell(row=zeile, column=3, value={"rot":"offen","orange":"bestaetigen",
+                     "gruen":"belegt"}.get(st,"leer lassen"))
+        zc.fill = {"rot":ROT,"orange":ORANGE,"gruen":GRUEN}.get(st, GELB)
         op.cell(row=zeile, column=4, value=bez)
         zc2 = op.cell(row=zeile, column=5, value=bem)
         zc2.alignment = Alignment(wrap_text=True, vertical="top")
@@ -358,7 +371,9 @@ op.auto_filter.ref = f"A1:E{zeile-1}"
 
 neu.save(ZIEL)
 rot = sum(1 for x in bemerkungen if x[2]=="rot")
+orange = sum(1 for x in bemerkungen if x[2]=="orange")
 gruen = sum(1 for x in bemerkungen if x[2]=="gruen")
+leer = sum(1 for x in bemerkungen if x[2]=="leer")
 print(f"{ZIEL} erstellt")
 print(f"  Blaetter: {', '.join(neu.sheetnames)}")
-print(f"  gruen (belegt): {gruen}   rot (offen): {rot}")
+print(f"  gruen belegt: {gruen} | orange bestaetigen: {orange} | rot offen: {rot} | leer lassen: {leer}")
