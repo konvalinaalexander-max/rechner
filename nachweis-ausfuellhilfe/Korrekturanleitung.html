@@ -194,301 +194,217 @@ td.wert{font-family:"IBM Plex Mono",monospace;font-weight:600;font-variant-numer
 
 
 
+
 <div class="blatt">
 
   <p class="eyebrow">Suisse-Bilanz · Planbilanz 2026 · Imhof &amp; Zähner · Abgleich mit dem Strickhof</p>
   <h1>Nachweis richtigstellen</h1>
-  <p class="lede">Ich habe die Bilanz von Serge Braun Zeile für Zeile aus dem PDF zurückgerechnet
-  und mit der Wegleitung 1.19 geprüft. Sie ist vollständig reproduzierbar — hier steht, was
-  dafür in jedes Feld gehört. Meine Nachrechnung trifft alle 18 Kennwerte auf unter ein Kilo genau.</p>
+  <p class="lede">Der Rahmen sitzt: Tiere, Vollmist, Hofdünger, Grundfutter und die Dünger stimmen
+  bereits auf das Kilo mit Serge überein. Es fehlen noch vier Eingaben — und eine davon macht
+  allein 845 kg aus.</p>
 
   <div class="befund">
+    <div class="ist">
+      <div class="k">Deine Datei jetzt</div>
+      <div class="w">−4'684</div>
+      <div class="n">kg N<sub>verf</sub> · P₂O₅ −1'657</div>
+    </div>
     <div class="soll">
       <div class="k">Ziel Strickhof</div>
       <div class="w">−4'137</div>
       <div class="n">kg N<sub>verf</sub> · P₂O₅ −1'341</div>
     </div>
     <div>
-      <div class="k">Meine Nachrechnung</div>
-      <div class="w">−4'137</div>
-      <div class="n">kg N<sub>verf</sub> · P₂O₅ −1'342</div>
-    </div>
-    <div class="ist">
-      <div class="k">Deine Datei jetzt</div>
-      <div class="w">−4'896</div>
-      <div class="n">kg N<sub>verf</sub> · P₂O₅ −1'531</div>
+      <div class="k">Differenz</div>
+      <div class="w">547</div>
+      <div class="n">kg N — vier Eingaben</div>
     </div>
   </div>
 
-  <div class="warnung" style="margin-top:1.5rem">
-    <b>Vorweg, damit keine Verwechslung entsteht:</b> Serge rechnet mit <b>137.05 ha LN</b>, deine
-    Betriebsdatenblätter 2026 ergeben <b>133.1228 ha</b>. Seine Flächen sind an mehreren Stellen
-    andere als die aktuell deklarierten (siehe letzter Abschnitt). Diese Eingabeliste ist also eine
-    <b>Kontrollrechnung</b>: Wenn du damit auf −4'137 kommst, weisst du, dass Mappe und Bedienung
-    stimmen. Einreichen würdest du danach wieder mit den Zahlen aus den Betriebsdatenblättern.
+  <div class="kontrolle" style="margin-top:1.4rem">
+    <span class="haken">✓</span>
+    <div><b>Schon richtig:</b> A1 = <b>4'609.37</b> · GFverz = <b>3'141.8</b> ·
+    V1 = <b>2'953.3</b> · V2 = <b>leer</b> · Vollmist-Anteil = <b>42.68 %</b> ·
+    A3 = <b>2'310</b> / 1'698 · GFprod = <b>3'620.16</b> · D = <b>5'323.5</b> / 120 ·
+    N-Ausnutzungsgrad = <b>46.68 %</b> · Hochstamm raus · Erdbeeren auf <span class="zelle">OB</span>
+    eingetragen. Alles deckungsgleich mit Serge.</div>
   </div>
 
   <hr class="trenner">
 
-  <!-- ============ 1 Fläche ============ -->
+  <!-- ============ 1 ============ -->
   <div class="schritt">
     <div class="nr">1</div>
     <div>
-      <h2>Blatt <span class="zelle">Fläche</span></h2>
-      <p class="wo">Die grösste Baustelle — Serges Flächen weichen an neun Stellen ab</p>
+      <h2>Gem1: Karotten raus, Kräuter rein <span style="color:var(--schlecht)">+845 kg N</span></h2>
+      <p class="wo">Blatt <span class="zelle">Gem1</span> · Knopf bei <span class="zelle">B7</span>
+        <span class="knopf">Gemüsekulturen auswählen</span></p>
+      <p>Der Kürbis sitzt jetzt richtig. Aber Serge rechnet <b>keine Karotten</b> — dafür
+      50 Aren mehrjährige Kräuter. So muss <span class="zelle">Gem1</span> aussehen:</p>
       <div class="tab-rahmen">
         <table>
-          <thead><tr><th class="z">Zelle</th><th>Kultur</th><th class="z r">jetzt</th><th class="z r">Strickhof</th></tr></thead>
+          <thead><tr><th class="z">Zeile</th><th>Kultur</th><th class="z r">jetzt</th><th class="z r">Strickhof</th><th class="z r">N</th><th class="z r">P₂O₅</th></tr></thead>
           <tbody>
-            <tr><td class="z">E10</td><td>Winterweizen</td><td class="z r">8.1344</td><td class="z r wert">4.88</td></tr>
-            <tr><td class="z">E19</td><td>Dinkel, Winterkorn</td><td class="z r">6.9566</td><td class="z r wert">6.96</td></tr>
-            <tr><td class="z">E24</td><td>Getreide-Silage mit Leguminosen</td><td class="z r">1.6211</td><td class="z r wert">1.62</td></tr>
-            <tr><td class="z">E28</td><td>Kartoffeln, Speise- u. Industrie- <b>(Gruppe c)</b></td><td class="z r">—</td><td class="z r wert">8.00</td></tr>
-            <tr><td class="z">E30</td><td>Kartoffeln, Pflanz- (Gruppe b)</td><td class="z r">6.1825</td><td class="z r wert">6.18</td></tr>
-            <tr><td class="z">E32</td><td>Körnermais</td><td class="z r">0.7336</td><td class="z r wert">leeren</td></tr>
-            <tr><td class="z">E37</td><td>Nicht aufgeführte Ackerkultur</td><td class="z r">0.766</td><td class="z r wert">0.75</td></tr>
-            <tr><td class="z">E39</td><td>Freilandgemüse</td><td class="z r">41.6553</td><td class="z r wert">44.00</td></tr>
-            <tr><td class="z">E41</td><td>Erdbeeren, 1-jährig</td><td class="z r">0.2255</td><td class="z r wert">0.22</td></tr>
-            <tr><td class="z">E54</td><td>Saum auf Ackerfläche</td><td class="z r">0.1658</td><td class="z r wert">0.16</td></tr>
-            <tr><td class="z">E64</td><td>Heil-, Gewürzpflanzen, mehrjährig</td><td class="z r">0.509</td><td class="z r wert">0.50</td></tr>
-            <tr><td class="z">N10</td><td>Naturwiese extensiv</td><td class="z r">14.0544</td><td class="z r wert">13.98</td></tr>
-            <tr><td class="z">N11</td><td>Naturwiese wenig intensiv</td><td class="z r">19.4547</td><td class="z r wert">19.44</td></tr>
-            <tr><td class="z">N15</td><td>Dauerweide extensiv</td><td class="z r">2.2204</td><td class="z r wert">2.22</td></tr>
-            <tr><td class="z">N16</td><td>Dauerweide wenig intensiv</td><td class="z r">—</td><td class="z r wert">0.12</td></tr>
-            <tr><td class="z">N19</td><td>Naturwiese intensiv</td><td class="z r">—</td><td class="z r wert">18.87</td></tr>
-            <tr><td class="z">N20</td><td>Weide, Mähweide intensiv</td><td class="z r">5.3361</td><td class="z r wert">leeren</td></tr>
-            <tr><td class="z">N22</td><td>Kunstwiese intensiv</td><td class="z r">18.8762</td><td class="z r wert">leeren</td></tr>
-            <tr><td class="z">N27</td><td>Silomais</td><td class="z r">1.2921</td><td class="z r wert">2.02</td></tr>
-            <tr><td class="z">N32</td><td>Geschützter Anbau ohne Fundament</td><td class="z r">0.5879</td><td class="z r wert">1.15</td></tr>
-            <tr><td class="z">N33</td><td>Geschützter Anbau mit Fundament</td><td class="z r">1.2186</td><td class="z r wert">leeren</td></tr>
-            <tr><td class="z">N34</td><td>Streue- und Torfland</td><td class="z r">0.502</td><td class="z r wert">0.50</td></tr>
-            <tr><td class="z">N35</td><td>Hecken mit Krautsaum</td><td class="z r">2.4764</td><td class="z r wert">2.47</td></tr>
-            <tr><td class="z">N36</td><td>Hecken mit Pufferstreifen</td><td class="z r">0.031</td><td class="z r wert">3.01</td></tr>
-            <tr><td class="z">N37</td><td>Uferwiese, ohne Weiden</td><td class="z r">0.1232</td><td class="z r wert">leeren</td></tr>
-            <tr><td class="z">N54</td><td>Hochstamm-Feldobstbäume (Stück)</td><td class="z r">255</td><td class="z r wert">leeren</td></tr>
+            <tr><td class="z">12</td><td>Fenchel, Knollen</td><td class="z r">1400 a</td><td class="z r">1400 a</td><td class="z r">2'240</td><td class="z r">420</td></tr>
+            <tr><td class="z">13</td><td>Salate, diverse, mittlerer Ertrag</td><td class="z r">1100 a</td><td class="z r">1100 a</td><td class="z r">990</td><td class="z r">220</td></tr>
+            <tr><td class="z">14</td><td>Karotten Verarbeitung-, Lager-</td><td class="z r">800 a</td><td class="z r wert">löschen</td><td class="z r">—</td><td class="z r">—</td></tr>
+            <tr><td class="z">15</td><td>Zwiebeln</td><td class="z r">700 a</td><td class="z r">700 a</td><td class="z r">910</td><td class="z r">420</td></tr>
+            <tr><td class="z">16</td><td>Zucchetti, Patisson, Kürbis</td><td class="z r">1200 a</td><td class="z r">1200 a</td><td class="z r">1'560</td><td class="z r">240</td></tr>
+            <tr><td class="z">neu</td><td class="wert">Kräuter, Gewürz mittel</td><td class="z r">—</td><td class="z r wert">50 a</td><td class="z r">35</td><td class="z r">15</td></tr>
+            <tr><td class="z"></td><td><b>Total</b></td><td class="z r">5200 a</td><td class="z r wert">4450 a</td><td class="z r wert">5'735</td><td class="z r wert">1'315</td></tr>
           </tbody>
         </table>
       </div>
       <div class="kontrolle"><span class="haken">✓</span><div><b>Kontrolle:</b>
-        <span class="zelle">Fläche N38</span> (LN) = <b>137.05</b>. Auf <span class="zelle">SB1</span>
-        muss danach <span class="zelle">K5</span> = 137.05 und <span class="zelle">P5</span>
-        (offene Ackerfläche) = <b>74.79</b> stehen — genau Serges Wert.</div></div>
+        <span class="zelle">Gem1 J57</span> = <b>5'735</b>, <span class="zelle">K57</span> = <b>1'315</b>,
+        <span class="zelle">M4</span> = <b>4450</b>.</div></div>
+      <div class="warnung"><b>Wichtig:</b> «Kräuter, Gewürz mittel» — nicht «mittel bis gross»
+        (das war der Eintrag, der letzte Runde versehentlich beim Kürbis stand). Serges Werte sind
+        0.7 N und 0.3 P₂O₅ je Are, das ist «mittel».</div>
     </div>
   </div>
 
-  <!-- ============ 2 Tierb ============ -->
+  <!-- ============ 2 ============ -->
   <div class="schritt">
     <div class="nr">2</div>
     <div>
-      <h2>Blatt <span class="zelle">Tierb</span></h2>
-      <p class="wo">Serge rechnet nur mit sieben Kategorien — vier musst du herausnehmen</p>
+      <h2>Speisekartoffeln stehen auf Gruppe b <span style="color:var(--gut)">−320 kg N</span></h2>
+      <p class="wo">Blatt <span class="zelle">SB2</span> · Zelle <span class="zelle">D40</span> · Doppelklick</p>
+      <p>Die 8 ha sind drin, aber mit <b>Gruppe b</b> = 120 kg N/ha. Serge rechnet
+      <b>Gruppe c</b> = 160 kg N/ha. Der Phosphor ändert sich nicht (0.16 kg/dt in beiden Gruppen).</p>
       <div class="tab-rahmen">
         <table>
-          <thead><tr><th class="z">Zelle</th><th>Kategorie</th><th class="z r">jetzt</th><th class="z r">Strickhof</th></tr></thead>
+          <thead><tr><th class="z">Zelle</th><th>Feld</th><th class="z r">jetzt</th><th class="z r">Strickhof</th><th class="z r">N total</th></tr></thead>
           <tbody>
-            <tr><td class="z">G33</td><td>Equiden &gt; 148 cm (Key A33 = 200)</td><td class="z r">5</td><td class="z r">5</td></tr>
-            <tr><td class="z">G36</td><td>Equiden ≤ 148 cm (Key A36 = 240)</td><td class="z r">4</td><td class="z r">4</td></tr>
-            <tr><td class="z">G40 / D40</td><td>Milchschafe, Ø 450 kg</td><td class="z r">219</td><td class="z r">219</td></tr>
-            <tr><td class="z">G41</td><td>Andere Schafe über 365 Tage</td><td class="z r">45</td><td class="z r">45</td></tr>
-            <tr><td class="z">G42</td><td>Jungschafe 180–365 Tage</td><td class="z r">106</td><td class="z r">106</td></tr>
-            <tr><td class="z">G43</td><td>Lämmer bis 180 Tage</td><td class="z r">129</td><td class="z r">129</td></tr>
-            <tr><td class="z">G44 / D44</td><td>Milchziegen, Ø 550 kg</td><td class="z r">3</td><td class="z r">3</td></tr>
-            <tr><td class="z">G45</td><td>Andere Ziegen über 365 Tage</td><td class="z r">1.55</td><td class="z r wert">leeren</td></tr>
-            <tr><td class="z">G46</td><td>Jungziegen 180–365 Tage</td><td class="z r">2.79</td><td class="z r wert">leeren</td></tr>
-            <tr><td class="z">G47</td><td>Zicklein bis 180 Tage</td><td class="z r">1.99</td><td class="z r wert">leeren</td></tr>
-            <tr><td class="z">G64</td><td>Zuchtschweine inkl. Ferkel</td><td class="z r">2</td><td class="z r wert">leeren</td></tr>
+            <tr><td class="z">D40</td><td>Kartoffeln, Speise- u. Industrie-</td><td class="z r">Gruppe b</td><td class="z r wert">Gruppe c</td><td class="z r">960 → <b>1'280</b></td></tr>
+            <tr><td class="z">D41</td><td>Kartoffeln, Pflanz-</td><td class="z r">Gruppe b</td><td class="z r">Gruppe b</td><td class="z r">618</td></tr>
           </tbody>
         </table>
       </div>
-      <div class="warnung"><b>Achtung:</b> Diese vier Kategorien stehen in euren
-        Betriebsdatenblättern 2026. Serge hat sie schlicht nicht erfasst. Für die Kontrollrechnung
-        raus, für die echte Bilanz wieder rein.</div>
+      <div class="kontrolle"><span class="haken">✓</span><div><b>Kontrolle:</b>
+        <span class="zelle">SB2 M40</span> springt von 120 auf <b>160</b>,
+        <span class="zelle">R40</span> von 960 auf <b>1'280</b>.</div></div>
     </div>
   </div>
 
-  <!-- ============ 3 SB1 ============ -->
+  <!-- ============ 3 ============ -->
   <div class="schritt">
     <div class="nr">3</div>
     <div>
-      <h2>Blatt <span class="zelle">SB1</span></h2>
-      <p class="wo">Tierliste aktualisieren, dann Vollmist, Hofdünger und Grundfutter</p>
-      <p>Zuerst den Knopf bei <span class="zelle">L9</span>
-      <span class="knopf">Tabelle «Tierart» ausfüllen, aktualisieren</span> drücken, damit die
-      Tierliste neu aufgebaut wird. Danach:</p>
+      <h2>Körnermais ist noch drin <span style="color:var(--schlecht)">+83 kg N</span></h2>
+      <p class="wo">Blatt <span class="zelle">Fläche</span> · Zelle <span class="zelle">E32</span></p>
+      <p>0.7336 ha Körnermais stehen weiterhin auf dem Flächenblatt und erscheinen in
+      <span class="zelle">SB2</span> Zeile 42 mit 80.7 kg N. Serge hat sie nicht. Zelle leeren.</p>
+      <div class="kontrolle"><span class="haken">✓</span><div><b>Kontrolle:</b> In
+        <span class="zelle">SB2</span> Formular C2 stehen danach nur noch vier Kulturen:
+        Winterweizen, Dinkel, Speise- und Pflanzkartoffeln.</div></div>
+    </div>
+  </div>
+
+  <!-- ============ 4 ============ -->
+  <div class="schritt">
+    <div class="nr">4</div>
+    <div>
+      <h2>Die 0.75 ha Ackerkultur liefern noch null <span style="color:var(--gut)">−60 kg N</span></h2>
+      <p class="wo">Blatt <span class="zelle">D_Fläche</span> · Zeile 53</p>
+      <p>Das ist der Punkt mit der freien Textzeile: <span class="zelle">Fläche B37</span> trägt
+      den selbst getippten Namen, deshalb kennt das Excel keine Nährstoffwerte dazu. Diese fünf
+      Zellen auf dem Hilfsblatt sind als einzige der Zeile offen — Serges Werte aus Tab. 4,
+      «Nicht aufgeführte Ackerkultur, Nicht-Leguminosen»:</p>
+      <div class="tab-rahmen">
+        <table>
+          <thead><tr><th class="z">Zelle</th><th>Bedeutung</th><th class="z r">eintragen</th></tr></thead>
+          <tbody>
+            <tr><td class="z">D53</td><td>Standardertrag dt/ha</td><td class="z r wert">1</td></tr>
+            <tr><td class="z">F53</td><td>N-Bedarf kg/ha</td><td class="z r wert">80</td></tr>
+            <tr><td class="z">H53</td><td>P₂O₅ kg/dt</td><td class="z r wert">60</td></tr>
+            <tr><td class="z">I53</td><td>K₂O kg/dt</td><td class="z r wert">120</td></tr>
+            <tr><td class="z">J53</td><td>Mg kg/dt</td><td class="z r wert">10</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Danach auf <span class="zelle">SB2</span> den Knopf
+      <span class="knopf">Tabelle «Nährstoffbedarf» ausfüllen, aktualisieren</span> drücken.</p>
+      <div class="kontrolle"><span class="haken">✓</span><div><b>Kontrolle:</b> In Formular C2
+        erscheint «Nicht aufgefuehrte Ackerkultur» mit 0.75 ha, <b>60</b> kg N und <b>45</b> kg P₂O₅.
+        Wenn der Knopf die Werte wieder löscht, geht es in dieser Mappe nicht — dann bleiben
+        60 kg N Differenz, und das ist der einzige Posten, den du nicht treffen kannst.</div></div>
+    </div>
+  </div>
+
+  <!-- ============ 5 ============ -->
+  <div class="schritt vorbereitung">
+    <div class="nr">·</div>
+    <div>
+      <h2>Kleinkram — zusammen 3 kg</h2>
+      <p class="wo">Nur wenn du es ganz exakt willst</p>
       <div class="tab-rahmen">
         <table>
           <thead><tr><th class="z">Zelle</th><th>Feld</th><th class="z r">jetzt</th><th class="z r">Strickhof</th></tr></thead>
           <tbody>
-            <tr><td class="z">X17</td><td>Vollmist-Typ Pferde (Doppelklick)</td><td class="z r">leer</td><td class="z r wert">Typ 100</td></tr>
-            <tr><td class="z">X18</td><td>Vollmist-Typ Ponys (Doppelklick)</td><td class="z r">leer</td><td class="z r wert">Typ 100</td></tr>
-            <tr><td class="z">X19</td><td>Vollmist-Typ Milchschafe</td><td class="z r">Typ 100</td><td class="z r">Typ 100</td></tr>
-            <tr><td class="z">G55 / K55</td><td>Mist-Zufuhr: Hühnermist</td><td class="z r">90 t</td><td class="z r">90 t</td></tr>
-            <tr><td class="z">M55 / N55</td><td>Gehalt Hühnermist, N<sub>ges</sub> / P₂O₅</td><td class="z r">21 / 17</td><td class="z r">21 / 17</td></tr>
-            <tr><td class="z">X55</td><td>Hühnermist als Vollmist?</td><td class="z r">Typ 50/100</td><td class="z r wert">leeren</td></tr>
-            <tr><td class="z">G57</td><td>Gülle-Zufuhr: Bezeichnung</td><td class="z r">Schweinegülle</td><td class="z r wert">Rindergülle</td></tr>
-            <tr><td class="z">K57</td><td>Menge</td><td class="z r">60</td><td class="z r wert">140</td></tr>
-            <tr><td class="z">M57 / N57</td><td>N<sub>ges</sub> / P₂O₅ je m³</td><td class="z r">5 / 2.5</td><td class="z r wert">3.0 / 1.2</td></tr>
-            <tr><td class="z">O57 / P57</td><td>K₂O / Mg je m³</td><td class="z r">4.3 / 1.2</td><td class="z r wert">leeren</td></tr>
-            <tr><td class="z">E77 / G77</td><td>Wegfuhr Gras, Grassilage</td><td class="z r">975 / 35 %</td><td class="z r">975 / 35 %</td></tr>
-            <tr><td class="z">E78 / G78</td><td>Zufuhr Dürrfutter (Graswürfel)</td><td class="z r">150 / 88 %</td><td class="z r">150 / 88 %</td></tr>
-            <tr><td class="z">E86 / G86</td><td>Zufuhr Zuckerrübenschnitzel</td><td class="z r">200 / 30 %</td><td class="z r">200 / 30 %</td></tr>
-            <tr><td class="z">M96</td><td>Lagerverluste + Fehlerbereich</td><td class="z r">10</td><td class="z r">10</td></tr>
+            <tr><td class="z">Fläche N37</td><td>Uferwiese, ohne Weiden</td><td class="z r">0.1232</td><td class="z r wert">leeren</td></tr>
+            <tr><td class="z">Gem2 D12</td><td>Tomaten 1800 kg Ertrag</td><td class="z r">121.86 a</td><td class="z r wert">121 a</td></tr>
+            <tr><td class="z">Fläche E19</td><td>Dinkel</td><td class="z r">6.9566</td><td class="z r wert">6.96</td></tr>
+            <tr><td class="z">Fläche E24</td><td>Getreide-Silage mit Leg.</td><td class="z r">1.6211</td><td class="z r wert">1.62</td></tr>
+            <tr><td class="z">Fläche E30</td><td>Kartoffeln, Pflanz-</td><td class="z r">6.1825</td><td class="z r wert">6.18</td></tr>
+            <tr><td class="z">Fläche E37</td><td>Nicht aufgef. Ackerkultur</td><td class="z r">0.766</td><td class="z r wert">0.75</td></tr>
+            <tr><td class="z">Fläche E41</td><td>Erdbeeren, 1-jährig</td><td class="z r">0.2255</td><td class="z r wert">0.22</td></tr>
+            <tr><td class="z">Fläche E54</td><td>Saum auf Ackerfläche</td><td class="z r">0.1658</td><td class="z r wert">0.16</td></tr>
+            <tr><td class="z">Fläche E64</td><td>Heil-/Gewürzpflanzen mehrj.</td><td class="z r">0.509</td><td class="z r wert">0.50</td></tr>
+            <tr><td class="z">Fläche N10</td><td>Naturwiese extensiv</td><td class="z r">14.0544</td><td class="z r wert">13.98</td></tr>
+            <tr><td class="z">Fläche N11</td><td>Naturwiese wenig intensiv</td><td class="z r">19.4547</td><td class="z r wert">19.44</td></tr>
+            <tr><td class="z">Fläche N15</td><td>Dauerweide extensiv</td><td class="z r">2.2204</td><td class="z r wert">2.22</td></tr>
+            <tr><td class="z">Fläche N19</td><td>Naturwiese intensiv</td><td class="z r">19</td><td class="z r wert">18.87</td></tr>
+            <tr><td class="z">Fläche N27</td><td>Silomais</td><td class="z r">2</td><td class="z r wert">2.02</td></tr>
+            <tr><td class="z">Fläche N34</td><td>Streue- und Torfland</td><td class="z r">0.502</td><td class="z r wert">0.50</td></tr>
+            <tr><td class="z">Fläche N35</td><td>Hecken mit Krautsaum</td><td class="z r">2.4764</td><td class="z r wert">2.47</td></tr>
+            <tr><td class="z">Fläche N36</td><td>Hecken mit Pufferstreifen</td><td class="z r">3</td><td class="z r wert">3.01</td></tr>
           </tbody>
         </table>
       </div>
-      <div class="kontrolle"><span class="haken">✓</span><div><b>Kontrolle:</b>
-        A1 = <b>4'609</b>, GFverz = <b>3'142</b>, A2 = <b>3'778</b>, V1 = <b>2'953</b>,
-        V2 = <b>leer</b>, A3 = <b>2'310</b> N / 1'698 P₂O₅, Vollmist-Anteil <b>42.7 %</b>,
-        GFprod = <b>3'620</b> dt TS.</div></div>
-      <div class="warnung"><b>Das ist der einzige Punkt, wo Serge nach Wegleitung falsch liegt:</b>
-        Zugeführter Geflügelmist ist Vollmist (Typ 100) und gehört nach Kap. 3.6 in V2.
-        Serge lässt V2 leer, dadurch sinkt der Vollmist-Anteil von 70 auf 42.7 % und der
-        Ausnutzungsgrad steigt von 44.0 auf 46.7 % — das kostet euch rund 180 kg N. Für die
-        Kontrollrechnung leer lassen, in der echten Bilanz auf Typ 100 setzen.</div>
-    </div>
-  </div>
-
-  <!-- ============ 4 Gemüse ============ -->
-  <div class="schritt">
-    <div class="nr">4</div>
-    <div>
-      <h2>Blätter <span class="zelle">Gem1</span>, <span class="zelle">Gem2</span> und <span class="zelle">OB</span></h2>
-      <p class="wo">Fünf Gemüsezeilen, eine Tomatenzeile, eine Erdbeerzeile</p>
-      <p><b>Gem1 — Freilandgemüse.</b> Serge rechnet <b>keine Karotten</b>, dafür 50 Aren
-      mehrjährige Kräuter:</p>
-      <div class="tab-rahmen">
-        <table>
-          <thead><tr><th class="z">Zeile</th><th>Kultur</th><th class="z r">Aren</th><th class="z r">N/a</th><th class="z r">P₂O₅/a</th><th class="z r">N</th><th class="z r">P₂O₅</th></tr></thead>
-          <tbody>
-            <tr><td class="z">12</td><td>Fenchel, Knollen</td><td class="z r">1400</td><td class="z r">1.6</td><td class="z r">0.3</td><td class="z r">2'240</td><td class="z r">420</td></tr>
-            <tr><td class="z">13</td><td>Salate, diverse, mittlerer Ertrag</td><td class="z r">1100</td><td class="z r">0.9</td><td class="z r">0.2</td><td class="z r">990</td><td class="z r">220</td></tr>
-            <tr><td class="z">14</td><td class="wert">Zucchetti, Patisson, Kürbis</td><td class="z r">1200</td><td class="z r">1.3</td><td class="z r">0.2</td><td class="z r">1'560</td><td class="z r">240</td></tr>
-            <tr><td class="z">15</td><td>Zwiebeln</td><td class="z r">700</td><td class="z r">1.3</td><td class="z r">0.6</td><td class="z r">910</td><td class="z r">420</td></tr>
-            <tr><td class="z">16</td><td class="wert">Kräuter, Gewürz mittel</td><td class="z r">50</td><td class="z r">0.7</td><td class="z r">0.3</td><td class="z r">35</td><td class="z r">15</td></tr>
-            <tr><td class="z">—</td><td><i>Karotten Verarbeitung-, Lager-</i></td><td class="z r wert">löschen</td><td class="z r"></td><td class="z r"></td><td class="z r"></td><td class="z r"></td></tr>
-            <tr><td class="z"></td><td><b>Total</b></td><td class="z r wert">4450</td><td class="z r"></td><td class="z r"></td><td class="z r wert">5'735</td><td class="z r wert">1'315</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p style="margin-top:1.2rem"><b>Gem2 — geschützter Anbau.</b> Eine Zeile statt zwei:</p>
-      <div class="tab-rahmen">
-        <table>
-          <thead><tr><th class="z">Zeile</th><th>Kultur</th><th class="z r">jetzt</th><th class="z r">Strickhof</th></tr></thead>
-          <tbody>
-            <tr><td class="z">12</td><td>Tomaten 1800 kg Ertrag</td><td class="z r">121.86 a</td><td class="z r wert">121 a</td></tr>
-            <tr><td class="z">13</td><td>Tomaten 1800 kg Ertrag</td><td class="z r">58.79 a</td><td class="z r wert">leeren</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p style="margin-top:1.2rem"><b>OB — Obst und Beeren.</b> Dieses Blatt ist bei dir noch
-      ganz leer, deshalb stehen die 0.22 ha Erdbeeren mit null Bedarf in der Bilanz. Es warnt
-      selbst in <span class="zelle">D51</span>: «Anbaufläche stimmt nicht mit dem Blatt Fläche
-      überein!»</p>
-      <div class="tab-rahmen">
-        <table>
-          <thead><tr><th class="z">Zelle</th><th>Kultur</th><th class="z r">ha</th><th class="z r">N/ha</th><th class="z r">P₂O₅/ha</th><th class="z r">N</th><th class="z r">P₂O₅</th></tr></thead>
-          <tbody>
-            <tr><td class="z">B35 / D35</td><td class="wert">Erdbeeren, einjährig</td><td class="z r">0.22</td><td class="z r">100</td><td class="z r">34</td><td class="z r">22</td><td class="z r">7</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="kontrolle"><span class="haken">✓</span><div><b>Kontrolle:</b>
-        <span class="zelle">Gem1 J57</span> = <b>5'735</b> / <span class="zelle">K57</span> = <b>1'315</b> ·
-        <span class="zelle">Gem2 J57</span> = <b>302.5</b> / <b>121</b> ·
-        <span class="zelle">OB I50</span> = <b>22</b> / <b>7</b>.</div></div>
-    </div>
-  </div>
-
-  <!-- ============ 5 Formular D ============ -->
-  <div class="schritt">
-    <div class="nr">5</div>
-    <div>
-      <h2>Blatt <span class="zelle">SB2</span>, Formular D</h2>
-      <p class="wo">Serge rechnet mehr Biorga und mehr Brinogia — und kein Stroh</p>
-      <div class="tab-rahmen">
-        <table>
-          <thead><tr><th class="z">Zelle</th><th>Dünger</th><th class="z r">jetzt</th><th class="z r">Strickhof</th><th class="z r">ergibt</th></tr></thead>
-          <tbody>
-            <tr><td class="z">J77</td><td>Biorga, N<sub>verf</sub> 120 je Einheit</td><td class="z r">40</td><td class="z r wert">42</td><td class="z r">5'040 N</td></tr>
-            <tr><td class="z">J78</td><td>Brinogia, 18.9 N / 8.0 P₂O₅</td><td class="z r">10</td><td class="z r wert">15</td><td class="z r">283.5 N / 120 P</td></tr>
-            <tr><td class="z">J87</td><td>Zukauf Weizenstroh zum Einstreuen</td><td class="z r">485.3</td><td class="z r wert">leeren</td><td class="z r">0</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="kontrolle"><span class="haken">✓</span><div><b>Kontrolle:</b>
-        <span class="zelle">SB2 R89</span> (D) = <b>5'324</b> kg N<sub>verf</sub>,
-        <span class="zelle">S89</span> = <b>120</b> kg P₂O₅.</div></div>
-      <div class="warnung"><b>Das ist keine Korrektur, sondern eine Planänderung:</b> in eurer
-        Mail an Serge standen 40 t Biorga und 10 t Brinogia, er hat mit 42 und 15 gerechnet.
-        Das Stroh hat er weggelassen. Für die echte Bilanz gelten eure Mengen.</div>
+      <p>Auf die Bilanz wirkt das <b>null</b> — es bringt nur die LN von 137.28 auf Serges
+      137.05 und den OA-Anteil auf 54.57 %.</p>
     </div>
   </div>
 
   <hr class="trenner">
 
-  <!-- ============ Schlusskontrolle ============ -->
+  <!-- ============ Wirkung ============ -->
   <div class="schluss">
-    <h2>Schlusskontrolle — alle 18 Kennwerte</h2>
-    <p>Links Serges PDF, rechts meine Nachrechnung derselben Eingaben. Grössere Abweichung: 0.9 kg.</p>
+    <h2>Was jeder Schritt bringt</h2>
+    <p>Nachgerechnet mit der Rechenkette deiner Mappe, in dieser Reihenfolge.</p>
     <div class="tab-rahmen">
       <table>
-        <thead><tr><th>Kennwert</th><th class="z">Zelle im Excel</th><th class="z r">Strickhof</th><th class="z r">nachgerechnet</th></tr></thead>
+        <thead><tr><th>Schritt</th><th class="z r">C total N</th><th class="z r">Bilanz N</th><th class="z r">Bilanz P₂O₅</th></tr></thead>
         <tbody>
-          <tr><td>Grundfutterverzehr</td><td class="z">SB1 K41</td><td class="z r">3'142</td><td class="z r wert">3'141.8</td></tr>
-          <tr><td>A1 N<sub>ges</sub> Tierhaltung</td><td class="z">SB1 R41</td><td class="z r">4'609</td><td class="z r wert">4'609.4</td></tr>
-          <tr><td>A2 nach Abzügen</td><td class="z">SB1 R49</td><td class="z r">3'778</td><td class="z r wert">3'777.6</td></tr>
-          <tr><td>V1 Vollmist Betrieb</td><td class="z">SB1 Y41</td><td class="z r">2'953</td><td class="z r wert">2'953.3</td></tr>
-          <tr><td>A3 Hofdünger</td><td class="z">SB1 R64</td><td class="z r">2'310</td><td class="z r wert">2'310</td></tr>
-          <tr><td>GFprod Futterfläche</td><td class="z">SB1 O97</td><td class="z r">3'620</td><td class="z r wert">3'620.2</td></tr>
-          <tr><td>Ertrag intensive Wiesen</td><td class="z">SB2 J29</td><td class="z r">90</td><td class="z r wert">90.2</td></tr>
-          <tr><td>C1 Grundfutter N</td><td class="z">SB2 R31</td><td class="z r">2'907</td><td class="z r wert">2'906.4</td></tr>
-          <tr><td>C1 Grundfutter P₂O₅</td><td class="z">SB2 S31</td><td class="z r">2'290</td><td class="z r wert">2'290.6</td></tr>
-          <tr><td>C2 Ackerkulturen N</td><td class="z">SB2 R50</td><td class="z r">3'337</td><td class="z r wert">3'337.2</td></tr>
-          <tr><td>C2 Ackerkulturen P₂O₅</td><td class="z">SB2 S50</td><td class="z r">1'408</td><td class="z r wert">1'408.1</td></tr>
-          <tr><td>C3 Spezialkulturen N</td><td class="z">SB2 R65</td><td class="z r">6'060</td><td class="z r wert">6'059.5</td></tr>
-          <tr><td>C3 Spezialkulturen P₂O₅</td><td class="z">SB2 S65</td><td class="z r">1'443</td><td class="z r wert">1'443.5</td></tr>
-          <tr><td>C Bedarf total N</td><td class="z">SB2 R67</td><td class="z r">12'304</td><td class="z r wert">12'303.1</td></tr>
-          <tr><td>Offene Ackerfläche</td><td class="z">SB2 J69</td><td class="z r">54.6 %</td><td class="z r wert">54.57 %</td></tr>
-          <tr><td>Anteil Vollmist</td><td class="z">SB2 D104</td><td class="z r">42.7 %</td><td class="z r wert">42.68 %</td></tr>
-          <tr><td>N-Ausnutzungsgrad</td><td class="z">SB2 I105</td><td class="z r">46.7 %</td><td class="z r wert">46.69 %</td></tr>
-          <tr><td>Transfer T</td><td class="z">SB2 S118</td><td class="z r">140</td><td class="z r wert">139.8</td></tr>
-          <tr><td><b>Gesamtbilanz N<sub>verf</sub></b></td><td class="z">SB2 H119</td><td class="z r">−4'137</td><td class="z r wert">−4'137.1</td></tr>
-          <tr><td><b>Gesamtbilanz P₂O₅</b></td><td class="z">SB2 J119</td><td class="z r">−1'341</td><td class="z r wert">−1'341.8</td></tr>
+          <tr><td>Deine Datei jetzt</td><td class="z r">12'847</td><td class="z r">−4'684</td><td class="z r">−1'657</td></tr>
+          <tr><td>3 — Körnermais raus</td><td class="z r">12'766</td><td class="z r">−4'601</td><td class="z r">−1'602</td></tr>
+          <tr><td>2 — Kartoffeln Gruppe c</td><td class="z r">13'086</td><td class="z r">−4'921</td><td class="z r">−1'602</td></tr>
+          <tr><td>1 — Gem1 Karotten/Kräuter</td><td class="z r">12'241</td><td class="z r">−4'076</td><td class="z r">−1'297</td></tr>
+          <tr><td>4 — Ackerkultur 80 / 60</td><td class="z r">12'301</td><td class="z r">−4'136</td><td class="z r">−1'342</td></tr>
+          <tr><td>Kleinkram</td><td class="z r wert">12'303</td><td class="z r wert">−4'137</td><td class="z r wert">−1'342</td></tr>
+          <tr><td><b>Strickhof</b></td><td class="z r wert">12'304</td><td class="z r wert">−4'137</td><td class="z r wert">−1'341</td></tr>
         </tbody>
       </table>
     </div>
-    <div class="warnung" style="margin-top:1.1rem"><b>Eine Stelle bleibt unvermeidlich um ein Kilo
-      daneben:</b> Serge rechnet «Naturwiese wenig intensiv» mit 50 und «Weide wenig intensiv» mit
-      45 dt TS/ha. Das Excel legt beide in <span class="zelle">SB2</span> Zeile 27 zusammen und
-      kennt dort nur einen Ertrag. Macht 0.6 dt TS Unterschied, also gut 0.3 kg N.</div>
   </div>
 
   <hr class="trenner">
 
-  <!-- ============ Abweichungen ============ -->
   <div class="schluss">
-    <h2>Wo Serges Zahlen von euren Betriebsdatenblättern 2026 abweichen</h2>
-    <p>Damit ihr wisst, was ihr nach der Kontrollrechnung wieder zurückstellt.</p>
-    <div class="tab-rahmen">
-      <table>
-        <thead><tr><th>Position</th><th class="z r">Strickhof</th><th class="z r">Betriebsdatenblätter 2026</th><th>Bewertung</th></tr></thead>
-        <tbody>
-          <tr><td>Winterweizen</td><td class="z r">4.88</td><td class="z r">8.1344</td><td>BDB gilt</td></tr>
-          <tr><td>Kartoffeln Speise-/Industrie</td><td class="z r">8.00</td><td class="z r">—</td><td>BDB gilt</td></tr>
-          <tr><td>Körnermais (Saatmais)</td><td class="z r">—</td><td class="z r">0.7336</td><td>BDB gilt</td></tr>
-          <tr><td>Silomais</td><td class="z r">2.02</td><td class="z r">1.2921</td><td>BDB gilt</td></tr>
-          <tr><td>Kunstwiese intensiv</td><td class="z r">— (als Naturwiese intensiv 18.87)</td><td class="z r">18.8762</td><td>Code 0601, gehört in die Kunstwiesenzeile</td></tr>
-          <tr><td>Weide/Mähweide intensiv</td><td class="z r">—</td><td class="z r">5.3361</td><td>Code 0616, fehlt bei Serge</td></tr>
-          <tr><td>Hecken mit Pufferstreifen</td><td class="z r">3.01</td><td class="z r">0.031</td><td>Faktor 100 — bei Serge ha statt Aren</td></tr>
-          <tr><td>Freilandgemüse</td><td class="z r">44.00</td><td class="z r">41.6553</td><td>Karotten 8 ha fehlen bei Serge</td></tr>
-          <tr><td>Geschützter Anbau</td><td class="z r">1.15</td><td class="z r">1.8065</td><td>Codes 0801 + 0811</td></tr>
-          <tr><td>Hochstamm-Feldobstbäume</td><td class="z r">—</td><td class="z r">255 Stück</td><td>fehlt bei Serge, 115 kg N</td></tr>
-          <tr><td>Ziegen, Zicklein, Zuchtschweine</td><td class="z r">—</td><td class="z r">1.55 / 2.79 / 1.99 / 2</td><td>fehlen bei Serge</td></tr>
-          <tr><td>Hühnermist als Vollmist (V2)</td><td class="z r">nein</td><td class="z r">ja</td><td>Wegleitung 1.19 Kap. 3.6: Typ 100</td></tr>
-          <tr><td><b>LN total</b></td><td class="z r">137.05</td><td class="z r">133.1228</td><td></td></tr>
-        </tbody>
-      </table>
-    </div>
+    <h2>Danach nicht vergessen</h2>
+    <p>Das hier ist die Kontrollrechnung, nicht die Bilanz, die ihr einreicht.</p>
+    <p>Sobald −4'137 dasteht, weisst du: Mappe, Bedienung und Eingaben sind in Ordnung. Für die
+    echte Planbilanz 2026 stellst du dann zurück auf die Betriebsdatenblätter — Winterweizen
+    8.1344, Körnermais 0.7336, keine Speisekartoffeln, Kunstwiese statt Naturwiese intensiv,
+    Weide/Mähweide intensiv 5.3361, Hecken mit Pufferstreifen 0.031 statt 3.01, Freilandgemüse
+    41.6553 mit den Karotten, geschützter Anbau 1.8065, Hochstamm 255 Bäume, die vier fehlenden
+    Tierkategorien, Schweinegülle statt Rindergülle, Biorga 40 und Brinogia 10 — und den
+    Hühnermist wieder als Vollmist Typ 100.</p>
+    <div class="warnung"><b>Und weiterhin offen:</b> die Mappe ist Suisse-Bilanz-Edition 1.19
+      (Blatt <span class="zelle">Q</span>, C6), gültig ab Erntejahr 2024. Für 2026 gilt die
+      Wegleitung 1.20. Zum Nachrechnen von Serges Bilanz ist 1.19 genau richtig — zum Einreichen
+      braucht ihr die neue Mappe.</div>
   </div>
 
   <p class="fuss">Grundlagen: Wegleitung Suisse-Bilanz 1.19 (für 2024/25) und 1.20 (für 2026/27) ·
