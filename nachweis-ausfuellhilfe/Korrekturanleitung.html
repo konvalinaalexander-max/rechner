@@ -192,22 +192,24 @@ td.wert{font-family:"IBM Plex Mono",monospace;font-weight:600;font-variant-numer
 </style>
 
 
+
 <div class="blatt">
 
-  <p class="eyebrow">Suisse-Bilanz · Planbilanz 2026 · Imhof &amp; Zähner · Runde 2</p>
+  <p class="eyebrow">Suisse-Bilanz · Planbilanz 2026 · Imhof &amp; Zähner · Runde 3</p>
   <h1>Nachweis richtigstellen</h1>
-  <p class="lede">Die Knöpfe sind gedrückt, die Tabellen gefüllt — die Bilanz rechnet jetzt.
-  Es bleiben fünf Eingabefehler und ein grundsätzliches Problem: das Excel rechnet noch mit
-  der <b>Suisse-Bilanz-Edition 1.19</b>, für Erntejahr 2026 gilt aber 1.20.</p>
+  <p class="lede">Drei von fünf Punkten sitzen: die Equiden, die 10 % und das Gewächshaus.
+  Beim Gemüse ist die Kultur um eine Zeile verrutscht, beim Umstellen der Tierliste hat das
+  Excel den Vollmist-Typ der Pferde verloren, und meine Anweisung zu den 0.766 ha war falsch —
+  die Zellen sind gesperrt. Drei Punkte, dann stimmt sie.</p>
 
   <div class="befund">
     <div class="ist">
       <div class="k">Deine Bilanz jetzt</div>
-      <div class="w">−4'904</div>
-      <div class="n">kg N<sub>verf</sub> · P₂O₅ −1'804</div>
+      <div class="w">−4'896</div>
+      <div class="n">kg N<sub>verf</sub> · P₂O₅ −1'531</div>
     </div>
     <div class="soll">
-      <div class="k">Nach den 5 Korrekturen</div>
+      <div class="k">Nach den 3 Restpunkten</div>
       <div class="w">−5'097</div>
       <div class="n">kg N<sub>verf</sub> · P₂O₅ −1'337</div>
     </div>
@@ -218,15 +220,15 @@ td.wert{font-family:"IBM Plex Mono",monospace;font-weight:600;font-variant-numer
     </div>
   </div>
 
-  <div class="ursachen">
-    <p>Warum meine Zahlen und deine auseinanderliegen</p>
-    <ol>
-      <li><b>Fünf Eingabefehler</b> in deiner Datei — Punkte 1 bis 5 unten. Zusammen 193 kg N.</li>
-      <li><b>Der Rest ist die Wegleitungs-Version.</b> Dein Excel ist Edition 1.19,
-      ich habe mit 1.20 gerechnet. Beispiel Kürbis: 1.19 verlangt 130 kg N und
-      <b>20 kg P₂O₅</b> je ha, 1.20 verlangt 150 kg N und <b>60 kg P₂O₅</b>. Auf 12 ha sind
-      das 240 kg N und 480 kg P₂O₅ — praktisch die ganze Restdifferenz beim Phosphor.</li>
-    </ol>
+  <div class="kontrolle" style="margin-top:1.4rem">
+    <span class="haken">✓</span>
+    <div><b>Erledigt und bestätigt:</b>
+    <span class="zelle">Tierb A33 = 200</span> und <span class="zelle">A36 = 240</span> — auf
+    <span class="zelle">SB1</span> stehen jetzt 5 Pferde und 4 Ponys, A1 = <b>4'714</b>,
+    GFverz = <b>3'163</b>, A2 = <b>3'882</b>. · <span class="zelle">SB1 M96 = 10</span> —
+    GFprod = <b>3'643</b> dt TS, Saldo-Ertrag der intensiven Wiesen <b>76.9</b> dt TS/ha. ·
+    <span class="zelle">Gem2</span> beide Zeilen «Tomaten 1800 kg Ertrag» — <b>452</b> kg N,
+    <b>181</b> kg P₂O₅.</div>
   </div>
 
   <hr class="trenner">
@@ -235,33 +237,31 @@ td.wert{font-family:"IBM Plex Mono",monospace;font-weight:600;font-variant-numer
   <div class="schritt">
     <div class="nr">1</div>
     <div>
-      <h2>Equiden: 5 Maultiere statt 5 Pferden, 4 Ponys fehlen ganz</h2>
-      <p class="wo">Blatt <span class="zelle">Tierb</span> · Spalte A (Key), Zeilen 33 und 36</p>
-      <p>Das ist der teuerste Fehler. Auf <span class="zelle">Tierb</span> stehen deine Tiere
-      richtig — 5 Equiden über 148 cm, 4 Equiden bis 148 cm. Aber die <b>Key-Nummer</b> in
-      Spalte A steuert, als was sie in die Bilanz übertragen werden, und dort steht
-      <span class="zelle">A33 = 220</span> = «Maultiere, Maulesel». Zeile 36 hat gar keinen Key,
-      darum tauchen die 4 Ponys auf <span class="zelle">SB1</span> überhaupt nicht auf.</p>
+      <h2>Der Vollmist-Typ der Pferde ist verschwunden</h2>
+      <p class="wo">Blatt <span class="zelle">SB1</span> · Zellen <span class="zelle">X17</span>
+        und <span class="zelle">X18</span> · Doppelklick</p>
+      <p>Das ist ein Nebeneffekt von Schritt 1 der letzten Runde: Als die Tierliste neu aufgebaut
+      wurde, hat das Excel den Vollmist-Typ der alten Maultier-Zeile mitgenommen. Bei allen
+      übrigen Tierzeilen steht in Spalte X ein Typ, bei den beiden neuen Zeilen ist sie
+      <b>leer</b>. Damit fällt der ganze Pferdemist aus der Vollmist-Rechnung.</p>
       <div class="tab-rahmen">
         <table>
-          <thead><tr><th class="z">Zelle</th><th>Zeile</th><th class="z r">jetzt</th><th class="z r">richtig</th><th>= Kategorie</th></tr></thead>
+          <thead><tr><th class="z">Zelle</th><th>Zeile</th><th class="z r">jetzt</th><th class="z r">richtig</th></tr></thead>
           <tbody>
-            <tr><td class="z">A33</td><td>Equiden &gt; 148 cm, über 900-tägig</td><td class="z r">220</td><td class="z r wert">200</td><td>Pferde &gt; 148 cm, über 180-tägig</td></tr>
-            <tr><td class="z">A36</td><td>Equiden ≤ 148 cm, über 900-tägig</td><td class="z r">leer</td><td class="z r wert">240</td><td>Ponys, Kleinpferde, Esel</td></tr>
+            <tr><td class="z">X17</td><td>Pferde &gt; 148 cm, über 180-tägig</td><td class="z r">leer</td><td class="z r wert">Typ 100</td></tr>
+            <tr><td class="z">X18</td><td>Ponys, Kleinpferde, Esel</td><td class="z r">leer</td><td class="z r wert">Typ 100</td></tr>
           </tbody>
         </table>
       </div>
-      <p>Danach auf <span class="zelle">SB1</span> den Knopf bei <span class="zelle">L9</span>
-      <span class="knopf">Tabelle «Tierart» ausfüllen, aktualisieren</span> drücken. Die
-      Laufhof- und Weideangaben (90 Tage bzw. 100 Tage × 4 h) übernimmt er mit.</p>
       <div class="kontrolle"><span class="haken">✓</span><div><b>Kontrolle:</b>
-        <span class="zelle">SB1</span> hat jetzt 11 Tierzeilen statt 10; Zeile 17 heisst
-        «Pferde, über 180-tägig, über 148 cm». <span class="zelle">R41</span> (A1) steigt von
-        4'610 auf <b>4'714</b>, <span class="zelle">K41</span> (GFverz) von 3'066 auf <b>3'163</b>.</div></div>
-      <div class="warnung"><b>Beleg:</b> Betriebsdatenblatt Zähner, Codes 1222 (4 Tiere) + 1223
-        (1 Hengst) ab 148 cm = 5 Pferde, Code 1262 = 4 unter 148 cm. Die Planbilanz vom
-        Strickhof führt genau «Pferd &gt; 180 d, &gt; 148 cm — 5.00» und «Ponies, Kleinpf., Esel — 4.00».
-        Maultiere hat der Betrieb keine.</div>
+        <span class="zelle">SB1 Y41</span> (V1) steigt von 2'773 auf <b>2'953</b>,
+        <span class="zelle">W68</span> von 67.5 % auf <b>70.2 %</b>. Auf
+        <span class="zelle">SB2</span> sinkt der Ausnutzungsgrad
+        (<span class="zelle">I105</span>) von 44.26 auf <b>43.95 %</b> — das ist die richtige
+        Richtung: mehr Vollmist heisst weniger pflanzenverfügbarer Stickstoff.</div></div>
+      <div class="warnung"><b>Beleg:</b> Die Planbilanz vom Strickhof führt für beide
+        Pferdezeilen «Typ 100» und kommt auf V1 = 2'953 kg Nges — genau derselbe Wert.
+        Pferdehaltung mit Einstreu und ohne Gülleanfall ist Typ 100.</div>
     </div>
   </div>
 
@@ -269,28 +269,32 @@ td.wert{font-family:"IBM Plex Mono",monospace;font-weight:600;font-variant-numer
   <div class="schritt">
     <div class="nr">2</div>
     <div>
-      <h2>Lagerungsverluste und Fehlerbereich: 10 % statt 5 %</h2>
-      <p class="wo">Blatt <span class="zelle">SB1</span> · Zelle <span class="zelle">M96</span></p>
-      <p>Die Wegleitung erlaubt <b>5 % Lagerungs- und Krippenverluste</b> <i>und</i> zusätzlich
-      <b>bis 5 % Fehlerbereich</b> der Grundfutterbilanz. Dein Excel hat dafür nur ein einziges
-      Eingabefeld — deshalb steht rechts daneben in <span class="zelle">K96</span> als Hinweis
-      «5 - 10%». Du hast 5 eingetragen, damit fällt die Hälfte weg.</p>
+      <h2>Der Kürbis ist eine Zeile zu tief gelandet</h2>
+      <p class="wo">Blatt <span class="zelle">Gem1</span> · Zeilen 16 und 17 · Knopf bei
+        <span class="zelle">B7</span> <span class="knopf">Gemüsekulturen auswählen</span></p>
+      <p>In Zeile 17 steht jetzt richtig «Zucchetti, Patisson, Kürbis» — aber <b>ohne Fläche</b>.
+      Die 1200 Aren stehen weiterhin in Zeile 16, und dort heisst die Kultur
+      «Kräuter, Gewürz mittel bis gross». Beim Anklicken ist die Auswahl offenbar eine Zeile
+      verrutscht.</p>
       <div class="tab-rahmen">
         <table>
-          <thead><tr><th class="z">Zelle</th><th class="z r">jetzt</th><th class="z r">richtig</th><th>Begründung</th></tr></thead>
+          <thead><tr><th class="z">Zeile</th><th>Kultur</th><th class="z r">Fläche</th><th class="z r">N je a</th><th class="z r">P₂O₅ je a</th><th>zu tun</th></tr></thead>
           <tbody>
-            <tr><td class="z">M96</td><td class="z r">5</td><td class="z r wert">10</td><td>5 % Lagerungs-/Krippenverluste + 5 % Fehlerbereich</td></tr>
+            <tr><td class="z">16</td><td>Kräuter, Gewürz mittel bis gross</td><td class="z r">1200 a</td><td class="z r">1.2</td><td class="z r">0.4</td><td class="wert">→ Zucchetti, Patisson, Kürbis</td></tr>
+            <tr><td class="z">17</td><td>Zucchetti, Patisson, Kürbis</td><td class="z r">—</td><td class="z r">1.3</td><td class="z r">0.2</td><td class="wert">Zeile leeren</td></tr>
           </tbody>
         </table>
       </div>
+      <p>Genauso gut kannst du es andersherum lösen: die 1200 Aren nach
+      <span class="zelle">D17</span> verschieben und Zeile 16 ganz leeren. Hauptsache, Fläche und
+      Kultur stehen in derselben Zeile.</p>
       <div class="kontrolle"><span class="haken">✓</span><div><b>Kontrolle:</b>
-        <span class="zelle">SB1 O97</span> (GFprod) steigt auf <b>3'643</b> dt TS. Auf
-        <span class="zelle">SB2</span> steigt der Saldo-Ertrag der intensiven Wiesen
-        (<span class="zelle">J29</span>) auf <b>76.9</b> dt TS/ha — plausibel für Talzone,
-        erlaubt sind 60–135.</div></div>
-      <div class="warnung"><b>So rechnet es auch der Strickhof:</b> in der Planbilanz vom
-        10.06.2026 stehen «Zzgl. Lagerungs- und Krippenverluste 5.0 % = 165» und
-        «Zzgl. Fehlerbereich der Grundfutterbilanz 5.0 % = 165» als zwei getrennte Zeilen.</div>
+        <span class="zelle">Gem1 J57</span> = <b>6'580</b> kg N (statt 6'460),
+        <span class="zelle">K57</span> = <b>1'620</b> kg P₂O₅ (statt 1'860). Die Zeile mit den
+        1200 Aren muss 1560 N und 240 P₂O₅ ausweisen.</div></div>
+      <div class="warnung"><b>Warum das wichtig ist:</b> Kräuter ziehen doppelt so viel P₂O₅ wie
+        Kürbis. Auf 12 ha sind das 240 kg Phosphor Bedarf, den ihr gar nicht habt — und
+        die Kontrolle vergleicht die Gemüseliste mit dem Anbauplan.</div>
     </div>
   </div>
 
@@ -298,108 +302,57 @@ td.wert{font-family:"IBM Plex Mono",monospace;font-weight:600;font-variant-numer
   <div class="schritt">
     <div class="nr">3</div>
     <div>
-      <h2>Die 12 ha Kürbis sind als Pastinake erfasst</h2>
-      <p class="wo">Blatt <span class="zelle">Gem1</span> · Zeile 16 · Knopf bei
-        <span class="zelle">B7</span> <span class="knopf">Gemüsekulturen auswählen</span></p>
-      <p>In <span class="zelle">B16</span> steht «Pastinake» — mit 1.8 kg N und 0.9 kg P₂O₅ je Are
-      die mit Abstand hungrigste Kultur der Liste. Kürbis heisst in der Auswahl
-      <b>«Zucchetti, Patisson, Kürbis»</b>. Das zeichnet deinen Bedarf um 600 kg N und
-      840 kg P₂O₅ zu hoch — die Bilanz sieht besser aus, als sie ist, und die Kontrolle
-      findet es sofort.</p>
+      <h2>Die 0.766 ha — meine letzte Anweisung war falsch</h2>
+      <p class="wo">Blatt <span class="zelle">Fläche B37</span> und <span class="zelle">D_Fläche</span> Zeile 53</p>
+      <p>Ich hatte geschrieben, du sollst die Fläche in <span class="zelle">SB2</span> Zeile 37
+      oder 42 eintragen. Das geht nicht — die beiden Zeilen sind vollständig gesperrt. Der Grund
+      liegt woanders: <span class="zelle">Fläche B37</span> ist eine <b>freie Textzeile</b>. Die
+      Fläche zählt zwar in die LN, aber das Excel kennt zu einem selbst getippten Namen keine
+      Nährstoffwerte, deshalb bleibt die Zeile in Formular C2 leer.</p>
+      <p>Die 0.766 ha sind ausserdem gar keine einheitliche Kultur. Aus den Betriebsdatenblättern 2026:</p>
       <div class="tab-rahmen">
         <table>
-          <thead><tr><th class="z">Zeile</th><th>jetzt</th><th>richtig</th><th class="r">Fläche</th><th class="z r">N je a</th><th class="z r">P₂O₅ je a</th></tr></thead>
+          <thead><tr><th class="z">Code</th><th>Nutzungsart</th><th class="z r">Aren</th><th>Betrieb</th><th>Bedarf?</th></tr></thead>
           <tbody>
-            <tr><td class="z">16</td><td>Pastinake</td><td class="wert">Zucchetti, Patisson, Kürbis</td><td class="z r">1200 a</td><td class="z r">1.8 → 1.3</td><td class="z r">0.9 → 0.2</td></tr>
+            <tr><td class="z">99999</td><td>Bitte Kultur wählen</td><td class="z r">37.02</td><td>Imhof</td><td>noch nicht deklariert</td></tr>
+            <tr><td class="z">0898</td><td>übrige Flächen innerhalb der LN, nicht beitragsberechtigt</td><td class="z r">12.20</td><td>Imhof</td><td>keiner</td></tr>
+            <tr><td class="z">0898</td><td>übrige Flächen innerhalb der LN, nicht beitragsberechtigt</td><td class="z r">18.66</td><td>Zähner</td><td>keiner</td></tr>
+            <tr><td class="z">0598</td><td>übrige offene Ackerfläche, nicht beitragsberechtigt</td><td class="z r">8.72</td><td>Imhof</td><td>Ackerkultur</td></tr>
+            <tr><td class="z"></td><td><b>Total</b></td><td class="z r wert">76.60</td><td></td><td></td></tr>
           </tbody>
         </table>
       </div>
-      <div class="kontrolle"><span class="haken">✓</span><div><b>Kontrolle:</b>
-        <span class="zelle">Gem1 J57</span> sinkt von 7'180 auf <b>6'580</b> kg N,
-        <span class="zelle">K57</span> von 2'460 auf <b>1'620</b> kg P₂O₅.</div></div>
-      <div class="warnung"><b>Die anderen vier stimmen:</b> Fenchel Knollen 1400 a,
-        Salate divers mittlerer Ertrag 1100 a, Karotten Verarbeitung/Lager mittlerer Ertrag 800 a,
-        Zwiebeln 700 a — alle identisch mit der Planbilanz vom Strickhof.</div>
-    </div>
-  </div>
-
-  <!-- ============ 4 ============ -->
-  <div class="schritt">
-    <div class="nr">4</div>
-    <div>
-      <h2>Gewächshaus: Flächen da, Kultur fehlt — 1.81 ha mit null Bedarf</h2>
-      <p class="wo">Blatt <span class="zelle">Gem2</span> · Zeilen 12 und 13 · Knopf bei
-        <span class="zelle">B7</span> <span class="knopf">Gemüsekulturen auswählen</span></p>
-      <p>Derselbe Fehler wie letztes Mal auf <span class="zelle">Gem1</span>, nur eine Etage tiefer:
-      die Aren stehen drin, aber Spalte B ist leer. Damit bleibt
-      <span class="zelle">Gem2 J57</span> auf null, und auf <span class="zelle">SB2</span> steht
-      Zeile 61 «Kulturen in geschütztem Anbau» zwar mit 1.8065 ha, aber ohne einen einzigen
-      Kilo Bedarf.</p>
+      <p>Es geht um höchstens <b>61 kg N und 46 kg P₂O₅</b> — gut 1 % der Bilanz. Zwei Wege:</p>
       <div class="tab-rahmen">
         <table>
-          <thead><tr><th class="z">Zeile</th><th>Kultur wählen</th><th class="z r">Fläche</th><th>Herkunft der Fläche</th></tr></thead>
+          <thead><tr><th>Weg</th><th>was du machst</th><th>Bemerkung</th></tr></thead>
           <tbody>
-            <tr><td class="z">12</td><td class="wert">Tomaten 1800 kg Ertrag</td><td class="z r">121.86 a</td><td>geschützter Anbau <i>mit</i> Fundament</td></tr>
-            <tr><td class="z">13</td><td class="wert">Tomaten 1800 kg Ertrag</td><td class="z r">58.79 a</td><td>geschützter Anbau <i>ohne</i> Fundament</td></tr>
+            <tr><td class="wert">A — sauber</td><td>Auf dem Hilfsblatt <span class="zelle">D_Fläche</span>, Zeile 53, die Nährstoffwerte nachtragen: <span class="zelle">D53 = 1</span>, <span class="zelle">F53 = 80</span>, <span class="zelle">H53 = 60</span>, <span class="zelle">I53 = 120</span>, <span class="zelle">J53 = 10</span>. Diese Zellen sind als einzige der Zeile offen. Danach auf <span class="zelle">SB2</span> den Knopf bei <span class="zelle">O5</span> drücken.</td><td>Werte aus Tab. 4, «Nicht aufgeführte Ackerkultur, Nicht-Leguminosen». Nach jedem Aktualisieren nachschauen, ob sie noch dastehen.</td></tr>
+            <tr><td class="wert">B — pragmatisch</td><td>So lassen und auf <span class="zelle">Allg B47</span> unter «Bemerkungen» festhalten: 0.766 ha nicht düngbare bzw. noch nicht deklarierte Restflächen, kein Nährstoffbedarf.</td><td>Die Flächensumme in <span class="zelle">SB2 I67</span> bleibt dann bei 132.36 statt 133.12.</td></tr>
           </tbody>
         </table>
       </div>
-      <div class="kontrolle"><span class="haken">✓</span><div><b>Kontrolle:</b>
-        <span class="zelle">Gem2 J57</span> = <b>452</b> kg N, <span class="zelle">K57</span> = <b>181</b> kg P₂O₅.
-        Auf <span class="zelle">SB2</span> füllt sich Zeile 61.</div></div>
-      <div class="warnung"><b>Falls ihr etwas anderes anbaut:</b> «Tomaten 1800 kg Ertrag»
-        (2.5 N / 1.0 P₂O₅ je Are) ist der Wert, den der Strickhof für euren geschützten Anbau
-        gesetzt hat. Baut ihr dort Gurken, Paprika oder Salat, nimm die entsprechende Zeile —
-        die Auswahlliste hat sie alle. Nur leer lassen geht nicht.</div>
-    </div>
-  </div>
-
-  <!-- ============ 5 ============ -->
-  <div class="schritt">
-    <div class="nr">5</div>
-    <div>
-      <h2>0.766 ha fallen aus der Bilanz — die Flächenkontrolle stimmt nicht</h2>
-      <p class="wo">Blatt <span class="zelle">SB2</span> · Formular C2 · freie Zeile 37 oder 42 ·
-        Knopf bei <span class="zelle">O5</span> <span class="knopf">Tabelle «Nährstoffbedarf» ausfüllen, aktualisieren</span></p>
-      <p>Auf <span class="zelle">Fläche E37</span> stehen 0.766 ha «Nicht aufgeführte Ackerkultur».
-      Der Übertragungsknopf kann sie nicht zuordnen — deshalb steht in
-      <span class="zelle">SB2 I67</span> die Summe <b>132.3568</b> ha, obwohl daneben
-      «= LN» steht und die LN <b>133.1228</b> ha beträgt. Genau diese 0.766 ha fehlen.</p>
-      <div class="tab-rahmen">
-        <table>
-          <thead><tr><th class="z">Zelle</th><th>Kultur</th><th class="z r">Fläche</th><th class="z r">N je ha</th><th class="z r">P₂O₅ je ha</th></tr></thead>
-          <tbody>
-            <tr><td class="z">Zeile 37</td><td class="wert">Nicht aufgeführte Ackerkultur, Nicht-Leguminosen / Mischungen</td><td class="z r">0.766</td><td class="z r">80</td><td class="z r">60</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="kontrolle"><span class="haken">✓</span><div><b>Kontrolle:</b>
-        <span class="zelle">SB2 I67</span> = <b>133.1228</b> — gleich der LN in
-        <span class="zelle">SB1 K5</span>. Solange die zwei Zahlen auseinanderliegen, ist die
-        Bilanz formell nicht vollständig.</div></div>
-      <div class="warnung"><b>Beleg:</b> Die Planbilanz vom Strickhof führt die Position als
-        «Nicht aufgef. Ackerkult., Nicht-Leg., Mischungen 0.75 ha, 80 kg N/ha».</div>
+      <div class="warnung"><b>Unabhängig vom Excel:</b> 37.02 Aren stehen im Betriebsdatenblatt
+        Imhof noch als «Bitte Kultur wählen». Das solltet ihr mit dem Kanton bereinigen, bevor
+        die Bilanz eingereicht wird — sonst fragt die Kontrolle dort zuerst nach.</div>
     </div>
   </div>
 
   <hr class="trenner">
 
-  <!-- ============ Offener Punkt ============ -->
+  <!-- ============ Nachfrage ============ -->
   <div class="schritt vorbereitung">
     <div class="nr">?</div>
     <div>
-      <h2>Ein Punkt, den nur ihr beantworten könnt</h2>
-      <p class="wo">Blatt <span class="zelle">Gem1 M4</span> gegen <span class="zelle">Fläche E39</span></p>
-      <p>Auf <span class="zelle">Gem1</span> summieren sich die Gemüseflächen auf
-      <b>5200 Aren = 52 ha</b> (14 + 11 + 8 + 7 + 12). Deklariert sind im Betriebsdatenblatt aber
-      nur <b>41.6553 ha</b> Freilandgemüse. Das ist <i>kein Rechenfehler</i> — im Gemüsebau zählt
-      die Anbaufläche jeder Kultur, und Folgekulturen auf derselben Parzelle dürfen doppelt
-      erscheinen. Aber die Kontrolle wird nach der Begründung fragen.</p>
-      <div class="warnung"><b>Zu klären:</b> Sind die 10.3 ha Differenz Folgekulturen auf schon
-        gezählter Fläche? Dann ist alles richtig, notiert es unter «Bemerkungen» auf
-        <span class="zelle">Allg B47</span>. Wenn nicht, muss entweder die Gemüsefläche im
-        Betriebsdatenblatt herauf oder der Anbauplan herunter. Nebenbei: in der Planbilanz vom
-        Strickhof fehlen die 8 ha Karotten ganz, dort sind es nur 44 ha.</div>
+      <h2>Eine Frage zum Stall, die ich nicht beantworten kann</h2>
+      <p class="wo">Blatt <span class="zelle">SB1</span> · Spalte X, Zeilen 20 bis 27</p>
+      <p>Nur die Milchschafe stehen auf «Typ 100». Andere Schafe, Jungschafe, Lämmer und
+      sämtliche Ziegen stehen auf <b>Typ 0</b> — das heisst Gülle-System ohne Vollmist. Bei
+      Tiefstreu-Haltung wäre auch dort Typ 100 richtig.</p>
+      <p>Ich habe es so gelassen, weil die Planbilanz vom Strickhof es genauso rechnet. Aber wenn
+      diese Tiere ebenfalls auf Tiefstreu stehen, gehört überall Typ 100 hin — das würde den
+      Vollmist-Anteil von 70 auf rund 96 % heben, den Ausnutzungsgrad auf etwa 41 % senken und
+      die Bilanz um weitere gut 200 kg N verbessern. Nur wenn es dem Stall entspricht.</p>
     </div>
   </div>
 
@@ -407,8 +360,8 @@ td.wert{font-family:"IBM Plex Mono",monospace;font-weight:600;font-variant-numer
 
   <!-- ============ Version ============ -->
   <div class="schluss">
-    <h2>Und das Grundsätzliche: dein Excel ist die Ausgabe 1.19</h2>
-    <p>Kein Eingabefehler, aber der Grund für den Rest der Differenz.</p>
+    <h2>Bleibt: dein Excel ist die Ausgabe 1.19</h2>
+    <p>Kein Eingabefehler, aber der Grund für die restliche Differenz zu meiner Rechnung.</p>
     <div class="tab-rahmen">
       <table>
         <thead><tr><th>Wo es steht</th><th>Wert</th><th>Bedeutung</th></tr></thead>
@@ -420,15 +373,14 @@ td.wert{font-family:"IBM Plex Mono",monospace;font-weight:600;font-variant-numer
         </tbody>
       </table>
     </div>
-    <p style="margin-top:1rem">Die <b>Wegleitung Suisse-Bilanz 1.20 vom Dezember 2025 ist für 2026
-    und 2027 gültig</b> — sie kam nach eurem Programmstand heraus. Geändert haben sich unter
-    anderem die Normwerte im Gemüse (Tab. 5). Beim Kürbis dreifacht sich der Phosphorbedarf von
-    20 auf 60 kg P₂O₅ je ha; auf 12 ha macht das allein 480 kg P₂O₅ aus. Deshalb komme ich auf
-    −1'816 kg P₂O₅ und dein Excel auf −1'337.</p>
+    <p style="margin-top:1rem">Die <b>Wegleitung Suisse-Bilanz 1.20 vom Dezember 2025 gilt für
+    2026 und 2027</b> — sie kam nach eurem Programmstand heraus. Geändert haben sich unter anderem
+    die Gemüse-Normwerte (Tab. 5): beim Kürbis verdreifacht sich der Phosphorbedarf von 20 auf
+    60 kg P₂O₅ je ha, auf 12 ha allein 480 kg. Darum komme ich auf −1'816 kg P₂O₅ und deine
+    Mappe auf −1'337.</p>
     <div class="warnung"><b>Zu tun:</b> Beim Strickhof oder bei der AGRIDEA die aktuelle
-      Nachweis-Mappe mit Edition 1.20 anfordern, bevor die Planbilanz eingereicht wird. Die
-      Eingaben sind dieselben — nur die hinterlegten Normwerte stimmen dann für 2026. Bis dahin
-      sind die Korrekturen 1 bis 5 in jedem Fall richtig, unabhängig von der Version.</div>
+      Nachweis-Mappe mit Edition 1.20 holen, bevor die Planbilanz eingereicht wird. Die Eingaben
+      bleiben dieselben, nur die hinterlegten Normwerte stimmen dann für 2026.</div>
   </div>
 
   <hr class="trenner">
@@ -436,36 +388,35 @@ td.wert{font-family:"IBM Plex Mono",monospace;font-weight:600;font-variant-numer
   <!-- ============ Schlusskontrolle ============ -->
   <div class="schluss">
     <h2>Schlusskontrolle</h2>
-    <p>Nach den fünf Korrekturen, gerechnet in der Edition 1.19 deiner Mappe.</p>
+    <p>Nach den drei Restpunkten, gerechnet in der Edition 1.19 deiner Mappe.</p>
     <div class="tab-rahmen">
       <table>
-        <thead><tr><th>Kennwert</th><th class="z">Zelle</th><th class="z r">jetzt</th><th class="z r">nachher</th><th class="z r">Schritt</th></tr></thead>
+        <thead><tr><th>Kennwert</th><th class="z">Zelle</th><th class="z r">jetzt</th><th class="z r">nachher</th><th class="z r">Punkt</th></tr></thead>
         <tbody>
-          <tr><td>A1 Nges Tierhaltung</td><td class="z">SB1 R41</td><td class="z r">4'610</td><td class="z r wert">4'714</td><td class="z r">1</td></tr>
-          <tr><td>Grundfutterverzehr</td><td class="z">SB1 K41</td><td class="z r">3'066</td><td class="z r wert">3'163</td><td class="z r">1</td></tr>
-          <tr><td>A2 nach Abzügen</td><td class="z">SB1 R49</td><td class="z r">3'783</td><td class="z r wert">3'882</td><td class="z r">1</td></tr>
-          <tr><td>GFprod Futterfläche</td><td class="z">SB1 O97</td><td class="z r">3'376</td><td class="z r wert">3'643</td><td class="z r">1 · 2</td></tr>
-          <tr><td>Ertrag intensive Wiesen</td><td class="z">SB2 J29</td><td class="z r">65.8</td><td class="z r wert">76.9</td><td class="z r">1 · 2</td></tr>
-          <tr><td>Gem1 Bedarf N</td><td class="z">Gem1 J57</td><td class="z r">7'180</td><td class="z r wert">6'580</td><td class="z r">3</td></tr>
-          <tr><td>Gem2 Bedarf N</td><td class="z">Gem2 J57</td><td class="z r">0</td><td class="z r wert">452</td><td class="z r">4</td></tr>
-          <tr><td>Flächensumme = LN</td><td class="z">SB2 I67</td><td class="z r">132.36</td><td class="z r wert">133.12</td><td class="z r">5</td></tr>
-          <tr><td>Anteil Vollmist</td><td class="z">SB2 D104</td><td class="z r">69.8 %</td><td class="z r wert">70.2 %</td><td class="z r">1</td></tr>
-          <tr><td>N-Ausnutzungsgrad</td><td class="z">SB2 I105</td><td class="z r">44.0 %</td><td class="z r wert">44.0 %</td><td class="z r">—</td></tr>
-          <tr><td>Nährstoffbedarf C, N</td><td class="z">SB2 R67</td><td class="z r">12'521</td><td class="z r wert">12'754</td><td class="z r">2–5</td></tr>
-          <tr><td><b>Gesamtbilanz N<sub>verf</sub></b></td><td class="z">SB2 H119</td><td class="z r">−4'904</td><td class="z r wert">−5'097</td><td class="z r">1–5</td></tr>
-          <tr><td><b>Gesamtbilanz P₂O₅</b></td><td class="z">SB2 J119</td><td class="z r">−1'804</td><td class="z r wert">−1'337</td><td class="z r">1–5</td></tr>
+          <tr><td>A1 Nges Tierhaltung</td><td class="z">SB1 R41</td><td class="z r">4'714</td><td class="z r">4'714</td><td class="z r">✓</td></tr>
+          <tr><td>A2 nach Abzügen</td><td class="z">SB1 R49</td><td class="z r">3'882</td><td class="z r">3'882</td><td class="z r">✓</td></tr>
+          <tr><td>GFprod Futterfläche</td><td class="z">SB1 O97</td><td class="z r">3'643</td><td class="z r">3'643</td><td class="z r">✓</td></tr>
+          <tr><td>Vollmist V1</td><td class="z">SB1 Y41</td><td class="z r">2'773</td><td class="z r wert">2'953</td><td class="z r">1</td></tr>
+          <tr><td>Anteil Vollmist</td><td class="z">SB2 D104</td><td class="z r">67.5 %</td><td class="z r wert">70.2 %</td><td class="z r">1</td></tr>
+          <tr><td>N-Ausnutzungsgrad</td><td class="z">SB2 I105</td><td class="z r">44.26 %</td><td class="z r wert">43.95 %</td><td class="z r">1</td></tr>
+          <tr><td>Gem1 Bedarf N</td><td class="z">Gem1 J57</td><td class="z r">6'460</td><td class="z r wert">6'580</td><td class="z r">2</td></tr>
+          <tr><td>Gem1 Bedarf P₂O₅</td><td class="z">Gem1 K57</td><td class="z r">1'860</td><td class="z r wert">1'620</td><td class="z r">2</td></tr>
+          <tr><td>Flächensumme = LN</td><td class="z">SB2 I67</td><td class="z r">132.36</td><td class="z r wert">133.12</td><td class="z r">3 (Weg A)</td></tr>
+          <tr><td>Nährstoffbedarf C, N</td><td class="z">SB2 R67</td><td class="z r">12'573</td><td class="z r wert">12'754</td><td class="z r">2 · 3</td></tr>
+          <tr><td><b>Gesamtbilanz N<sub>verf</sub></b></td><td class="z">SB2 H119</td><td class="z r">−4'896</td><td class="z r wert">−5'097</td><td class="z r">1–3</td></tr>
+          <tr><td><b>Gesamtbilanz P₂O₅</b></td><td class="z">SB2 J119</td><td class="z r">−1'531</td><td class="z r wert">−1'337</td><td class="z r">1–3</td></tr>
         </tbody>
       </table>
     </div>
     <div class="kontrolle" style="margin-top:1.1rem"><span class="haken">✓</span><div>
-      Beim Phosphor wird die Bilanz durch die Korrekturen <b>weniger</b> negativ, weil Pastinake
-      viermal so viel P₂O₅ zieht wie Kürbis. Das ist richtig so — mit Pastinake stünde ein
-      Bedarf in der Bilanz, den der Betrieb gar nicht hat.</div></div>
+      Beim Phosphor wird die Bilanz durch Punkt 2 <b>weniger</b> negativ. Das ist richtig so —
+      mit Kräutern statt Kürbis stünde ein Phosphorbedarf in der Bilanz, den der Betrieb nicht hat.</div></div>
   </div>
 
   <p class="fuss">Grundlagen: Wegleitung Suisse-Bilanz 1.20 (Dezember 2025) · AGRIDEA-Nachweis
   Version 9.9, Edition 1.19 · Betriebsdatenblätter 2026 Imhof (ZH0197/1/1) und Zähner
   (ZH0174/1/40) · Planbilanz 2026 Strickhof Lindau vom 10.06.2026 · alle Werte in kg pro Jahr,
-  gerechnet auf 133.1228 ha LN.</p>
+  gerechnet auf 133.1228 ha LN. Die Rechenkette der Mappe ist nachgebaut und liefert deine
+  Zahlen auf das Kilo genau.</p>
 
 </div>
