@@ -192,3 +192,144 @@ def knopf_c2(quelle, ziel):
             aend.append(("SB2", f"{zs}{zz}", neu[i][zs] if i < len(neu) else None))
     anwenden(quelle, aend, ziel)
     return neu
+
+
+# ============================================================================
+# Sub D_Tierb_nach_Nb1  (Modul M_Uebertragen_NW)
+# Knopf «Tabelle "Tierart" ausfüllen, aktualisieren» auf SB1.
+# Zwei Durchgänge: Weidevieh und Nichtweidetiere. Übernommen wird eine Zeile,
+# wenn auf D_Tierb die korrigierte Anzahl grösser als null ist.
+# ============================================================================
+TIER_WEIDE = [          # Ziel SB1 <- Quelle D_Tierb
+    ("B", "B"),   # Tierart
+    ("G", "G"),   # Anzahl unkorrigiert
+    ("E", "D"),   # Milchmenge
+    ("F", "F"),   # Einheit
+    ("I", "H"),   # Anzahl korrigiert
+    ("J", "J"),   # Grundfutterverzehr je Jahr
+    ("L", "Q"),   # N-Umsatz
+    ("M", "R"),   # Nges
+    ("N", "S"),   # P2O5
+    ("O", "T"),   # K2O
+    ("P", "U"),   # Mg
+    ("W", "AB"),  # Weidejahre
+    ("V", "X"),   # Laufhofjahre
+    ("H", "AD"),  # Ab- und Zuschlag
+]
+TIER_STALL = [(z, q) for z, q in TIER_WEIDE if z != "W"]   # Nichtweidetiere: keine Weide
+
+
+class Tiere:
+    """Nachbildung der Tierübertragung D_Tierb -> SB1."""
+
+    def __init__(self, nachweis):
+        self.n = nachweis
+        wf = nachweis.wbf
+        self.q_weide = _zeilen(wf["D_Tierb"].defined_names["WeideVieh"].value)
+        self.q_stall = _zeilen(wf["D_Tierb"].defined_names["NichtWeideTiere"].value)
+        self.z_weide = _zeilen(wf["SB1"].defined_names["WeideVieh"].value)
+        self.z_stall = _zeilen(wf["SB1"].defined_names["NichtWeideTiere"].value)
+
+    def _sammeln(self, quellzeilen, spalten):
+        raus = []
+        for qz in quellzeilen:
+            anz = self.n.wert(f"D_Tierb!H{qz}")
+            if not isinstance(anz, (int, float)) or isinstance(anz, bool) or anz <= 0:
+                continue
+            z = {}
+            for zs, qs in spalten:
+                try:
+                    z[zs] = self.n.wert(f"D_Tierb!{qs}{qz}")
+                except Exception as e:              # Kreisbezüge auf D_Tierb
+                    z[zs] = f"<{type(e).__name__}>"
+            z["_quelle"] = qz
+            raus.append(z)
+        return raus
+
+    def zeilen(self):
+        """[(Zielzeile in SB1, Werte je Spalte)] wie nach dem Knopfdruck."""
+        raus = []
+        for herkunft, quellen, ziele, spalten in (
+                ("Weidevieh", self.q_weide, self.z_weide, TIER_WEIDE),
+                ("Nichtweidetiere", self.q_stall, self.z_stall, TIER_STALL)):
+            treffer = self._sammeln(quellen, spalten)
+            if len(treffer) > len(ziele):
+                raise RuntimeError(f"{herkunft}: {len(treffer)} Kategorien, "
+                                   f"nur {len(ziele)} Zeilen auf SB1")
+            for i, zz in enumerate(ziele):
+                raus.append((zz, treffer[i] if i < len(treffer) else None, herkunft))
+        return raus
+
+    def vergleich(self):
+        """Zelle für Zelle gegen das, was tatsächlich auf SB1 steht."""
+        ist_wb = self.n.wbv["SB1"]
+        befund = []
+        for zz, soll, herkunft in self.zeilen():
+            spalten = TIER_WEIDE if herkunft == "Weidevieh" else TIER_STALL
+            for zs, _ in spalten:
+                ist = ist_wb[f"{zs}{zz}"].value
+                erw = soll[zs] if soll else None
+                leer_ist = ist in (None, "", " ")
+                leer_erw = erw in (None, "", " ")
+                if leer_ist and leer_erw:
+                    gleich = True
+                elif isinstance(ist, (int, float)) and isinstance(erw, (int, float)):
+                    gleich = abs(float(ist) - float(erw)) < 1e-9
+                else:
+                    gleich = str(ist).strip() == str(erw).strip()
+                befund.append((f"SB1!{zs}{zz}", erw, ist, gleich))
+        return befund
+
+
+VOLLMIST_FAKTOR = {"Typ 0": 0, "Typ 50": 0.5, "Typ 100": 1, "Typ 50/100": 1, None: None}
+
+
+def knopf_tiere(quelle, ziel, etiketten=None, vollmist=None):
+    """Führt die Tierübertragung D_Tierb -> SB1 aus und schreibt sie in die Mappe.
+
+    vollmist: {Zielzeile: "Typ 100"} - der Vollmist-Typ gehört nicht zur
+    Übertragung. Das Makro rettet ihn über AlteEinträgeRetten und setzt ihn
+    für neue Kategorien nicht. Er muss deshalb mitgegeben werden.
+
+    Achtung: Spalte X ist nur die Beschriftung. Gerechnet wird mit dem Faktor
+    in Spalte Z:  Y17 = IF(Z17=0, 0, (R17-V17-W17)*Z17).  Der Doppelklick in
+    Excel setzt beide Spalten; wer nur X schreibt, ändert nichts an der Bilanz.
+
+    Werte, die der Rechner wegen Kreisbezügen auf D_Tierb nicht ermitteln kann
+    (Milchschaf und Milchziege: die leistungsabhängigen Gehalte kommen über
+    D_Klick zurück), werden aus der Quellmappe übernommen, sofern dort in
+    derselben Zeile dieselbe Tierart steht.
+    """
+    from xlsmpatch import Mappe
+    n = Nachweis(quelle, etiketten=etiketten or quelle)
+    t = Tiere(n)
+    aend, uebernommen = [], []
+    for zz, soll, herkunft in t.zeilen():
+        spalten = TIER_WEIDE if herkunft == "Weidevieh" else TIER_STALL
+        for zs, _ in spalten:
+            wert = soll[zs] if soll else None
+            if isinstance(wert, str) and wert.startswith("<") and wert.endswith(">"):
+                alt_art = n.wbv["SB1"][f"B{zz}"].value
+                neu_art = soll.get("B")
+                if alt_art is not None and str(alt_art) == str(neu_art):
+                    wert = n.wbv["SB1"][f"{zs}{zz}"].value
+                    uebernommen.append(f"SB1!{zs}{zz}")
+                else:
+                    raise RuntimeError(
+                        f"SB1!{zs}{zz}: Wert nicht berechenbar und nicht übernehmbar "
+                        f"(Zeile enthielt {alt_art!r}, neu {neu_art!r})")
+            aend.append(("SB1", f"{zs}{zz}", wert))
+        if vollmist is not None:
+            typ = vollmist.get(zz) if soll else None
+            aend.append(("SB1", f"X{zz}", typ))
+            aend.append(("SB1", f"Z{zz}", VOLLMIST_FAKTOR.get(typ)))
+    m = Mappe(quelle)
+    for blatt, zelle, wert in aend:
+        if wert is None:
+            m.leeren(blatt, zelle)
+        elif isinstance(wert, str):
+            m.text(blatt, zelle, wert)
+        else:
+            m.zahl(blatt, zelle, wert)
+    m.speichern(ziel)
+    return t.zeilen(), uebernommen
