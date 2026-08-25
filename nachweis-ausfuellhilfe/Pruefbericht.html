@@ -1,0 +1,539 @@
+<title>Nachweis richtigstellen</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap">
+
+<style>
+:root{
+  --grund:#F7F8F5;
+  --flaeche:#FFFFFF;
+  --flaeche-2:#EFF2EC;
+  --tinte:#1B241F;
+  --tinte-leise:#5E675F;
+  --linie:#DCE0D8;
+  --linie-stark:#BFC7BB;
+  --akzent:#2E5D4B;
+  --akzent-weich:#E4EDE7;
+  --schlecht:#A33A2A;
+  --schlecht-weich:#F7E6E2;
+  --gut:#2E7D5B;
+  --gut-weich:#E2F0E8;
+  --merk:#8A6A16;
+  --merk-weich:#F7EFD9;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --grund:#141815;
+    --flaeche:#1B211C;
+    --flaeche-2:#232B24;
+    --tinte:#E7EBE4;
+    --tinte-leise:#9AA49B;
+    --linie:#2E372F;
+    --linie-stark:#414C42;
+    --akzent:#7FBFA0;
+    --akzent-weich:#1F2E27;
+    --schlecht:#E08573;
+    --schlecht-weich:#31211E;
+    --gut:#6FC49A;
+    --gut-weich:#1B2C24;
+    --merk:#D8B85C;
+    --merk-weich:#2C2718;
+  }
+}
+:root[data-theme="dark"]{
+  --grund:#141815;
+  --flaeche:#1B211C;
+  --flaeche-2:#232B24;
+  --tinte:#E7EBE4;
+  --tinte-leise:#9AA49B;
+  --linie:#2E372F;
+  --linie-stark:#414C42;
+  --akzent:#7FBFA0;
+  --akzent-weich:#1F2E27;
+  --schlecht:#E08573;
+  --schlecht-weich:#31211E;
+  --gut:#6FC49A;
+  --gut-weich:#1B2C24;
+  --merk:#D8B85C;
+  --merk-weich:#2C2718;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--grund);
+  color:var(--tinte);
+  font-family:"Source Sans 3","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:17px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.blatt{max-width:53rem;margin:0 auto;padding:3.5rem 1.5rem 6rem}
+
+h1,h2,h3,.eyebrow{font-family:"Archivo","Helvetica Neue",Arial,sans-serif}
+h1{
+  font-size:clamp(2rem,1.4rem + 2.4vw,3rem);
+  font-weight:700;line-height:1.08;letter-spacing:-.022em;
+  text-wrap:balance;margin:0 0 .6rem;
+}
+.eyebrow{
+  font-size:.75rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--akzent);margin:0 0 .9rem;
+}
+.lede{font-size:1.16rem;color:var(--tinte-leise);max-width:62ch;margin:0}
+code,.zelle,.zahl{font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace}
+
+/* ---------- Befund ---------- */
+.befund{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:1px;
+  background:var(--linie);border:1px solid var(--linie);border-radius:10px;
+  overflow:hidden;margin:2.5rem 0 1rem;
+}
+.befund > div{background:var(--flaeche);padding:1rem 1.15rem}
+.befund .k{font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--tinte-leise);font-family:"Archivo",sans-serif}
+.befund .w{font-family:"IBM Plex Mono",monospace;font-size:1.6rem;font-weight:600;
+  font-variant-numeric:tabular-nums;line-height:1.2;margin-top:.2rem}
+.befund .ist .w{color:var(--schlecht)}
+.befund .soll .w{color:var(--gut)}
+.befund .n{font-size:.86rem;color:var(--tinte-leise);margin-top:.15rem}
+
+.ursachen{
+  border-left:3px solid var(--schlecht);background:var(--schlecht-weich);
+  border-radius:0 8px 8px 0;padding:1.1rem 1.3rem;margin:1.6rem 0 0;
+}
+.ursachen p{margin:0 0 .5rem;font-weight:600}
+.ursachen ol{margin:0;padding-left:1.2rem}
+.ursachen li{margin:.35rem 0}
+
+hr.trenner{border:0;border-top:1px solid var(--linie);margin:3rem 0 2.5rem}
+
+/* ---------- Schritte ---------- */
+.schritt{
+  display:grid;grid-template-columns:3.1rem 1fr;gap:0 1.1rem;
+  margin:0 0 2.6rem;align-items:start;
+}
+.nr{
+  font-family:"Archivo",sans-serif;font-weight:700;font-size:1.05rem;
+  width:2.5rem;height:2.5rem;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--akzent);color:var(--grund);
+  font-variant-numeric:tabular-nums;margin-top:.15rem;
+}
+.schritt.vorbereitung .nr{background:var(--flaeche-2);color:var(--tinte-leise);
+  border:1px solid var(--linie-stark);font-size:1.2rem}
+.schritt h2{font-size:1.3rem;font-weight:600;letter-spacing:-.012em;margin:.25rem 0 .1rem;text-wrap:balance}
+.wo{font-size:.93rem;color:var(--tinte-leise);margin:0 0 .8rem}
+.wo .zelle{color:var(--tinte);font-weight:600}
+.schritt > div > p{margin:.7rem 0}
+
+.zelle{
+  background:var(--flaeche-2);border:1px solid var(--linie);
+  border-radius:4px;padding:.06em .38em;font-size:.9em;font-weight:600;
+  white-space:nowrap;
+}
+.knopf{
+  display:inline-block;background:var(--akzent-weich);border:1px solid var(--akzent);
+  color:var(--akzent);border-radius:5px;padding:.1em .5em;
+  font-family:"Archivo",sans-serif;font-size:.86em;font-weight:600;white-space:nowrap;
+}
+
+/* ---------- Tabellen ---------- */
+.tab-rahmen{overflow-x:auto;margin:.9rem 0 0;
+  border:1px solid var(--linie);border-radius:8px;background:var(--flaeche)}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+th{
+  font-family:"Archivo",sans-serif;font-size:.7rem;font-weight:600;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--tinte-leise);text-align:left;
+  padding:.6rem .85rem;border-bottom:1px solid var(--linie-stark);white-space:nowrap;
+}
+td{padding:.5rem .85rem;border-bottom:1px solid var(--linie);vertical-align:top}
+tbody tr:last-child td{border-bottom:0}
+td.z,th.z{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;
+  white-space:nowrap;font-size:.9rem}
+td.r,th.r{text-align:right}
+td.wert{font-family:"IBM Plex Mono",monospace;font-weight:600;font-variant-numeric:tabular-nums}
+
+/* ---------- Kontrolle ---------- */
+.kontrolle{
+  display:flex;gap:.7rem;align-items:flex-start;
+  background:var(--gut-weich);border-left:3px solid var(--gut);
+  border-radius:0 7px 7px 0;padding:.7rem 1rem;margin:.95rem 0 0;font-size:.95rem;
+}
+.kontrolle b{font-family:"Archivo",sans-serif;font-weight:600;color:var(--gut)}
+.haken{color:var(--gut);flex-shrink:0;font-weight:700}
+
+.warnung{
+  background:var(--merk-weich);border-left:3px solid var(--merk);
+  border-radius:0 7px 7px 0;padding:.75rem 1rem;margin:.95rem 0 0;font-size:.95rem;
+}
+.warnung b{font-family:"Archivo",sans-serif;color:var(--merk)}
+
+/* ---------- Schluss ---------- */
+.schluss{
+  background:var(--flaeche);border:1px solid var(--linie-stark);
+  border-radius:11px;padding:1.5rem 1.6rem;margin-top:1rem;
+}
+.schluss h2{font-size:1.35rem;margin:0 0 .2rem;font-weight:700}
+.schluss > p{color:var(--tinte-leise);margin:0 0 1rem}
+
+.fuss{margin-top:3.5rem;padding-top:1.4rem;border-top:1px solid var(--linie);
+  font-size:.88rem;color:var(--tinte-leise)}
+
+@media (max-width:34rem){
+  body{font-size:16px}
+  .blatt{padding:2.2rem 1.1rem 4rem}
+  .schritt{grid-template-columns:1fr;gap:.4rem}
+  .nr{width:2.1rem;height:2.1rem;font-size:.95rem}
+}
+@media print{
+  body{background:#fff}
+  .schritt{page-break-inside:avoid}
+  .blatt{padding:0}
+}
+</style>
+
+
+
+
+
+
+
+<div class="blatt">
+
+  <p class="eyebrow">Suisse-Bilanz · Planbilanz 2026 · Imhof &amp; Zähner · Prüfbericht</p>
+  <h1>Nachweis richtigstellen</h1>
+  <p class="lede">Zehn Punkte durchgeprüft, jeder mit einem Lauf des Werkzeugs. Ergebnis vorweg:
+  <b>die Anweisung stimmt</b> — <span class="zelle">D_Fläche!N35 = 8</span> bleibt richtig. Aber
+  ich habe dabei <b>drei Fehler im eigenen Werkzeug</b> und <b>zwei offene Punkte in deiner Mappe</b>
+  gefunden, die ich vorher nicht gesehen hatte.</p>
+
+  <div class="befund">
+    <div>
+      <div class="k">Formelzellen nachgerechnet</div>
+      <div class="w">9'790</div>
+      <div class="n">davon 0 Abweichungen im Bilanzkegel</div>
+    </div>
+    <div>
+      <div class="k">Eingabezellen gestört</div>
+      <div class="w">348</div>
+      <div class="n">59 mit Wirkung, 54 davon belegt</div>
+    </div>
+    <div class="ist">
+      <div class="k">Nicht belegt</div>
+      <div class="w">5</div>
+      <div class="n">alle: Gehalte zugeführter Hofdünger</div>
+    </div>
+  </div>
+
+  <div class="ursachen">
+    <p>Was vorher falsch war</p>
+    <ol>
+      <li><b>Der Vollmist-Typ steht in der falschen Spalte.</b> Gerechnet wird mit dem Faktor in
+      Spalte <span class="zelle">Z</span>, nicht mit der Beschriftung in Spalte
+      <span class="zelle">X</span>: <span class="zelle">Y17 = IF(Z17=0; 0; (R17−V17−W17)·Z17)</span>.
+      In der echten Bilanz verschiebt das <b>199.5 kg N</b>.</li>
+      <li><b>Mein Rechner löste keine benannten Bereiche auf.</b> 1'388 von 9'790 Formelzellen
+      ergaben <span class="zelle">#NAME?</span> statt eines Werts. Nach der Reparatur sind es 82 —
+      und keine davon liegt im Abhängigkeitskegel der Bilanz.</li>
+      <li><b>Ein schneller Rechenweg wäre falsch gewesen.</b> Ohne Nachbildung des Knopfdrucks
+      liefert <span class="zelle">Fläche!E10</span> eine Wirkung von −3 kg statt −143 kg:
+      Faktor 48 daneben.</li>
+    </ol>
+  </div>
+
+  <hr class="trenner">
+
+  <!-- 1 -->
+  <div class="schritt">
+    <div class="nr">1</div>
+    <div>
+      <h2>Makro-Abdeckung — jetzt vollständig</h2>
+      <p class="wo">Nachgebildet aus dem VBA-Quelltext, 77 Module, 57'833 Zeilen</p>
+      <div class="tab-rahmen">
+        <table>
+          <thead><tr><th>Makro</th><th>schreibt</th><th>nachgebildet</th><th class="r">Probe</th></tr></thead>
+          <tbody>
+            <tr><td class="z">D_Fläche_nach_Nb2, Schritt 1</td><td>Ackerkulturen nach SB2 C2</td><td class="wert">ja</td><td class="r">5 Zeilen, 50 Zellen identisch</td></tr>
+            <tr><td class="z">D_Fläche_nach_Nb2, Schritt 2</td><td>Spezialkulturen nach SB2 C3</td><td class="wert">ja</td><td class="r">0 von 14 Quellzeilen mit Fläche — überträgt nichts</td></tr>
+            <tr><td class="z">D_Tierb_nach_Nb1</td><td>Tierliste nach SB1</td><td class="wert">ja</td><td class="r"><b>330 von 330 Zellen identisch</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Es gibt <b>genau zwei</b> Makros, die nach SB1 oder SB2 schreiben — beide sind erfasst.
+      Die übrigen Übertragungsroutinen (<span class="zelle">Tierb_nach_Hd</span>,
+      <span class="zelle">Tierb_nach_Gf</span>, <span class="zelle">Fläche_nach_Gf</span> und weitere)
+      schreiben in Blätter, die nicht in die Bilanz laufen.</p>
+      <div class="warnung"><b>Eine Lücke bleibt:</b> Die leistungsabhängigen Gehalte für Milchschafe
+      und Milchziegen laufen über einen Kreisbezug auf <span class="zelle">D_Klick</span>, den mein
+      Rechner nicht auflösen kann (18 Zellen). Ich übernehme sie aus der Mappe. Die Werte selbst
+      habe ich unabhängig gegen die Wegleitung 1.19 geprüft: Tab. 2e, Milchschaf 500 kg = 13.66 Nges,
+      −0.50 je 25 kg weniger, bei 450 kg also 12.66 — genau der Wert in Zeile 19. Ändert jemand die
+      Milchleistung, rechnet mein Werkzeug an der Stelle veraltet.</div>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="schritt">
+    <div class="nr">2</div>
+    <div>
+      <h2>Rechentreue über die ganze Mappe</h2>
+      <p class="wo">Alle 14'467 zwischengespeicherten Ergebnisse verworfen, aus den blanken Formeln neu gerechnet</p>
+      <div class="tab-rahmen">
+        <table>
+          <thead><tr><th>Formelzellen der Bilanzblätter</th><th class="z r">vor der Reparatur</th><th class="z r">nachher</th></tr></thead>
+          <tbody>
+            <tr><td>identisch mit der Mappe</td><td class="z r">7'338</td><td class="z r wert">8'588</td></tr>
+            <tr><td>beide leer</td><td class="z r">1'036</td><td class="z r">1'039</td></tr>
+            <tr><td>abweichend</td><td class="z r">1'388</td><td class="z r wert">82</td></tr>
+            <tr><td>nicht auswertbar</td><td class="z r">28</td><td class="z r">81</td></tr>
+            <tr><td><b>davon im Abhängigkeitskegel der Bilanz</b></td><td class="z r">—</td><td class="z r wert">0</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Die 163 verbleibenden Zellen sind eingegrenzt: 63 auf <span class="zelle">D_Hd</span>, wo
+      Excel selbst <span class="zelle">#VALUE!</span> anzeigt · 9 auf <span class="zelle">D_Klick</span>
+      mit <span class="zelle">#REF!</span> in der Mappe selbst · 22 Vereinigungsbezüge auf
+      <span class="zelle">Fläche</span>, die auch in Excel <span class="zelle">#VALUE!</span> ergeben ·
+      58 Kreisbezüge auf den Dialogblättern · 5 Plausibilitätsmarken auf SB2, die den
+      Konstantennamen <span class="zelle">eps</span> brauchen · 15 Beschriftungen.</p>
+      <div class="kontrolle"><span class="haken">✓</span><div>Der Abhängigkeitskegel der Gesamtbilanz
+      umfasst <b>3'599 Zellen</b> auf 13 Blättern. Keine einzige abweichende und keine einzige
+      unrechenbare Zelle liegt darin.</div></div>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="schritt">
+    <div class="nr">3</div>
+    <div>
+      <h2>Blätter, die ich nie geöffnet hatte</h2>
+      <p class="wo">Aus dem Formelgraphen, nicht aus der Erinnerung</p>
+      <div class="tab-rahmen">
+        <table>
+          <thead><tr><th>Blatt</th><th class="z r">Zellen im Kegel</th><th>läuft in die Bilanz?</th></tr></thead>
+          <tbody>
+            <tr><td class="z">RH — Reben, Dauerkulturen</td><td class="z r">298</td><td>ja, aber leer: nur die eingebaute Beispielzeile, Beitrag 0</td></tr>
+            <tr><td class="z">FormE — Vergärungsprodukte</td><td class="z r">45</td><td>ja, aber leer: E = 0</td></tr>
+            <tr><td class="z">Texte, D_Gemüse1/2, D_ObstBeeren</td><td class="z r">1'271</td><td>Nachschlagewerte</td></tr>
+            <tr><td class="z">Hd, Ff, Kennz, GMF, Fzukauf, BioKennz</td><td class="z r wert">0</td><td><b>nein</b> — kein Formelweg in die Bilanz</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Im Kegel liegen <b>2'134 Eingabezellen</b>, davon 801 nicht gesperrt. Nach Abzug der
+      Textbausteine und der leeren Zellen bleiben <b>348 befüllte Eingaben</b> — die sind in Punkt 4
+      einzeln getestet.</p>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="schritt">
+    <div class="nr">4</div>
+    <div>
+      <h2>Störungstest — 59 Zellen mit Wirkung</h2>
+      <p class="wo">Jede der 348 Eingaben um +1 verändert, Knopfdruck nachgebildet, Bilanz neu gerechnet. 76 Minuten Rechenzeit.</p>
+      <div class="tab-rahmen">
+        <table>
+          <thead><tr><th class="z">Zelle</th><th class="z r">Wert</th><th class="z r">kg N je +1</th><th class="z r">kg P₂O₅ je +1</th><th>Beleg</th></tr></thead>
+          <tbody>
+            <tr><td class="z">Fläche!E10</td><td class="z r">4.88</td><td class="z r">−143.00</td><td class="z r">−49.80</td><td>Strickhof S3</td></tr>
+            <tr><td class="z">Fläche!E28</td><td class="z r">8</td><td class="z r">−123.00</td><td class="z r">−72.00</td><td>Strickhof S3</td></tr>
+            <tr><td class="z">SB2!J78</td><td class="z r">42</td><td class="z r">+120.00</td><td class="z r">0</td><td>Strickhof: 5040 ÷ 120</td></tr>
+            <tr><td class="z">Fläche!N27</td><td class="z r">2</td><td class="z r">+109.00</td><td class="z r">+44.40</td><td>Strickhof S3 · BDB 1.2921</td></tr>
+            <tr><td class="z">Fläche!E30</td><td class="z r">6.1825</td><td class="z r">−103.00</td><td class="z r">−47.50</td><td>BDB Code 0524</td></tr>
+            <tr><td class="z">Fläche!E19</td><td class="z r">6.9566</td><td class="z r">−103.00</td><td class="z r">−36.00</td><td>BDB Code 0516</td></tr>
+            <tr><td class="z">OB!D35</td><td class="z r">0.22</td><td class="z r">−100.00</td><td class="z r">−34.00</td><td>BDB Code 0551</td></tr>
+            <tr><td class="z">Fläche!E37</td><td class="z r">0.766</td><td class="z r">−83.00</td><td class="z r">−60.00</td><td>BDB 0598+99999+0898</td></tr>
+            <tr><td class="z wert">SB1!M57</td><td class="z r">3</td><td class="z r">+71.72</td><td class="z r">0</td><td class="wert">nicht belegt</td></tr>
+            <tr><td class="z">SB2!I103</td><td class="z r">60</td><td class="z r">+60.85</td><td class="z r">0</td><td>Wegleitung: Basis 60 %</td></tr>
+            <tr><td class="z wert">SB1!M55</td><td class="z r">21</td><td class="z r">+46.10</td><td class="z r">0</td><td class="wert">nicht belegt</td></tr>
+            <tr><td class="z">SB1!M96</td><td class="z r">10</td><td class="z r">−39.49</td><td class="z r">−26.99</td><td>Wegleitung 1.19 Kap. 3.2</td></tr>
+            <tr><td class="z wert">SB1!N57</td><td class="z r">1.2</td><td class="z r">0</td><td class="z r">+140.00</td><td class="wert">nicht belegt</td></tr>
+            <tr><td class="z wert">SB1!N55</td><td class="z r">17</td><td class="z r">0</td><td class="z r">+90.00</td><td class="wert">nicht belegt</td></tr>
+            <tr><td class="z">Gem1!N12</td><td class="z r">1</td><td class="z r">0</td><td class="z r">−420.00</td><td>Normdüngungsfaktor, Strickhof S4</td></tr>
+            <tr><td class="z">…</td><td class="z r"></td><td class="z r"></td><td class="z r"></td><td>44 weitere, alle belegt</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="kontrolle"><span class="haken">✓</span><div><b>Zwei Erkenntnisse aus dem Test:</b>
+      Die intensiven Wiesen (<span class="zelle">Fläche!N19</span>, 18.87 ha) haben nur
+      <b>3.59 kg</b> Hebel — ihr Ertrag ist die Restgrösse, mehr Fläche heisst weniger Ertrag je ha.
+      Und die <b>Normdüngungsfaktoren im Gemüse</b> sind die grössten Phosphorhebel der ganzen Mappe:
+      je 0.1 Abweichung bewegen sie bis zu 42 kg P₂O₅. Alle stehen auf 1.0.</div></div>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="schritt">
+    <div class="nr">5</div>
+    <div>
+      <h2>Sollwerte gegengelesen — und das PDF geht in sich nicht auf</h2>
+      <p class="wo">Zweite Lesung mit Wortkoordinaten statt Layouttext</p>
+      <p>Alle 25 Sollwerte bestätigt. Von 14 inneren Beziehungen gehen aber <b>vier um genau 1 kg
+      nicht auf</b>:</p>
+      <div class="tab-rahmen">
+        <table>
+          <thead><tr><th>Beziehung</th><th>Formel</th><th class="z r">gerechnet</th><th class="z r">im PDF</th></tr></thead>
+          <tbody>
+            <tr><td>A2 N<sub>ges</sub></td><td class="z">4609 − 823 − 9</td><td class="z r">3'777</td><td class="z r">3'778</td></tr>
+            <tr><td>C P₂O₅</td><td class="z">2290 + 1408 + 1443</td><td class="z r">5'141</td><td class="z r">5'142</td></tr>
+            <tr><td>GFprod</td><td class="z">3291 + 165 + 165</td><td class="z r">3'621</td><td class="z r">3'620</td></tr>
+            <tr><td><b>Bilanz P₂O₅</b></td><td class="z">A2 − C + A3 + D − T</td><td class="z r wert">−1'342</td><td class="z r wert">−1'341</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Meine −1'341.22 ist also nicht «1 kg daneben» — sie liegt im Rundungsband des PDF selbst.
+      Die zehn übrigen Beziehungen stimmen auf null.</p>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="schritt">
+    <div class="nr">6</div>
+    <div>
+      <h2>Die Mappe warnt selbst — an zwei Stellen</h2>
+      <p class="wo">Alle Zellen der Mappe nach Warntexten durchsucht</p>
+      <div class="tab-rahmen">
+        <table>
+          <thead><tr><th class="z">Zelle</th><th>Text</th><th>Ursache</th><th>Zustand</th></tr></thead>
+          <tbody>
+            <tr><td class="z">Fläche!N42</td><td>LN kontrollieren!</td><td><span class="zelle">Allg!C43</span> = 133, gerechnete LN = 137.05</td><td class="wert">aktiv</td></tr>
+            <tr><td class="z">OB!D51</td><td>Anbaufläche stimmt nicht mit dem Blatt Fläche überein!</td><td>Beerenfläche mit mehr als zwei Nachkommastellen</td><td>in der Kontrollmappe stumm</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="warnung"><b>Das hatte ich nie erwähnt:</b> Auf <span class="zelle">Allg</span> steht
+      die landwirtschaftliche Nutzfläche von Hand mit <b>133</b>. Sie muss zur gerechneten passen,
+      sonst warnt die Mappe. In der einzureichenden Fassung habe ich sie auf <b>133.13</b> gesetzt
+      und die Beerenfläche auf zwei Stellen gerundet — danach sind beide Warnungen stumm, geprüft.</div>
+    </div>
+  </div>
+
+  <!-- 7 -->
+  <div class="schritt">
+    <div class="nr">7</div>
+    <div>
+      <h2>Die gelieferte Datei</h2>
+      <p class="wo">Elf Prüfungen gegen das Original</p>
+      <p>Zip unversehrt · keine Datei verloren oder zusätzlich · VBA-Projekt, Zeichenketten-Tabelle
+      und Formate byteweise unverändert · <b>88 Zeichnungsdateien</b> (die Knöpfe) unverändert ·
+      ausserhalb der Blätter nichts angefasst · <b>104'813 Zellen</b> in 41 Blättern wohlgeformt,
+      keine doppelten Zellen oder Zeilen, Reihenfolge korrekt · gemeinsam genutzte Formeln
+      vollständig · Neuberechnung beim Öffnen gesetzt.</p>
+      <div class="kontrolle"><span class="haken">✓</span><div>Die acht als Inline-Text geschriebenen
+      Zellen liegen alle auf SB2 in Formular C2. <b>Keine Formel der Mappe liest sie</b>. Und die
+      Gegenprobe: schreibt man eine Gemüsekultur als Text nach <span class="zelle">Gem1!B14</span>,
+      findet der VLOOKUP sie und liefert 1.1 kg N je Are für Karotten — das Verfahren trägt also
+      auch dort.</div></div>
+      <div class="warnung"><b>Offen:</b> Ein unabhängiges Nachrechnen war nicht möglich. LibreOffice
+      ist in dieser Umgebung defekt — es scheitert auch an einer selbst erzeugten Datei mit zwei
+      Zellen. Der erste echte Excel-Lauf findet auf deinem Rechner statt.</div>
+    </div>
+  </div>
+
+  <!-- 8 -->
+  <div class="schritt">
+    <div class="nr">8</div>
+    <div>
+      <h2>Ist eine Toleranz von 1 kg ehrlich?</h2>
+      <p class="wo">Ausgerechnet, nicht behauptet</p>
+      <div class="tab-rahmen">
+        <table>
+          <thead><tr><th>Quelle der Unschärfe</th><th class="z r">Stickstoff</th><th class="z r">Phosphor</th></tr></thead>
+          <tbody>
+            <tr><td>gedruckte ganze Kilogramm (je ± 0.5)</td><td class="z r">± 2.00</td><td class="z r">± 2.50</td></tr>
+            <tr><td>Ausnutzungsgrad auf 0.1 % gerundet, auf 6'088 kg</td><td class="z r">± 3.04</td><td class="z r">—</td></tr>
+            <tr><td><b>Band insgesamt</b></td><td class="z r wert">± 5.04</td><td class="z r wert">± 2.50</td></tr>
+            <tr><td>meine tatsächliche Abweichung</td><td class="z r">−0.40</td><td class="z r">−0.22</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Die Toleranz ist also nicht zu grosszügig, sondern <b>fünfmal strenger</b>, als die Daten
+      hergeben. Grösste Einzelabweichung über alle 25 Kennwerte: 0.50 kg.</p>
+    </div>
+  </div>
+
+  <hr class="trenner">
+
+  <!-- 9 -->
+  <div class="schluss">
+    <h2>Die zwei Mappen nebeneinander</h2>
+    <p>Links die Kontrollrechnung gegen den Strickhof, rechts die einzureichende Planbilanz 2026.</p>
+    <div class="tab-rahmen">
+      <table>
+        <thead><tr><th>Kennwert</th><th class="z r">Kontrollrechnung</th><th class="z r">Planbilanz 2026</th></tr></thead>
+        <tbody>
+          <tr><td>A1 N<sub>ges</sub> Tierhaltung</td><td class="z r">4'609.37</td><td class="z r">4'713.79</td></tr>
+          <tr><td>A2 nach Abzügen</td><td class="z r">3'777.98</td><td class="z r">3'882.22</td></tr>
+          <tr><td>A3 Hofdünger</td><td class="z r">2'310.00</td><td class="z r">2'190.00</td></tr>
+          <tr><td>GFprod</td><td class="z r">3'620.16</td><td class="z r">3'643.25</td></tr>
+          <tr><td>C Bedarf total N</td><td class="z r">12'303.52</td><td class="z r">12'665.49</td></tr>
+          <tr><td>Fläche C = LN</td><td class="z r">137.05</td><td class="z r">133.13</td></tr>
+          <tr><td>Anteil Vollmist</td><td class="z r">42.68 %</td><td class="z r">70.15 %</td></tr>
+          <tr><td>N-Ausnutzungsgrad</td><td class="z r">46.69 %</td><td class="z r">43.95 %</td></tr>
+          <tr><td>D übrige Dünger</td><td class="z r">5'323.50</td><td class="z r">4'989.00</td></tr>
+          <tr><td><b>Gesamtbilanz N<sub>verf</sub></b></td><td class="z r wert">−4'137.40</td><td class="z r wert">−5'007.80</td></tr>
+          <tr><td><b>Gesamtbilanz P₂O₅</b></td><td class="z r wert">−1'341.22</td><td class="z r wert">−1'301.28</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:1rem">47 Eingaben unterscheiden die beiden Mappen. Jede ist belegt: die
+    Flächen aus den Betriebsdatenblättern 2026 mit ihrem Code, die Tierzahlen ebenso, die
+    Düngermengen aus eurer Mail an den Strickhof. Die vollständige Gegenüberstellung liegt im Repo.</p>
+    <div class="warnung"><b>Ein Fehler, den der Vergleich aufgedeckt hat:</b> Beim ersten Aufbau der
+    Planbilanz hatte ich in <span class="zelle">Gem1</span> die Karottenfläche eingetragen, aber die
+    Kultur stand noch auf «Kräuter». Das wären 800 Aren Kräuter gewesen statt Karotten — 
+    355 kg N Unterschied. Korrigiert und nachgerechnet.</div>
+  </div>
+
+  <hr class="trenner">
+
+  <!-- 10 -->
+  <div class="schluss">
+    <h2>Was ich nicht belegen kann</h2>
+    <p>Fünf von 59 wirksamen Eingaben, alle aus derselben Ecke.</p>
+    <div class="tab-rahmen">
+      <table>
+        <thead><tr><th class="z">Zelle</th><th>Feld</th><th class="z r">Wert</th><th class="z r">Hebel</th><th>was du brauchst</th></tr></thead>
+        <tbody>
+          <tr><td class="z">SB1!M55</td><td>Hühnermist, N<sub>ges</sub> je Tonne</td><td class="z r">21</td><td class="z r">46 kg N</td><td>Lieferschein / HODUFLU</td></tr>
+          <tr><td class="z">SB1!N55</td><td>Hühnermist, P₂O₅ je Tonne</td><td class="z r">17</td><td class="z r">90 kg P</td><td>Lieferschein / HODUFLU</td></tr>
+          <tr><td class="z">SB1!M57</td><td>Gülle, N<sub>ges</sub> je m³</td><td class="z r">3.0 / 5.0</td><td class="z r">72 kg N</td><td>Lieferschein / HODUFLU</td></tr>
+          <tr><td class="z">SB1!N57</td><td>Gülle, P₂O₅ je m³</td><td class="z r">1.2 / 2.5</td><td class="z r">140 kg P</td><td>Lieferschein / HODUFLU</td></tr>
+          <tr><td class="z">SB1!K57</td><td>Güllemenge</td><td class="z r">140 / 60</td><td class="z r">1.5 kg N</td><td>Lieferschein / HODUFLU</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:1rem">Die Wegleitung verlangt für Hofdüngerzu- und -wegfuhren die
+    «Jahressaldierung für Suisse-Bilanz» aus HODUFLU (Ziff. 2.3 und 2.13). Diese Zahlen stehen
+    weder im Strickhof-PDF noch in der Mappe — sie kommen von den Lieferungen. Der Strickhof gibt
+    nur die Summen 1'890/1'530 und 420/168; die Aufteilung in Menge mal Gehalt habe ich so gewählt,
+    dass die Summe stimmt.</p>
+    <div class="warnung"><b>Zwei weitere Punkte, die ich mit dem Werkzeug nicht klären kann:</b>
+    Ob die Schafe und Ziegen ausser den Milchschafen wirklich auf Vollmist-Typ 0 stehen — das ist
+    eine Frage an euren Stall, und sie bewegt die Bilanz um rund 200 kg N. Und ob die 52 ha
+    Gemüseanbaufläche gegenüber 41.66 ha deklarierter Fläche Folgekulturen sind — die Mappe prüft
+    das nicht, die Kontrolle wird danach fragen.</div>
+  </div>
+
+  <hr class="trenner">
+
+  <div class="schluss">
+    <h2>Die Anweisung bleibt</h2>
+    <p><span class="zelle">D_Fläche!N35 = 8</span>, danach auf <span class="zelle">SB2</span> der
+    Knopf «Tabelle Nährstoffbedarf ausfüllen, aktualisieren». Das ist unverändert richtig und jetzt
+    durch 9'790 nachgerechnete Formelzellen, 330 geprüfte Makro-Zellen und 348 Störungsläufe belegt.</p>
+    <p>Beide Mappen liegen fertig eingestellt bei. Beim Öffnen «Inhalt aktivieren», dann rechnet
+    Excel einmal durch.</p>
+  </div>
+
+  <p class="fuss">Werkzeug und Prüfläufe im Ordner <span class="zelle">sbtool/</span>:
+  <span class="zelle">pycel_fix.py</span> (benannte Bereiche, PRODUCT, CHAR) ·
+  <span class="zelle">sbrechner.py</span> (beide Makros) ·
+  <span class="zelle">abhaengig.py</span> (Formelgraph) ·
+  <span class="zelle">pruef.py</span> (Rechentreue) ·
+  <span class="zelle">stoerung.py</span> (Störungstest) ·
+  <span class="zelle">warnzellen.py</span> · <span class="zelle">dateipruefung.py</span> ·
+  <span class="zelle">pdf_lesen.py</span> / <span class="zelle">pdf_pruefen.py</span> ·
+  <span class="zelle">rundung.py</span>. Grundlage: Wegleitung Suisse-Bilanz 1.19, Planbilanz 2026
+  des Strickhofs Lindau vom 10.06.2026, Betriebsdatenblätter 2026 Imhof und Zähner.</p>
+
+</div>
